@@ -205,5 +205,25 @@ namespace Medical
             }
             setdatagrid();
         }
+
+        private void cmdPfind_Click(object sender, EventArgs e)
+        {
+            string query = "select PatientCode,fname,mname,lname,Address,Sex,Age from pmaster where fname like " + txtName.Text.Trim();
+            using (OleDbConnection conn = new OleDbConnection(connParam))
+            {
+                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
+                {
+                    DataSet ds = new DataSet();
+                    if (ds != null)
+                    {
+                        adapter.Fill(ds);
+                        dgPatientMaster.DataSource = ds.Tables[0];
+
+                        dgPatientMaster.Columns[2].Visible = false;
+                        dgPatientMaster.Columns[3].Visible = false;
+                    }
+                }
+            }
+        }
     }
 }

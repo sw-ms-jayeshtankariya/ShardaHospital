@@ -149,6 +149,7 @@
             this.cmdPfind.TabIndex = 5;
             this.cmdPfind.Text = "Find";
             this.cmdPfind.UseVisualStyleBackColor = true;
+            this.cmdPfind.Click += new System.EventHandler(this.cmdPfind_Click);
             // 
             // tableLayoutPanel3
             // 
