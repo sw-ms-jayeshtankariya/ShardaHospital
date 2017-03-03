@@ -17,8 +17,9 @@ namespace Medical
         //OleDbConnection con = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Nirav Golani Projects\Medical\Medical\bin\Debug\eyemedical.mdb");
         private OleDbConnection bookConn;
         private OleDbCommand oleDbCmd = new OleDbCommand();
+        private string connParam = "";
         //parameter from mdsaputra.udl
-        private String connParam = ConfigurationSettings.AppSettings["dsn"];
+
         List<int> patientId = new List<int>();
 
         public frmMain()
@@ -28,97 +29,12 @@ namespace Medical
 
         private void setdatagrid()
         {
-            string query = "select * from patient order by Date,srno";
-            using (OleDbConnection conn = new OleDbConnection(connParam))
-            {
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    if (ds != null)
-                    {
-                        adapter.Fill(ds);
-                        grdDataGrid.DataSource = ds.Tables[0];
-
-                        HideGridCol();
-                        //grdDataGrid.Columns[0].Visible = false;
-                        //grdDataGrid.Columns[11].Visible = false;
-                        //grdDataGrid.Columns[12].Visible = false;
-                        //grdDataGrid.Columns[13].Visible = false;
-                        //grdDataGrid.Columns[14].Visible = false;
-                        //grdDataGrid.Columns[15].Visible = false;
-                        //grdDataGrid.Columns[16].Visible = false;
-                        //grdDataGrid.Columns[17].Visible = false;
-                        //grdDataGrid.Columns[18].Visible = false;
-                        //grdDataGrid.Columns[19].Visible = false;
-                        //grdDataGrid.Columns[20].Visible = false;
-                        //grdDataGrid.Columns[21].Visible = false;
-                        //grdDataGrid.Columns[22].Visible = false;
-                        //grdDataGrid.Columns[23].Visible = false;
-                        //grdDataGrid.Columns[24].Visible = false;
-                        //grdDataGrid.Columns[25].Visible = false;
-                        //grdDataGrid.Columns[26].Visible = true;
-                        ////grdDataGrid.Columns[26].Width = 1000;
-                        //grdDataGrid.Columns[27].Visible = false;
-                        //grdDataGrid.Columns[28].Visible = false;
-                        //grdDataGrid.Columns[29].Visible = false;
-                        //grdDataGrid.Columns[30].Visible = false;
-                        //grdDataGrid.Columns[31].Visible = false;
-                        //grdDataGrid.Columns[32].Visible = false;
-                        //grdDataGrid.Columns[33].Visible = false;
-                        //grdDataGrid.Columns[34].Visible = false;
-                        //grdDataGrid.Columns[35].Visible = false;
-                        //grdDataGrid.Columns[36].Visible = false;
-                        //grdDataGrid.Columns[37].Visible = false;
-                        //grdDataGrid.Columns[38].Visible = false;
-                        //grdDataGrid.Columns[39].Visible = false;
-                        //grdDataGrid.Columns[40].Visible = false;
-                        //grdDataGrid.Columns[41].Visible = false;
-                        //grdDataGrid.Columns[42].Visible = false;
-
-
-                        ////grdDataGrid.Columns["Name"].Width = 2000;
-                        ////grdDataGrid.Columns["Age"].Width = 375;
-                        ////grdDataGrid.Columns["Sex"].Width = 350;
-                        ////grdDataGrid.Columns["Weight"].Width = 600;
-                        ////grdDataGrid.Columns["Address"].Width = 2000;
-                        //////grdDataGrid.RowHeight = 450;
-                        //////grdDataGrid.Columns["Address"].WrapText = true;
-                        ////grdDataGrid.Columns["Date"].Width = 1000;
-
-                        ////grdDataGrid.Columns("Total").Width = 735;
-                        ////grdDataGrid.Columns("ReceiptNo").Width = 850;
-                        ////grdDataGrid.Columns("Remark").Width = 2000;
-                        ////grdDataGrid.Columns("Remark").WrapText = true;
-
-                        //int nRowIndex = grdDataGrid.Rows.Count - 1;
-                        //int nColumnIndex = 3;
-
-                        //grdDataGrid.Rows[nRowIndex].Selected = true;
-                        //grdDataGrid.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
-
-                        ////In case if you want to scroll down as well.
-                        //grdDataGrid.FirstDisplayedScrollingRowIndex = nRowIndex;
-                        ////grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.RowCount - 1;
-
-                        //lblStatus.Text = Convert.ToString(nRowIndex);
-                    }
-                }
-            }
+            grdDataGrid.DataSource = Operation.GetDataTable("select * from patient order by Date,srno");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             setdatagrid();
-        }
-
-        private void fraBill_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void grdDataGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -162,8 +78,6 @@ namespace Medical
 
         private void cmdUpdate_Click(object sender, EventArgs e)
         {
-            OleDbConnection con = new OleDbConnection(connParam);
-
             foreach (DataGridViewRow row in grdDataGrid.Rows)
             {
                 if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
@@ -172,60 +86,40 @@ namespace Medical
                     {
                         if (Convert.ToInt32(row.Cells[0].Value) > 0 && patientId.Contains(Convert.ToInt32(row.Cells[0].Value)))
                         {
-                            oleDbCmd = new OleDbCommand("update patient set SrNo=@srno, Name=@name, Age=@age, Sex=@sex, Weight=@weight, Address=@address, [Date]=@date, ReceiptNo=@receiptno, Total=@total, Remark=@remark, EndDate=@enddate where PatientId=@id", con);
-                            con.Open();
-                            oleDbCmd.Parameters.AddWithValue("@srno", row.Cells[1].Value);
-                            oleDbCmd.Parameters.AddWithValue("@name", row.Cells[2].Value);
-                            oleDbCmd.Parameters.AddWithValue("@age", row.Cells[3].Value);
-                            oleDbCmd.Parameters.AddWithValue("@sex", row.Cells[4].Value);
-                            oleDbCmd.Parameters.AddWithValue("@weight", row.Cells[5].Value);
-                            oleDbCmd.Parameters.AddWithValue("@address", row.Cells[6].Value);
-                            oleDbCmd.Parameters.AddWithValue("@date", !String.IsNullOrEmpty(Convert.ToString(row.Cells[7].Value)) ? Convert.ToDateTime(row.Cells[7].Value).ToShortDateString() : DateTime.Now.ToShortDateString());
-                            oleDbCmd.Parameters.AddWithValue("@receiptno", row.Cells[8].Value);
-                            oleDbCmd.Parameters.AddWithValue("@total", row.Cells[9].Value);
-                            oleDbCmd.Parameters.AddWithValue("@remark", row.Cells[10].Value);
-                            oleDbCmd.Parameters.AddWithValue("@enddate", !String.IsNullOrEmpty(Convert.ToString(row.Cells[26].Value)) ? Convert.ToDateTime(row.Cells[26].Value).ToShortDateString() : DateTime.Now.ToShortDateString());
-                            oleDbCmd.Parameters.AddWithValue("@id", Convert.ToInt32(row.Cells[0].Value));
-                            oleDbCmd.ExecuteNonQuery();
-                            con.Close();
-                            //MessageBox.Show("Record Updated Successfully");
-                            //setdatagrid();
-                            //patientId.Clear();
+                            List<OleDbParameter> param = new List<OleDbParameter>();
+                            param.Add(new OleDbParameter("@srno", row.Cells[1].Value));
+                            param.Add(new OleDbParameter("@name", row.Cells[2].Value));
+                            param.Add(new OleDbParameter("@age", row.Cells[3].Value));
+                            param.Add(new OleDbParameter("@sex", row.Cells[4].Value));
+                            param.Add(new OleDbParameter("@weight", row.Cells[5].Value));
+                            param.Add(new OleDbParameter("@address", row.Cells[6].Value));
+                            param.Add(new OleDbParameter("@date", !String.IsNullOrEmpty(Convert.ToString(row.Cells[7].Value)) ? Convert.ToDateTime(row.Cells[7].Value).ToShortDateString() : DateTime.Now.ToShortDateString()));
+                            param.Add(new OleDbParameter("@receiptno", row.Cells[8].Value));
+                            param.Add(new OleDbParameter("@total", row.Cells[9].Value));
+                            param.Add(new OleDbParameter("@remark", row.Cells[10].Value));
+                            param.Add(new OleDbParameter("@enddate", !String.IsNullOrEmpty(Convert.ToString(row.Cells[26].Value)) ? Convert.ToDateTime(row.Cells[26].Value).ToShortDateString() : DateTime.Now.ToShortDateString()));
+                            param.Add(new OleDbParameter("@id", Convert.ToInt32(row.Cells[0].Value)));
+                            Operation.ExecuteNonQuery("update patient set SrNo=@srno, Name=@name, Age=@age, Sex=@sex, Weight=@weight, Address=@address, [Date]=@date, ReceiptNo=@receiptno, Total=@total, Remark=@remark, EndDate=@enddate where PatientId=@id", param);
                         }
                     }
-
-                    //string SqlString = "Update patient Set Name = ? where PatientId = ?";
-                    //using (OleDbConnection conn = new OleDbConnection(connParam))
-                    //{
-                    //    using (OleDbCommand cmd = new OleDbCommand(SqlString, conn))
-                    //    {
-                    //        cmd.CommandType = CommandType.Text;
-                    //        cmd.Parameters.AddWithValue("Name", row.Cells[2].Value);
-                    //        cmd.Parameters.AddWithValue("PatientId", Convert.ToInt32(row.Cells[0].Value));
-                    //        conn.Open();
-                    //        cmd.ExecuteNonQuery();
-                    //    }
-                    //}
                 }
                 else
                 {
                     if (row.Cells[2].Value != null)
                     {
-                        oleDbCmd = new OleDbCommand("insert into patient(SrNo,Name,Age,Sex,Weight,Address,[Date],ReceiptNo,Total,Remark,EndDate) values(@srno,@name,@age,@sex,@weight,@address,@date,@receiptno,@total,@remark,@enddate)", con);
-                        con.Open();
-                        oleDbCmd.Parameters.AddWithValue("@srno", row.Cells[1].Value);
-                        oleDbCmd.Parameters.AddWithValue("@name", row.Cells[2].Value);
-                        oleDbCmd.Parameters.AddWithValue("@age", row.Cells[3].Value);
-                        oleDbCmd.Parameters.AddWithValue("@sex", row.Cells[4].Value);
-                        oleDbCmd.Parameters.AddWithValue("@weight", row.Cells[5].Value);
-                        oleDbCmd.Parameters.AddWithValue("@address", row.Cells[6].Value);
-                        oleDbCmd.Parameters.AddWithValue("@date", !String.IsNullOrEmpty(Convert.ToString(row.Cells[7].Value)) ? Convert.ToDateTime(row.Cells[7].Value).ToShortDateString() : DateTime.Now.ToShortDateString());
-                        oleDbCmd.Parameters.AddWithValue("@receiptno", row.Cells[8].Value);
-                        oleDbCmd.Parameters.AddWithValue("@total", row.Cells[9].Value);
-                        oleDbCmd.Parameters.AddWithValue("@remark", row.Cells[10].Value);
-                        oleDbCmd.Parameters.AddWithValue("@enddate", !String.IsNullOrEmpty(Convert.ToString(row.Cells[26].Value)) ? Convert.ToDateTime(row.Cells[26].Value).ToShortDateString() : DateTime.Now.ToShortDateString());
-                        oleDbCmd.ExecuteNonQuery();
-                        con.Close();
+                        List<OleDbParameter> param = new List<OleDbParameter>();
+                        param.Add(new OleDbParameter("@srno", row.Cells[1].Value));
+                        param.Add(new OleDbParameter("@name", row.Cells[2].Value));
+                        param.Add(new OleDbParameter("@age", row.Cells[3].Value));
+                        param.Add(new OleDbParameter("@sex", row.Cells[4].Value));
+                        param.Add(new OleDbParameter("@weight", row.Cells[5].Value));
+                        param.Add(new OleDbParameter("@address", row.Cells[6].Value));
+                        param.Add(new OleDbParameter("@date", !String.IsNullOrEmpty(Convert.ToString(row.Cells[7].Value)) ? Convert.ToDateTime(row.Cells[7].Value).ToShortDateString() : DateTime.Now.ToShortDateString()));
+                        param.Add(new OleDbParameter("@receiptno", row.Cells[8].Value));
+                        param.Add(new OleDbParameter("@total", row.Cells[9].Value));
+                        param.Add(new OleDbParameter("@remark", row.Cells[10].Value));
+                        param.Add(new OleDbParameter("@enddate", !String.IsNullOrEmpty(Convert.ToString(row.Cells[26].Value)) ? Convert.ToDateTime(row.Cells[26].Value).ToShortDateString() : DateTime.Now.ToShortDateString()));
+                        Operation.ExecuteNonQuery("insert into patient(SrNo,Name,Age,Sex,Weight,Address,[Date],ReceiptNo,Total,Remark,EndDate) values(@srno,@name,@age,@sex,@weight,@address,@date,@receiptno,@total,@remark,@enddate)", param);
                     }
                 }
             }
@@ -242,7 +136,6 @@ namespace Medical
             {
                 if (!row.IsNewRow)
                 {
-                    //grdDataGrid.Rows.Remove(row);
                     if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
                     {
                         if (Convert.ToInt32(row.Cells[0].Value) != 0)
@@ -628,7 +521,7 @@ namespace Medical
             {
                 query = "select * from patient where Name like '" + ptName.Trim() + "%'";
             }
-            
+
             if (query != "")
             {
                 using (OleDbConnection conn = new OleDbConnection(connParam))

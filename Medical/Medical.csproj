@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -43,57 +43,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Classes\Operation.cs" />
+    <Compile Include="Forms\frmDate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDate.Designer.cs">
+    <Compile Include="Forms\frmDate.Designer.cs">
       <DependentUpon>frmDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPatientMaster.cs">
+    <Compile Include="Forms\frmPatientMaster.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPatientMaster.Designer.cs">
+    <Compile Include="Forms\frmPatientMaster.Designer.cs">
       <DependentUpon>frmPatientMaster.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSerial.cs">
+    <Compile Include="Forms\frmSerial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSerial.Designer.cs">
+    <Compile Include="Forms\frmSerial.Designer.cs">
       <DependentUpon>frmSerial.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmtreatement.cs">
+    <Compile Include="Forms\frmtreatement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmtreatement.Designer.cs">
+    <Compile Include="Forms\frmtreatement.Designer.cs">
       <DependentUpon>frmtreatement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDate.resx">
+    <EmbeddedResource Include="Forms\frmDate.resx">
       <DependentUpon>frmDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPatientMaster.resx">
+    <EmbeddedResource Include="Forms\frmPatientMaster.resx">
       <DependentUpon>frmPatientMaster.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSerial.resx">
+    <EmbeddedResource Include="Forms\frmSerial.resx">
       <DependentUpon>frmSerial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -105,7 +97,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,6 +107,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

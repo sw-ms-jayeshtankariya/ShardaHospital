@@ -310,7 +310,6 @@
             this.fraBill.TabStop = false;
             this.fraBill.Text = "Enter Charges";
             this.fraBill.Visible = false;
-            this.fraBill.Enter += new System.EventHandler(this.fraBill_Enter);
             // 
             // groupBox2
             // 
@@ -500,7 +499,6 @@
             this.label19.Size = new System.Drawing.Size(36, 14);
             this.label19.TabIndex = 0;
             this.label19.Text = "From";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // dateTo1
             // 
