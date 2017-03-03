@@ -89,19 +89,19 @@
             this.tableLayoutPanel1.Controls.Add(this.txtCode, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtName, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmdPfind, 5, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 13);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(707, 55);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(707, 59);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // txtFields0
             // 
             this.txtFields0.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtFields0.Location = new System.Drawing.Point(43, 17);
+            this.txtFields0.Location = new System.Drawing.Point(43, 18);
             this.txtFields0.Name = "txtFields0";
-            this.txtFields0.Size = new System.Drawing.Size(125, 20);
+            this.txtFields0.Size = new System.Drawing.Size(125, 22);
             this.txtFields0.TabIndex = 4;
             // 
             // label1
@@ -109,7 +109,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 19);
+            this.label1.Location = new System.Drawing.Point(3, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 0;
@@ -119,7 +119,7 @@
             // 
             this.cmdCheck.Location = new System.Drawing.Point(280, 3);
             this.cmdCheck.Name = "cmdCheck";
-            this.cmdCheck.Size = new System.Drawing.Size(75, 42);
+            this.cmdCheck.Size = new System.Drawing.Size(75, 45);
             this.cmdCheck.TabIndex = 3;
             this.cmdCheck.Text = "Get Patient Code";
             this.cmdCheck.UseVisualStyleBackColor = true;
@@ -127,25 +127,25 @@
             // txtCode
             // 
             this.txtCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCode.Location = new System.Drawing.Point(174, 17);
+            this.txtCode.Location = new System.Drawing.Point(174, 18);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(100, 20);
+            this.txtCode.Size = new System.Drawing.Size(100, 22);
             this.txtCode.TabIndex = 2;
             // 
             // txtName
             // 
             this.txtName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtName.Location = new System.Drawing.Point(361, 17);
+            this.txtName.Location = new System.Drawing.Point(361, 18);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(247, 20);
+            this.txtName.Size = new System.Drawing.Size(247, 22);
             this.txtName.TabIndex = 1;
             // 
             // cmdPfind
             // 
             this.cmdPfind.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cmdPfind.Location = new System.Drawing.Point(614, 16);
+            this.cmdPfind.Location = new System.Drawing.Point(614, 17);
             this.cmdPfind.Name = "cmdPfind";
-            this.cmdPfind.Size = new System.Drawing.Size(75, 23);
+            this.cmdPfind.Size = new System.Drawing.Size(75, 25);
             this.cmdPfind.TabIndex = 5;
             this.cmdPfind.Text = "Find";
             this.cmdPfind.UseVisualStyleBackColor = true;
@@ -165,19 +165,19 @@
             this.tableLayoutPanel3.Controls.Add(this.txtFields2, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtFields1, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(30, 92);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(30, 99);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(707, 55);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(707, 59);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // txtFields3
             // 
             this.txtFields3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtFields3.Location = new System.Drawing.Point(585, 17);
+            this.txtFields3.Location = new System.Drawing.Point(585, 18);
             this.txtFields3.Name = "txtFields3";
-            this.txtFields3.Size = new System.Drawing.Size(104, 20);
+            this.txtFields3.Size = new System.Drawing.Size(104, 22);
             this.txtFields3.TabIndex = 3;
             this.txtFields3.Visible = false;
             // 
@@ -186,7 +186,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(497, 19);
+            this.label6.Location = new System.Drawing.Point(497, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 16);
             this.label6.TabIndex = 4;
@@ -198,7 +198,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(280, 19);
+            this.label5.Location = new System.Drawing.Point(280, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 16);
             this.label5.TabIndex = 3;
@@ -208,18 +208,18 @@
             // txtFields2
             // 
             this.txtFields2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtFields2.Location = new System.Drawing.Point(386, 17);
+            this.txtFields2.Location = new System.Drawing.Point(386, 18);
             this.txtFields2.Name = "txtFields2";
-            this.txtFields2.Size = new System.Drawing.Size(105, 20);
+            this.txtFields2.Size = new System.Drawing.Size(105, 22);
             this.txtFields2.TabIndex = 2;
             this.txtFields2.Visible = false;
             // 
             // txtFields1
             // 
             this.txtFields1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtFields1.Location = new System.Drawing.Point(58, 17);
+            this.txtFields1.Location = new System.Drawing.Point(58, 18);
             this.txtFields1.Name = "txtFields1";
-            this.txtFields1.Size = new System.Drawing.Size(216, 20);
+            this.txtFields1.Size = new System.Drawing.Size(216, 22);
             this.txtFields1.TabIndex = 4;
             // 
             // label4
@@ -227,7 +227,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 19);
+            this.label4.Location = new System.Drawing.Point(3, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 0;
@@ -238,7 +238,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 183);
+            this.label2.Location = new System.Drawing.Point(12, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 16);
             this.label2.TabIndex = 3;
@@ -246,10 +246,10 @@
             // 
             // txtFields4
             // 
-            this.txtFields4.Location = new System.Drawing.Point(88, 179);
+            this.txtFields4.Location = new System.Drawing.Point(88, 193);
             this.txtFields4.Multiline = true;
             this.txtFields4.Name = "txtFields4";
-            this.txtFields4.Size = new System.Drawing.Size(206, 73);
+            this.txtFields4.Size = new System.Drawing.Size(206, 78);
             this.txtFields4.TabIndex = 4;
             // 
             // label3
@@ -257,7 +257,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(325, 179);
+            this.label3.Location = new System.Drawing.Point(325, 193);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 16);
             this.label3.TabIndex = 5;
@@ -266,17 +266,17 @@
             // txtFields5
             // 
             this.txtFields5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtFields5.Location = new System.Drawing.Point(377, 179);
+            this.txtFields5.Location = new System.Drawing.Point(377, 193);
             this.txtFields5.Name = "txtFields5";
-            this.txtFields5.Size = new System.Drawing.Size(45, 20);
+            this.txtFields5.Size = new System.Drawing.Size(45, 22);
             this.txtFields5.TabIndex = 6;
             // 
             // txtFields6
             // 
             this.txtFields6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtFields6.Location = new System.Drawing.Point(377, 216);
+            this.txtFields6.Location = new System.Drawing.Point(377, 233);
             this.txtFields6.Name = "txtFields6";
-            this.txtFields6.Size = new System.Drawing.Size(45, 20);
+            this.txtFields6.Size = new System.Drawing.Size(45, 22);
             this.txtFields6.TabIndex = 8;
             // 
             // label7
@@ -284,7 +284,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(323, 216);
+            this.label7.Location = new System.Drawing.Point(323, 233);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 16);
             this.label7.TabIndex = 7;
@@ -307,11 +307,11 @@
             this.tableLayoutPanel2.Controls.Add(this.cmdRefresh, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.cmdPrescription, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(16, 276);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(16, 297);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(597, 32);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(597, 34);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // panel2
@@ -320,14 +320,14 @@
             this.panel2.Controls.Add(this.cmdCancel);
             this.panel2.Location = new System.Drawing.Point(86, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(75, 23);
+            this.panel2.Size = new System.Drawing.Size(75, 25);
             this.panel2.TabIndex = 18;
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(0, 0);
+            this.cmdEdit.Location = new System.Drawing.Point(1, 1);
             this.cmdEdit.Name = "cmdEdit";
-            this.cmdEdit.Size = new System.Drawing.Size(75, 23);
+            this.cmdEdit.Size = new System.Drawing.Size(75, 25);
             this.cmdEdit.TabIndex = 17;
             this.cmdEdit.Text = "Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
@@ -337,7 +337,7 @@
             // 
             this.cmdCancel.Location = new System.Drawing.Point(0, 0);
             this.cmdCancel.Name = "cmdCancel";
-            this.cmdCancel.Size = new System.Drawing.Size(75, 23);
+            this.cmdCancel.Size = new System.Drawing.Size(75, 25);
             this.cmdCancel.TabIndex = 11;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
@@ -347,7 +347,7 @@
             // 
             this.cmdFind.Location = new System.Drawing.Point(518, 3);
             this.cmdFind.Name = "cmdFind";
-            this.cmdFind.Size = new System.Drawing.Size(75, 23);
+            this.cmdFind.Size = new System.Drawing.Size(75, 25);
             this.cmdFind.TabIndex = 13;
             this.cmdFind.Text = "Find";
             this.cmdFind.UseVisualStyleBackColor = true;
@@ -356,7 +356,7 @@
             // 
             this.cmdDelete.Location = new System.Drawing.Point(167, 3);
             this.cmdDelete.Name = "cmdDelete";
-            this.cmdDelete.Size = new System.Drawing.Size(75, 23);
+            this.cmdDelete.Size = new System.Drawing.Size(75, 25);
             this.cmdDelete.TabIndex = 12;
             this.cmdDelete.Text = "Delete";
             this.cmdDelete.UseVisualStyleBackColor = true;
@@ -366,7 +366,7 @@
             // 
             this.cmdClose.Location = new System.Drawing.Point(329, 3);
             this.cmdClose.Name = "cmdClose";
-            this.cmdClose.Size = new System.Drawing.Size(75, 23);
+            this.cmdClose.Size = new System.Drawing.Size(75, 25);
             this.cmdClose.TabIndex = 13;
             this.cmdClose.Text = "Close";
             this.cmdClose.UseVisualStyleBackColor = true;
@@ -375,7 +375,7 @@
             // 
             this.cmdRefresh.Location = new System.Drawing.Point(248, 3);
             this.cmdRefresh.Name = "cmdRefresh";
-            this.cmdRefresh.Size = new System.Drawing.Size(75, 23);
+            this.cmdRefresh.Size = new System.Drawing.Size(75, 25);
             this.cmdRefresh.TabIndex = 3;
             this.cmdRefresh.Text = "ViewAll";
             this.cmdRefresh.UseVisualStyleBackColor = true;
@@ -385,7 +385,7 @@
             // 
             this.cmdPrescription.Location = new System.Drawing.Point(410, 3);
             this.cmdPrescription.Name = "cmdPrescription";
-            this.cmdPrescription.Size = new System.Drawing.Size(102, 23);
+            this.cmdPrescription.Size = new System.Drawing.Size(102, 25);
             this.cmdPrescription.TabIndex = 14;
             this.cmdPrescription.Text = "WritePrescription";
             this.cmdPrescription.UseVisualStyleBackColor = true;
@@ -396,14 +396,14 @@
             this.panel1.Controls.Add(this.cmdUpdate);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(77, 23);
+            this.panel1.Size = new System.Drawing.Size(77, 25);
             this.panel1.TabIndex = 18;
             // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(0, 0);
+            this.cmdAdd.Location = new System.Drawing.Point(1, 1);
             this.cmdAdd.Name = "cmdAdd";
-            this.cmdAdd.Size = new System.Drawing.Size(75, 23);
+            this.cmdAdd.Size = new System.Drawing.Size(75, 25);
             this.cmdAdd.TabIndex = 16;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
@@ -413,7 +413,7 @@
             // 
             this.cmdUpdate.Location = new System.Drawing.Point(0, 0);
             this.cmdUpdate.Name = "cmdUpdate";
-            this.cmdUpdate.Size = new System.Drawing.Size(75, 23);
+            this.cmdUpdate.Size = new System.Drawing.Size(75, 25);
             this.cmdUpdate.TabIndex = 10;
             this.cmdUpdate.Text = "Update";
             this.cmdUpdate.UseVisualStyleBackColor = true;
@@ -421,18 +421,18 @@
             // 
             // cmdLast
             // 
-            this.cmdLast.Location = new System.Drawing.Point(165, 338);
+            this.cmdLast.Location = new System.Drawing.Point(165, 364);
             this.cmdLast.Name = "cmdLast";
-            this.cmdLast.Size = new System.Drawing.Size(37, 22);
+            this.cmdLast.Size = new System.Drawing.Size(37, 24);
             this.cmdLast.TabIndex = 14;
             this.cmdLast.Text = ">>";
             this.cmdLast.UseVisualStyleBackColor = true;
             // 
             // cmdNext
             // 
-            this.cmdNext.Location = new System.Drawing.Point(127, 337);
+            this.cmdNext.Location = new System.Drawing.Point(127, 363);
             this.cmdNext.Name = "cmdNext";
-            this.cmdNext.Size = new System.Drawing.Size(32, 23);
+            this.cmdNext.Size = new System.Drawing.Size(32, 25);
             this.cmdNext.TabIndex = 13;
             this.cmdNext.Text = ">";
             this.cmdNext.UseVisualStyleBackColor = true;
@@ -440,26 +440,26 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(85, 347);
+            this.lblStatus.Location = new System.Drawing.Point(82, 370);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(35, 13);
+            this.lblStatus.Size = new System.Drawing.Size(42, 14);
             this.lblStatus.TabIndex = 12;
             this.lblStatus.Text = "label1";
             // 
             // cmdPrevious
             // 
-            this.cmdPrevious.Location = new System.Drawing.Point(51, 337);
+            this.cmdPrevious.Location = new System.Drawing.Point(51, 363);
             this.cmdPrevious.Name = "cmdPrevious";
-            this.cmdPrevious.Size = new System.Drawing.Size(28, 23);
+            this.cmdPrevious.Size = new System.Drawing.Size(28, 25);
             this.cmdPrevious.TabIndex = 11;
             this.cmdPrevious.Text = "<";
             this.cmdPrevious.UseVisualStyleBackColor = true;
             // 
             // cmdFirst
             // 
-            this.cmdFirst.Location = new System.Drawing.Point(16, 337);
+            this.cmdFirst.Location = new System.Drawing.Point(16, 363);
             this.cmdFirst.Name = "cmdFirst";
-            this.cmdFirst.Size = new System.Drawing.Size(29, 23);
+            this.cmdFirst.Size = new System.Drawing.Size(29, 25);
             this.cmdFirst.TabIndex = 10;
             this.cmdFirst.Text = "<<";
             this.cmdFirst.UseVisualStyleBackColor = true;
@@ -467,21 +467,24 @@
             // dgPatientMaster
             // 
             this.dgPatientMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgPatientMaster.BackgroundColor = System.Drawing.Color.White;
+            this.dgPatientMaster.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgPatientMaster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPatientMaster.Location = new System.Drawing.Point(16, 366);
+            this.dgPatientMaster.Location = new System.Drawing.Point(16, 394);
             this.dgPatientMaster.Name = "dgPatientMaster";
             this.dgPatientMaster.ReadOnly = true;
             this.dgPatientMaster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPatientMaster.Size = new System.Drawing.Size(743, 203);
+            this.dgPatientMaster.Size = new System.Drawing.Size(743, 219);
             this.dgPatientMaster.TabIndex = 15;
             this.dgPatientMaster.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgPatientMaster_RowHeaderMouseClick);
             this.dgPatientMaster.SelectionChanged += new System.EventHandler(this.dgPatientMaster_SelectionChanged);
             // 
             // frmPatientMaster
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 588);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(862, 633);
             this.Controls.Add(this.dgPatientMaster);
             this.Controls.Add(this.cmdLast);
             this.Controls.Add(this.cmdNext);
@@ -497,8 +500,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPatientMaster";
-            this.Text = "Enter Patient personal details";
+            this.Text = "Enter Patient Personal Details";
             this.Load += new System.EventHandler(this.frmPatientMaster_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

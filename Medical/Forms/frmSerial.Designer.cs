@@ -39,9 +39,9 @@
             // 
             this.fraDate.Controls.Add(this.dateFrom);
             this.fraDate.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fraDate.Location = new System.Drawing.Point(45, 24);
+            this.fraDate.Location = new System.Drawing.Point(47, 9);
             this.fraDate.Name = "fraDate";
-            this.fraDate.Size = new System.Drawing.Size(135, 60);
+            this.fraDate.Size = new System.Drawing.Size(135, 65);
             this.fraDate.TabIndex = 3;
             this.fraDate.TabStop = false;
             this.fraDate.Text = "Select Date";
@@ -51,16 +51,16 @@
             this.dateFrom.CustomFormat = "MM/dd/yyyy";
             this.dateFrom.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateFrom.Location = new System.Drawing.Point(16, 21);
+            this.dateFrom.Location = new System.Drawing.Point(24, 27);
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(87, 20);
             this.dateFrom.TabIndex = 5;
             // 
             // cmdReturn
             // 
-            this.cmdReturn.Location = new System.Drawing.Point(142, 99);
+            this.cmdReturn.Location = new System.Drawing.Point(117, 88);
             this.cmdReturn.Name = "cmdReturn";
-            this.cmdReturn.Size = new System.Drawing.Size(75, 23);
+            this.cmdReturn.Size = new System.Drawing.Size(75, 25);
             this.cmdReturn.TabIndex = 9;
             this.cmdReturn.Text = "Cancel";
             this.cmdReturn.UseVisualStyleBackColor = true;
@@ -68,9 +68,9 @@
             // 
             // cmdOk
             // 
-            this.cmdOk.Location = new System.Drawing.Point(61, 99);
+            this.cmdOk.Location = new System.Drawing.Point(36, 88);
             this.cmdOk.Name = "cmdOk";
-            this.cmdOk.Size = new System.Drawing.Size(75, 23);
+            this.cmdOk.Size = new System.Drawing.Size(75, 25);
             this.cmdOk.TabIndex = 8;
             this.cmdOk.Text = "Ok";
             this.cmdOk.UseVisualStyleBackColor = true;
@@ -78,12 +78,17 @@
             // 
             // frmSerial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 159);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(226, 125);
             this.Controls.Add(this.cmdReturn);
             this.Controls.Add(this.cmdOk);
             this.Controls.Add(this.fraDate);
+            this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmSerial";
             this.Text = "Set serial number";
             this.fraDate.ResumeLayout(false);
