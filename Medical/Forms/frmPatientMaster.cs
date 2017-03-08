@@ -19,6 +19,9 @@ namespace Medical
         List<int> patientId = new List<int>();
 
         public string patientName { get; set; }
+        public string patientAge { get; set; }
+        public string patientSex { get; set; }
+        public string patientAddress { get; set; }
 
         public frmPatientMaster()
         {
@@ -27,29 +30,20 @@ namespace Medical
 
         private void setdatagrid()
         {
-            string query = "select PatientCode,fname,mname,lname,Address,Sex,Age from pmaster";
-            using (OleDbConnection conn = new OleDbConnection(connParam))
-            {
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    if (ds != null)
-                    {
-                        adapter.Fill(ds);
-                        dgPatientMaster.DataSource = ds.Tables[0];
+            dgPatientMaster.DataSource = Operation.GetDataTable("select PatientCode,fname,mname,lname,Address,Sex,Age from pmaster");
 
-                        dgPatientMaster.Columns[2].Visible = false;
-                        dgPatientMaster.Columns[3].Visible = false;
-                    }
-                }
-            }
+            dgPatientMaster.Columns[2].Visible = false;
+            dgPatientMaster.Columns[3].Visible = false;
+
+            int nRowIndex = dgPatientMaster.Rows.Count - 1;
+            lblStatus.Text = Convert.ToString(nRowIndex);
         }
 
         private void frmPatientMaster_Load(object sender, EventArgs e)
         {
             setdatagrid();
 
-            txtName.Text = patientName;
+            txtName.Text = patientName;            
         }
 
         private void dgPatientMaster_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -100,41 +94,60 @@ namespace Medical
             bool exists = false;
 
             // create a command to check if the username exists
-            using (OleDbCommand cmd = new OleDbCommand("select count(*) from pmaster where PatientCode=@patientcode", con))
-            {
-                con.Open();
-                cmd.Parameters.AddWithValue("PatientCode", txtFields0.Text);
-                exists = (int)cmd.ExecuteScalar() > 0;
-                con.Close();
-            }
 
-            // if exists, show a message error
+            List<OleDbParameter> paramselect = new List<OleDbParameter>();
+            paramselect.Add(new OleDbParameter("@patientcode", txtFields0.Text));
+            exists = Operation.ExecuteScalar("select count(*) from pmaster where PatientCode=@patientcode", paramselect);
+
             if (exists)
             {
-                // "UserName Already Taken";
-                oleDbCmd = new OleDbCommand("update pmaster set fname=@frstname, Address=@address, Age=@age, Sex=@sex where PatientCode=@patientcode", con);
-                con.Open();
-                oleDbCmd.Parameters.AddWithValue("@frstname", Convert.ToString(txtFields1.Text));
-                oleDbCmd.Parameters.AddWithValue("@address", Convert.ToString(txtFields4.Text));
-                oleDbCmd.Parameters.AddWithValue("@age", Convert.ToInt32(txtFields6.Text));
-                oleDbCmd.Parameters.AddWithValue("@sex", Convert.ToString(txtFields5.Text));
-                oleDbCmd.Parameters.AddWithValue("@patientcode", Convert.ToString(txtFields0.Text));
-                oleDbCmd.ExecuteNonQuery();
-                con.Close();
+                // "PatientCode Already Taken";
+                if (txtFields0.Text != null)
+                {
+                    List<OleDbParameter> param = new List<OleDbParameter>();
+                    param.Add(new OleDbParameter("@frstname", Convert.ToString(txtFields1.Text)));
+                    param.Add(new OleDbParameter("@address", Convert.ToString(txtFields4.Text)));
+                    param.Add(new OleDbParameter("@age", Convert.ToInt32(txtFields6.Text)));
+                    param.Add(new OleDbParameter("@sex", Convert.ToString(txtFields5.Text)));
+                    param.Add(new OleDbParameter("@patientcode", Convert.ToString(txtFields0.Text)));
+                    Operation.ExecuteNonQuery("update pmaster set fname=@frstname, Address=@address, Age=@age, Sex=@sex where PatientCode=@patientcode", param);
+
+                    //oleDbCmd = new OleDbCommand("update pmaster set fname=@frstname, Address=@address, Age=@age, Sex=@sex where PatientCode=@patientcode", con);
+                    //con.Open();
+                    //oleDbCmd.Parameters.AddWithValue("@frstname", Convert.ToString(txtFields1.Text));
+                    //oleDbCmd.Parameters.AddWithValue("@address", Convert.ToString(txtFields4.Text));
+                    //oleDbCmd.Parameters.AddWithValue("@age", Convert.ToInt32(txtFields6.Text));
+                    //oleDbCmd.Parameters.AddWithValue("@sex", Convert.ToString(txtFields5.Text));
+                    //oleDbCmd.Parameters.AddWithValue("@patientcode", Convert.ToString(txtFields0.Text));
+                    //oleDbCmd.ExecuteNonQuery();
+                    //con.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Enter code of the patient");
+                }
             }
             else
             {
                 if (txtFields0.Text != null)
                 {
-                    oleDbCmd = new OleDbCommand("insert into pmaster(PatientCode,fname,Address,Age,Sex) values(@patientcode,@frstname,@address,@age,@sex)", con);
-                    con.Open();
-                    oleDbCmd.Parameters.AddWithValue("@patientcode", Convert.ToString(txtFields0.Text));
-                    oleDbCmd.Parameters.AddWithValue("@frstname", Convert.ToString(txtFields1.Text));
-                    oleDbCmd.Parameters.AddWithValue("@address", Convert.ToString(txtFields4.Text));
-                    oleDbCmd.Parameters.AddWithValue("@age", Convert.ToInt32(txtFields6.Text));
-                    oleDbCmd.Parameters.AddWithValue("@sex", Convert.ToString(txtFields5.Text));
-                    oleDbCmd.ExecuteNonQuery();
-                    con.Close();
+                    List<OleDbParameter> param = new List<OleDbParameter>();
+                    param.Add(new OleDbParameter("@patientcode", Convert.ToString(txtFields0.Text)));
+                    param.Add(new OleDbParameter("@frstname", Convert.ToString(txtFields1.Text)));
+                    param.Add(new OleDbParameter("@address", Convert.ToString(txtFields4.Text)));
+                    param.Add(new OleDbParameter("@age", Convert.ToInt32(txtFields6.Text)));
+                    param.Add(new OleDbParameter("@sex", Convert.ToString(txtFields5.Text)));
+                    Operation.ExecuteNonQuery("insert into pmaster(PatientCode,fname,Address,Age,Sex) values(@patientcode,@frstname,@address,@age,@sex)", param);
+
+                    //oleDbCmd = new OleDbCommand("insert into pmaster(PatientCode,fname,Address,Age,Sex) values(@patientcode,@frstname,@address,@age,@sex)", con);
+                    //con.Open();
+                    //oleDbCmd.Parameters.AddWithValue("@patientcode", Convert.ToString(txtFields0.Text));
+                    //oleDbCmd.Parameters.AddWithValue("@frstname", Convert.ToString(txtFields1.Text));
+                    //oleDbCmd.Parameters.AddWithValue("@address", Convert.ToString(txtFields4.Text));
+                    //oleDbCmd.Parameters.AddWithValue("@age", Convert.ToInt32(txtFields6.Text));
+                    //oleDbCmd.Parameters.AddWithValue("@sex", Convert.ToString(txtFields5.Text));
+                    //oleDbCmd.ExecuteNonQuery();
+                    //con.Close();
                 }
                 else
                 {
@@ -158,9 +171,9 @@ namespace Medical
 
             txtFields0.Text = "";
             txtFields1.Text = txtName.Text;
-            txtFields4.Text = "SEC-0";
-            txtFields5.Text = "M";
-            txtFields6.Text = "1";
+            txtFields4.Text = patientAddress;
+            txtFields5.Text = patientSex;
+            txtFields6.Text = patientAge;
         }
 
         private void cmdUpdate_Click(object sender, EventArgs e)
@@ -195,11 +208,15 @@ namespace Medical
                 {
                     if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
                     {
-                        oleDbCmd = new OleDbCommand("delete from pmaster where PatientCode=@patientcode", con);
-                        con.Open();
-                        oleDbCmd.Parameters.AddWithValue("@patientcode", row.Cells[0].Value);
-                        oleDbCmd.ExecuteNonQuery();
-                        con.Close();
+                        List<OleDbParameter> param = new List<OleDbParameter>();
+                        param.Add(new OleDbParameter("@patientcode", row.Cells[0].Value));
+                        Operation.ExecuteNonQuery("delete from pmaster where PatientCode=@patientcode", param);
+
+                        //oleDbCmd = new OleDbCommand("delete from pmaster where PatientCode=@patientcode", con);
+                        //con.Open();
+                        //oleDbCmd.Parameters.AddWithValue("@patientcode", row.Cells[0].Value);
+                        //oleDbCmd.ExecuteNonQuery();
+                        //con.Close();
                     }
                 }
             }
@@ -208,21 +225,146 @@ namespace Medical
 
         private void cmdPfind_Click(object sender, EventArgs e)
         {
-            string query = "select PatientCode,fname,mname,lname,Address,Sex,Age from pmaster where fname like " + txtName.Text.Trim();
-            using (OleDbConnection conn = new OleDbConnection(connParam))
-            {
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    if (ds != null)
-                    {
-                        adapter.Fill(ds);
-                        dgPatientMaster.DataSource = ds.Tables[0];
+            DataTable dt = new DataTable();
 
-                        dgPatientMaster.Columns[2].Visible = false;
-                        dgPatientMaster.Columns[3].Visible = false;
-                    }
+            dt = Operation.GetDataTable("select PatientCode,fname,mname,lname,Address,Sex,Age from pmaster where fname like '" + txtName.Text.Trim() + "'");
+            if (dt.Rows.Count > 0)
+            {
+                dgPatientMaster.DataSource = dt;
+
+                dgPatientMaster.Columns[2].Visible = false;
+                dgPatientMaster.Columns[3].Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Patine is not found");
+                clearboxes();
+            }
+
+        }
+
+        private void clearboxes()
+        {
+            txtFields0.Text = "";
+            txtFields1.Text = "";
+            txtFields4.Text = "";
+            txtFields6.Text = "";
+            txtFields5.Text = "";
+        }
+
+        private void cmdCheck_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+
+            dt = Operation.GetDataTable("select PatientCode,fname,mname,lname,Address,Sex,Age from pmaster where PatientCode like '" + txtCode.Text.Trim() + "'");
+            if (dt.Rows.Count > 0)
+            {
+                dgPatientMaster.DataSource = dt;
+
+                dgPatientMaster.Columns[2].Visible = false;
+                dgPatientMaster.Columns[3].Visible = false;
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Patine Code is not found Do you want to ADD (Yes/No)?", "Confirmation box", MessageBoxButtons.YesNo);
+                if (Convert.ToString(result) == "Yes")
+                {
+                    clearboxes();
+
+                    txtFields0.Text = txtCode.Text;
+                    txtFields1.Text = txtName.Text;
+                    txtFields4.Text = patientAddress;
+                    txtFields5.Text = patientSex;
+                    txtFields6.Text = patientAge;
+
+                    SetButtons(false);
                 }
+                else
+                {
+                    setdatagrid();
+                }
+            }
+        }
+
+        private void cmdClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cmdFind_Click(object sender, EventArgs e)
+        {
+            frmFind objFind = new frmFind();
+            objFind.ShowDialog();
+
+            string pat_Id = "";
+            string query = "";
+
+            if (objFind.patientId != null)
+            {
+                pat_Id = objFind.patientId;
+                //select * from pMaster where PatientCode " & "like '" & Trim(pcode) & "%'"
+                query = "select * from pMaster where PatientCode like '" + pat_Id.Trim() + "'";
+
+                if (query != "")
+                {
+                    dgPatientMaster.DataSource = Operation.GetDataTable(query);
+                }
+            }
+        }
+
+        private void cmdFirst_Click(object sender, EventArgs e)
+        {
+            dgPatientMaster.Rows[0].Selected = true;
+            dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[0].Index;
+        }
+
+        private void cmdPrevious_Click(object sender, EventArgs e)
+        {
+            if (!dgPatientMaster.Rows[0].Selected)
+            {
+                if (dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1] != null)
+                {
+                    dgPatientMaster.CurrentCell = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1].Cells[1];
+                    dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1].Index;
+                }
+            }
+        }
+
+        private void cmdNext_Click(object sender, EventArgs e)
+        {
+            if (dgPatientMaster.CurrentCell.RowIndex + 1 < dgPatientMaster.Rows.Count - 1)
+            {
+                if (dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1] != null)
+                {
+                    dgPatientMaster.CurrentCell = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1].Cells[1];
+                    dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1].Index;
+                }
+            }
+        }
+
+        private void cmdLast_Click(object sender, EventArgs e)
+        {
+            int nRowIndex = dgPatientMaster.Rows.Count - 1;
+            int nColumnIndex = 3;
+
+            dgPatientMaster.Rows[nRowIndex].Selected = true;
+            dgPatientMaster.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+
+            //In case if you want to scroll down as well.
+            dgPatientMaster.FirstDisplayedScrollingRowIndex = nRowIndex;
+        }
+
+        private void cmdPrescription_Click(object sender, EventArgs e)
+        {
+            if (dgPatientMaster.CurrentCell != null)
+            {
+                string patientCode = Convert.ToString(dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex].Cells[0].Value);
+                string patientName = Convert.ToString(dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex].Cells[1].Value);
+
+                frmtreatement objtreatement = new frmtreatement();
+                objtreatement.patientCode = patientCode;
+                objtreatement.patientName = patientName;
+                objtreatement.ShowDialog();
             }
         }
     }

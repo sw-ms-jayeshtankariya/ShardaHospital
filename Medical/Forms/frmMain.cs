@@ -17,7 +17,7 @@ namespace Medical
         //OleDbConnection con = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Nirav Golani Projects\Medical\Medical\bin\Debug\eyemedical.mdb");
         private OleDbConnection bookConn;
         private OleDbCommand oleDbCmd = new OleDbCommand();
-        private string connParam = "";
+        //private string connParam = "";
         //parameter from mdsaputra.udl
 
         List<int> patientId = new List<int>();
@@ -30,6 +30,8 @@ namespace Medical
         private void setdatagrid()
         {
             grdDataGrid.DataSource = Operation.GetDataTable("select * from patient order by Date,srno");
+
+            HideGridCol();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -130,8 +132,6 @@ namespace Medical
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            OleDbConnection con = new OleDbConnection(connParam);
-
             foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
             {
                 if (!row.IsNewRow)
@@ -140,11 +140,9 @@ namespace Medical
                     {
                         if (Convert.ToInt32(row.Cells[0].Value) != 0)
                         {
-                            oleDbCmd = new OleDbCommand("delete from patient where PatientId=@id", con);
-                            con.Open();
-                            oleDbCmd.Parameters.AddWithValue("@id", row.Cells[0].Value);
-                            oleDbCmd.ExecuteNonQuery();
-                            con.Close();
+                            List<OleDbParameter> param = new List<OleDbParameter>();
+                            param.Add(new OleDbParameter("@id", Convert.ToInt32(row.Cells[0].Value)));
+                            Operation.ExecuteNonQuery("delete from patient where PatientId=@id", param);
                         }
                     }
                 }
@@ -296,9 +294,7 @@ namespace Medical
                 Convert.ToDouble(txtCharges13.Text);
 
             total = total + box_total;
-
-            OleDbConnection con = new OleDbConnection(connParam);
-
+            
             foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
             {
                 if (!row.IsNewRow)
@@ -308,26 +304,24 @@ namespace Medical
                     {
                         if (Convert.ToInt32(row.Cells[0].Value) != 0)
                         {
-                            oleDbCmd = new OleDbCommand("update patient set BadCharge=@badcharge, IvDripCharge=@ivdripcharge, Pint=@pint, IvSet=@ivset, ScalpVein=@scalpvein, O2Charge=@o2charge, CounsultationFee=@counsultationfee, ReCounsultationFee=@reCounsultationfee, DailyExaminationFee=@dailyexaminationfee, InjectionCharge=@injectioncharge, EcgCharge=@ecgcharge, XRayCharge=@xraycharge, CardiacMonitorCharge=@cardiacmonitorcharge, Other=@other, Total=@total where PatientId=@id", con);
-                            con.Open();
-                            oleDbCmd.Parameters.AddWithValue("@badcharge", txtCharges0.Text);
-                            oleDbCmd.Parameters.AddWithValue("@ivdripcharge", txtCharges1.Text);
-                            oleDbCmd.Parameters.AddWithValue("@pint", txtCharges2.Text);
-                            oleDbCmd.Parameters.AddWithValue("@ivset", txtCharges3.Text);
-                            oleDbCmd.Parameters.AddWithValue("@scalpvein", txtCharges4.Text);
-                            oleDbCmd.Parameters.AddWithValue("@o2charge", txtCharges5.Text);
-                            oleDbCmd.Parameters.AddWithValue("@counsultationfee", txtCharges6.Text);
-                            oleDbCmd.Parameters.AddWithValue("@reCounsultationfee", txtCharges7.Text);
-                            oleDbCmd.Parameters.AddWithValue("@dailyexaminationfee", txtCharges8.Text);
-                            oleDbCmd.Parameters.AddWithValue("@injectioncharge", txtCharges9.Text);
-                            oleDbCmd.Parameters.AddWithValue("@ecgcharge", txtCharges10.Text);
-                            oleDbCmd.Parameters.AddWithValue("@xraycharge", txtCharges11.Text);
-                            oleDbCmd.Parameters.AddWithValue("@cardiacmonitorcharge", txtCharges12.Text);
-                            oleDbCmd.Parameters.AddWithValue("@other", txtCharges13.Text);
-                            oleDbCmd.Parameters.AddWithValue("@total", Convert.ToInt32(total));
-                            oleDbCmd.Parameters.AddWithValue("@id", Convert.ToInt32(row.Cells[0].Value));
-                            oleDbCmd.ExecuteNonQuery();
-                            con.Close();
+                            List<OleDbParameter> param = new List<OleDbParameter>();
+                            param.Add(new OleDbParameter("@badcharge", txtCharges0.Text));
+                            param.Add(new OleDbParameter("@ivdripcharge", txtCharges1.Text));
+                            param.Add(new OleDbParameter("@pint", txtCharges2.Text));
+                            param.Add(new OleDbParameter("@ivset", txtCharges3.Text));
+                            param.Add(new OleDbParameter("@scalpvein", txtCharges4.Text));
+                            param.Add(new OleDbParameter("@o2charge", txtCharges5.Text));
+                            param.Add(new OleDbParameter("@counsultationfee", txtCharges6.Text));
+                            param.Add(new OleDbParameter("@reCounsultationfee", txtCharges7.Text));
+                            param.Add(new OleDbParameter("@dailyexaminationfee", txtCharges8.Text));
+                            param.Add(new OleDbParameter("@injectioncharge", txtCharges9.Text));
+                            param.Add(new OleDbParameter("@ecgcharge", txtCharges10.Text));
+                            param.Add(new OleDbParameter("@xraycharge", txtCharges11.Text));
+                            param.Add(new OleDbParameter("@cardiacmonitorcharge", txtCharges12.Text));
+                            param.Add(new OleDbParameter("@other", txtCharges13.Text));
+                            param.Add(new OleDbParameter("@total", Convert.ToInt32(total)));
+                            param.Add(new OleDbParameter("@id", Convert.ToInt32(row.Cells[0].Value)));
+                            Operation.ExecuteNonQuery("update patient set BadCharge=@badcharge, IvDripCharge=@ivdripcharge, Pint=@pint, IvSet=@ivset, ScalpVein=@scalpvein, O2Charge=@o2charge, CounsultationFee=@counsultationfee, ReCounsultationFee=@reCounsultationfee, DailyExaminationFee=@dailyexaminationfee, InjectionCharge=@injectioncharge, EcgCharge=@ecgcharge, XRayCharge=@xraycharge, CardiacMonitorCharge=@cardiacmonitorcharge, Other=@other, Total=@total where PatientId=@id", param);
                         }
                     }
                 }
@@ -360,21 +354,8 @@ namespace Medical
 
         private void cmdAdmit_Click(object sender, EventArgs e)
         {
-            string query = "select * from patient where Remark like 'admit%' or Remark like 'dis%' order by name";
-            using (OleDbConnection conn = new OleDbConnection(connParam))
-            {
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    if (ds != null)
-                    {
-                        adapter.Fill(ds);
-                        grdDataGrid.DataSource = ds.Tables[0];
-
-                        HideGridCol();
-                    }
-                }
-            }
+            grdDataGrid.DataSource = Operation.GetDataTable("select * from patient where Remark like 'admit%' or Remark like 'dis%' order by name");
+            HideGridCol();
         }
 
         private void HideGridCol()
@@ -431,9 +412,15 @@ namespace Medical
             if (grdDataGrid.CurrentCell != null)
             {
                 string patientName = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[2].Value);
+                string patientAddress = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[6].Value);
+                string patientAge = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[3].Value);
+                string patientSex = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[4].Value);
 
                 frmPatientMaster objPatientMaster = new frmPatientMaster();
                 objPatientMaster.patientName = patientName;
+                objPatientMaster.patientAddress = patientAddress;
+                objPatientMaster.patientAge = patientAge;
+                objPatientMaster.patientSex = patientSex;
                 objPatientMaster.ShowDialog();
             }
         }
@@ -453,33 +440,25 @@ namespace Medical
                 query = "select * from patient where [Date] = #" + fromDate + "# order by PatientId";
                 if (query != "")
                 {
-                    OleDbConnection con = new OleDbConnection(connParam);
-                    using (OleDbConnection conn = new OleDbConnection(connParam))
+                    DataTable dt = new DataTable();
+                    dt = Operation.GetDataTable(query);
+                    if (dt != null)
                     {
-                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
+                        int no = 1;
+                        foreach (DataRow drRow in dt.Rows)
                         {
-                            DataSet ds = new DataSet();
-                            if (ds != null)
+                            if (!String.IsNullOrEmpty(Convert.ToString(drRow["SrNo"])))
                             {
-                                adapter.Fill(ds);
-                                int no = 1;
-                                foreach (DataRow drRow in ds.Tables[0].Rows)
-                                {
-                                    if (!String.IsNullOrEmpty(Convert.ToString(drRow["SrNo"])))
-                                    {
-                                        oleDbCmd = new OleDbCommand("update patient set SrNo=@srno where PatientId=@id", con);
-                                        con.Open();
-                                        oleDbCmd.Parameters.AddWithValue("@srno", no);
-                                        oleDbCmd.Parameters.AddWithValue("@id", Convert.ToInt32(drRow["PatientId"]));
-                                        oleDbCmd.ExecuteNonQuery();
-                                        con.Close();
-                                        no++;
-                                    }
-                                }
+                                List<OleDbParameter> param = new List<OleDbParameter>();
+                                param.Add(new OleDbParameter("@srno", no));
+                                param.Add(new OleDbParameter("@id", Convert.ToInt32(drRow["PatientId"])));
+                                Operation.ExecuteNonQuery("update patient set SrNo=@srno where PatientId=@id", param);
+                                no++;
                             }
-                            setdatagrid();
                         }
                     }
+                    setdatagrid();
+
                 }
             }
         }
@@ -524,25 +503,43 @@ namespace Medical
 
             if (query != "")
             {
-                using (OleDbConnection conn = new OleDbConnection(connParam))
-                {
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn))
-                    {
-                        DataSet ds = new DataSet();
-                        if (ds != null)
-                        {
-                            adapter.Fill(ds);
-                            grdDataGrid.DataSource = ds.Tables[0];
-
-                            HideGridCol();
-                        }
-                    }
-                }
+                grdDataGrid.DataSource = Operation.GetDataTable(query);
+                HideGridCol();
             }
             //else
             //{
             //    MessageBox.Show("Record is not found");
             //}
+        }
+
+        private void cmdGetREceiptNo_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+
+            dt = Operation.GetDataTable("select max(ReceiptNo) from patient");
+
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
+                        {
+                            if (Convert.ToInt32(row.Cells[0].Value) != 0)
+                            {
+                                row.Cells[8].Value = Convert.ToInt32(dt.Rows[0].ItemArray[0]) + 1;
+
+                                int Id = Convert.ToInt32(row.Cells[0].Value);
+                                if (!patientId.Contains(Id))
+                                    patientId.Add(Id);
+                            }
+                        }
+                    }
+                    break;
+                }
+                SetButtons(false);
+            }
         }
     }
 }

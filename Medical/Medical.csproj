@@ -50,6 +50,12 @@
     <Compile Include="Forms\frmDate.Designer.cs">
       <DependentUpon>frmDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFind.Designer.cs">
+      <DependentUpon>frmFind.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     <EmbeddedResource Include="Forms\frmDate.resx">
       <DependentUpon>frmDate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFind.resx">
+      <DependentUpon>frmFind.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSerial.resx">
       <DependentUpon>frmSerial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmtreatement.resx">
+      <DependentUpon>frmtreatement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -52,10 +52,10 @@
             // chkDate
             // 
             this.chkDate.AutoSize = true;
-            this.chkDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDate.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDate.Location = new System.Drawing.Point(29, 33);
             this.chkDate.Name = "chkDate";
-            this.chkDate.Size = new System.Drawing.Size(68, 19);
+            this.chkDate.Size = new System.Drawing.Size(67, 18);
             this.chkDate.TabIndex = 0;
             this.chkDate.Text = "By Date";
             this.chkDate.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             this.fraDate.Controls.Add(this.label2);
             this.fraDate.Controls.Add(this.dateFrom);
             this.fraDate.Controls.Add(this.label1);
-            this.fraDate.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fraDate.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fraDate.Location = new System.Drawing.Point(158, 13);
             this.fraDate.Name = "fraDate";
             this.fraDate.Size = new System.Drawing.Size(273, 53);
@@ -78,11 +78,11 @@
             // dateTo
             // 
             this.dateTo.CustomFormat = "MM/dd/yyyy";
-            this.dateTo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTo.Location = new System.Drawing.Point(176, 20);
             this.dateTo.Name = "dateTo";
-            this.dateTo.Size = new System.Drawing.Size(87, 20);
+            this.dateTo.Size = new System.Drawing.Size(87, 21);
             this.dateTo.TabIndex = 6;
             // 
             // label2
@@ -90,18 +90,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(147, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 16);
+            this.label2.Size = new System.Drawing.Size(19, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "To";
             // 
             // dateFrom
             // 
             this.dateFrom.CustomFormat = "MM/dd/yyyy";
-            this.dateFrom.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFrom.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateFrom.Location = new System.Drawing.Point(54, 20);
             this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Size = new System.Drawing.Size(87, 20);
+            this.dateFrom.Size = new System.Drawing.Size(87, 21);
             this.dateFrom.TabIndex = 5;
             // 
             // label1
@@ -109,7 +109,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 16);
+            this.label1.Size = new System.Drawing.Size(36, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "From";
             // 
@@ -117,7 +117,7 @@
             // 
             this.fraSelectOption.Controls.Add(this.chkReceiptNo);
             this.fraSelectOption.Controls.Add(this.chkName);
-            this.fraSelectOption.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fraSelectOption.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fraSelectOption.Location = new System.Drawing.Point(12, 72);
             this.fraSelectOption.Name = "fraSelectOption";
             this.fraSelectOption.Size = new System.Drawing.Size(130, 126);
@@ -128,10 +128,10 @@
             // chkReceiptNo
             // 
             this.chkReceiptNo.AutoSize = true;
-            this.chkReceiptNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkReceiptNo.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkReceiptNo.Location = new System.Drawing.Point(17, 69);
             this.chkReceiptNo.Name = "chkReceiptNo";
-            this.chkReceiptNo.Size = new System.Drawing.Size(99, 20);
+            this.chkReceiptNo.Size = new System.Drawing.Size(96, 18);
             this.chkReceiptNo.TabIndex = 4;
             this.chkReceiptNo.TabStop = true;
             this.chkReceiptNo.Text = "By ReceiptNo";
@@ -141,10 +141,10 @@
             // chkName
             // 
             this.chkName.AutoSize = true;
-            this.chkName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkName.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkName.Location = new System.Drawing.Point(17, 25);
             this.chkName.Name = "chkName";
-            this.chkName.Size = new System.Drawing.Size(75, 20);
+            this.chkName.Size = new System.Drawing.Size(72, 18);
             this.chkName.TabIndex = 0;
             this.chkName.TabStop = true;
             this.chkName.Text = "By Name";
@@ -154,7 +154,7 @@
             // fraName
             // 
             this.fraName.Controls.Add(this.txtName);
-            this.fraName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fraName.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fraName.Location = new System.Drawing.Point(158, 72);
             this.fraName.Name = "fraName";
             this.fraName.Size = new System.Drawing.Size(273, 59);
@@ -166,13 +166,13 @@
             // 
             this.txtName.Location = new System.Drawing.Point(6, 23);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(257, 22);
+            this.txtName.Size = new System.Drawing.Size(257, 23);
             this.txtName.TabIndex = 0;
             // 
             // fraReceiptNo
             // 
             this.fraReceiptNo.Controls.Add(this.txtReceiptNo);
-            this.fraReceiptNo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fraReceiptNo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fraReceiptNo.Location = new System.Drawing.Point(158, 141);
             this.fraReceiptNo.Name = "fraReceiptNo";
             this.fraReceiptNo.Size = new System.Drawing.Size(273, 57);
@@ -184,7 +184,7 @@
             // 
             this.txtReceiptNo.Location = new System.Drawing.Point(6, 23);
             this.txtReceiptNo.Name = "txtReceiptNo";
-            this.txtReceiptNo.Size = new System.Drawing.Size(257, 22);
+            this.txtReceiptNo.Size = new System.Drawing.Size(257, 23);
             this.txtReceiptNo.TabIndex = 0;
             // 
             // cmdOk
