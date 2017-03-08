@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Configuration;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Medical
 {
@@ -268,6 +271,55 @@ namespace Medical
         private void cmdOK_Click(object sender, EventArgs e)
         {
             chargecalc();
+            generateReceipt();
+        }
+
+        private void generateReceipt()
+        {
+            //Create a byte array that will eventually hold our final PDF
+            Byte[] bytes;
+
+            //Boilerplate iTextSharp setup here
+            //Create a stream that we can write to, in this case a MemoryStream
+            using (var ms = new MemoryStream())
+            {
+                //Create an iTextSharp Document which is an abstraction of a PDF but **NOT** a PDF
+                using (var doc = new Document(PageSize.A4, 10f, 10f, 10f, 10f))
+                {
+                    //Create a writer that's bound to our PDF abstraction and our stream
+                    using (var writer = PdfWriter.GetInstance(doc, ms))
+                    {
+                        //Open the document for writing
+                        doc.Open();
+                        //Our sample HTML and CSS
+                        var receiptHtml = File.ReadAllText(Application.StartupPath + "\\Receipt.html");
+                        //var receiptCss = @".headline{font-size:200%}";
+
+                        //Create a new HTMLWorker bound to our document
+                        using (var htmlWorker = new iTextSharp.text.html.simpleparser.HTMLWorker(doc))
+                        {
+                            //HTMLWorker doesn't read a string directly but instead needs a TextReader (which StringReader subclasses)
+                            using (var sr = new StringReader(receiptHtml))
+                            {
+                                //Parse the HTML
+                                htmlWorker.Parse(sr);
+                            }
+                        }
+                        doc.Close();
+                    }
+                }
+                //After all of the PDF "stuff" above is done and closed but **before** we
+                //close the MemoryStream, grab all of the active bytes from the stream
+                bytes = ms.ToArray();
+            }
+
+            //Now we just need to do something with those bytes.
+            //Here I'm writing them to disk but if you were in ASP.Net you might Response.BinaryWrite() them.
+            //You could also write the bytes to a database in a varbinary() column (but please don't) or you
+            //could pass them to another function for further PDF processing.
+            var pdfFile = Application.StartupPath + "\\" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
+            File.WriteAllBytes(pdfFile, bytes);
+            System.Diagnostics.Process.Start(pdfFile);
         }
 
         private void chargecalc()
