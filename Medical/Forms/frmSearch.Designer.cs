@@ -1,6 +1,6 @@
 ﻿namespace Medical
 {
-    partial class frmDate
+    partial class frmSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chkDate = new System.Windows.Forms.CheckBox();
             this.fraDate = new System.Windows.Forms.GroupBox();
             this.dateTo = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkDate = new System.Windows.Forms.CheckBox();
             this.fraSelectOption = new System.Windows.Forms.GroupBox();
             this.chkReceiptNo = new System.Windows.Forms.RadioButton();
             this.chkName = new System.Windows.Forms.RadioButton();
@@ -41,25 +41,13 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.fraReceiptNo = new System.Windows.Forms.GroupBox();
             this.txtReceiptNo = new System.Windows.Forms.TextBox();
-            this.cmdOk = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmdOk = new System.Windows.Forms.Button();
             this.fraDate.SuspendLayout();
             this.fraSelectOption.SuspendLayout();
             this.fraName.SuspendLayout();
             this.fraReceiptNo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // chkDate
-            // 
-            this.chkDate.AutoSize = true;
-            this.chkDate.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDate.Location = new System.Drawing.Point(29, 33);
-            this.chkDate.Name = "chkDate";
-            this.chkDate.Size = new System.Drawing.Size(67, 18);
-            this.chkDate.TabIndex = 0;
-            this.chkDate.Text = "By Date";
-            this.chkDate.UseVisualStyleBackColor = true;
-            this.chkDate.CheckedChanged += new System.EventHandler(this.chkDate_CheckedChanged);
             // 
             // fraDate
             // 
@@ -68,10 +56,10 @@
             this.fraDate.Controls.Add(this.dateFrom);
             this.fraDate.Controls.Add(this.label1);
             this.fraDate.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fraDate.Location = new System.Drawing.Point(158, 13);
+            this.fraDate.Location = new System.Drawing.Point(159, 13);
             this.fraDate.Name = "fraDate";
             this.fraDate.Size = new System.Drawing.Size(273, 53);
-            this.fraDate.TabIndex = 2;
+            this.fraDate.TabIndex = 9;
             this.fraDate.TabStop = false;
             this.fraDate.Text = "Select Date";
             // 
@@ -113,15 +101,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "From";
             // 
+            // chkDate
+            // 
+            this.chkDate.AutoSize = true;
+            this.chkDate.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDate.Location = new System.Drawing.Point(30, 33);
+            this.chkDate.Name = "chkDate";
+            this.chkDate.Size = new System.Drawing.Size(67, 18);
+            this.chkDate.TabIndex = 8;
+            this.chkDate.Text = "By Date";
+            this.chkDate.UseVisualStyleBackColor = true;
+            this.chkDate.CheckedChanged += new System.EventHandler(this.chkDate_CheckedChanged);
+            // 
             // fraSelectOption
             // 
             this.fraSelectOption.Controls.Add(this.chkReceiptNo);
             this.fraSelectOption.Controls.Add(this.chkName);
             this.fraSelectOption.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fraSelectOption.Location = new System.Drawing.Point(12, 72);
+            this.fraSelectOption.Location = new System.Drawing.Point(13, 72);
             this.fraSelectOption.Name = "fraSelectOption";
             this.fraSelectOption.Size = new System.Drawing.Size(130, 126);
-            this.fraSelectOption.TabIndex = 3;
+            this.fraSelectOption.TabIndex = 10;
             this.fraSelectOption.TabStop = false;
             this.fraSelectOption.Text = "Select Option";
             // 
@@ -155,10 +155,10 @@
             // 
             this.fraName.Controls.Add(this.txtName);
             this.fraName.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fraName.Location = new System.Drawing.Point(158, 72);
+            this.fraName.Location = new System.Drawing.Point(159, 72);
             this.fraName.Name = "fraName";
             this.fraName.Size = new System.Drawing.Size(273, 59);
-            this.fraName.TabIndex = 4;
+            this.fraName.TabIndex = 11;
             this.fraName.TabStop = false;
             this.fraName.Text = "Enter Name";
             // 
@@ -173,10 +173,10 @@
             // 
             this.fraReceiptNo.Controls.Add(this.txtReceiptNo);
             this.fraReceiptNo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fraReceiptNo.Location = new System.Drawing.Point(158, 141);
+            this.fraReceiptNo.Location = new System.Drawing.Point(159, 141);
             this.fraReceiptNo.Name = "fraReceiptNo";
             this.fraReceiptNo.Size = new System.Drawing.Size(273, 57);
-            this.fraReceiptNo.TabIndex = 5;
+            this.fraReceiptNo.TabIndex = 12;
             this.fraReceiptNo.TabStop = false;
             this.fraReceiptNo.Text = "Enter Receipt Number";
             // 
@@ -187,46 +187,42 @@
             this.txtReceiptNo.Size = new System.Drawing.Size(257, 23);
             this.txtReceiptNo.TabIndex = 0;
             // 
-            // cmdOk
-            // 
-            this.cmdOk.Location = new System.Drawing.Point(148, 214);
-            this.cmdOk.Name = "cmdOk";
-            this.cmdOk.Size = new System.Drawing.Size(75, 25);
-            this.cmdOk.TabIndex = 6;
-            this.cmdOk.Text = "Ok";
-            this.cmdOk.UseVisualStyleBackColor = true;
-            this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
-            // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(229, 214);
+            this.cmdCancel.Location = new System.Drawing.Point(230, 214);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(75, 25);
-            this.cmdCancel.TabIndex = 7;
+            this.cmdCancel.TabIndex = 14;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
-            // frmDate
+            // cmdOk
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.cmdOk.Location = new System.Drawing.Point(149, 214);
+            this.cmdOk.Name = "cmdOk";
+            this.cmdOk.Size = new System.Drawing.Size(75, 25);
+            this.cmdOk.TabIndex = 13;
+            this.cmdOk.Text = "Ok";
+            this.cmdOk.UseVisualStyleBackColor = true;
+            this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
+            // 
+            // frmSearch
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(445, 252);
+            this.Controls.Add(this.fraDate);
+            this.Controls.Add(this.chkDate);
+            this.Controls.Add(this.fraSelectOption);
+            this.Controls.Add(this.fraName);
+            this.Controls.Add(this.fraReceiptNo);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdOk);
-            this.Controls.Add(this.fraReceiptNo);
-            this.Controls.Add(this.fraDate);
-            this.Controls.Add(this.fraName);
-            this.Controls.Add(this.fraSelectOption);
-            this.Controls.Add(this.chkDate);
-            this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmDate";
-            this.Text = "Find Filter";
-            this.Load += new System.EventHandler(this.frmDate_Load);
+            this.Name = "frmSearch";
+            this.Text = "Search";
+            this.Load += new System.EventHandler(this.frmSearch_Load);
             this.fraDate.ResumeLayout(false);
             this.fraDate.PerformLayout();
             this.fraSelectOption.ResumeLayout(false);
@@ -242,20 +238,23 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox chkDate;
         private System.Windows.Forms.GroupBox fraDate;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateFrom;
         private System.Windows.Forms.DateTimePicker dateTo;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateFrom;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkDate;
         private System.Windows.Forms.GroupBox fraSelectOption;
-        private System.Windows.Forms.RadioButton chkName;
         private System.Windows.Forms.RadioButton chkReceiptNo;
+        private System.Windows.Forms.RadioButton chkName;
         private System.Windows.Forms.GroupBox fraName;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.GroupBox fraReceiptNo;
         private System.Windows.Forms.TextBox txtReceiptNo;
-        private System.Windows.Forms.Button cmdOk;
         private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.Button cmdOk;
+
+
+
     }
 }

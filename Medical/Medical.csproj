@@ -49,11 +49,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Operation.cs" />
+    <Compile Include="Forms\frmBillReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBillReport.Designer.cs">
+      <DependentUpon>frmBillReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmDate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmDate.Designer.cs">
       <DependentUpon>frmDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFind.Designer.cs">
+      <DependentUpon>frmFind.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
@@ -66,6 +78,12 @@
     </Compile>
     <Compile Include="Forms\frmPatientMaster.Designer.cs">
       <DependentUpon>frmPatientMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSearch.Designer.cs">
+      <DependentUpon>frmSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmSerial.cs">
       <SubType>Form</SubType>
@@ -81,8 +99,14 @@
     </Compile>
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmBillReport.resx">
+      <DependentUpon>frmBillReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDate.resx">
       <DependentUpon>frmDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFind.resx">
+      <DependentUpon>frmFind.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -90,8 +114,14 @@
     <EmbeddedResource Include="Forms\frmPatientMaster.resx">
       <DependentUpon>frmPatientMaster.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSerial.resx">
       <DependentUpon>frmSerial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmtreatement.resx">
+      <DependentUpon>frmtreatement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,6 +145,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Receipt.html" />
+    <Content Include="bin\Debug\Treament.html" />
+    <Content Include="bin\Debug\TreamentPlain.html" />
     <Content Include="ExtReferences\itextsharp.dll" />
     <Content Include="Receipt.html" />
   </ItemGroup>
