@@ -11,7 +11,7 @@ namespace Medical
 {
     public class Operation
     {
-        private static String connParam = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath+ "\\eyemedical.mdb;Persist Security Info=False";
+        private static String connParam = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\eyemedical.mdb;Persist Security Info=False";
         public static DataTable GetDataTable(string Query)
         {
             using (OleDbConnection conn = new OleDbConnection(connParam))
@@ -48,6 +48,27 @@ namespace Medical
                     return cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public static bool ExecuteScalar(string Query, List<OleDbParameter> param)
+        {
+            bool exists = false;
+
+            using (OleDbConnection conn = new OleDbConnection(connParam))
+            {
+                using (OleDbCommand cmd = new OleDbCommand(Query, conn))
+                {
+                    if (param != null)
+                    {
+                        cmd.Parameters.AddRange(param.ToArray());
+                    }
+                    if (cmd.Connection.State == ConnectionState.Closed)
+                        cmd.Connection.Open();
+
+                    exists = (int)cmd.ExecuteScalar() > 0;
+                }
+            }
+            return exists;
         }
     }
 }

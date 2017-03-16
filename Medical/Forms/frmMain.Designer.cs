@@ -256,6 +256,7 @@
             this.cmdGetREceiptNo.TabIndex = 12;
             this.cmdGetREceiptNo.Text = "Get Receipt Number";
             this.cmdGetREceiptNo.UseVisualStyleBackColor = true;
+            this.cmdGetREceiptNo.Click += new System.EventHandler(this.cmdGetREceiptNo_Click);
             // 
             // cmdView
             // 
@@ -304,7 +305,7 @@
             this.fraBill.Controls.Add(this.fraName);
             this.fraBill.Controls.Add(this.fraDate);
             this.fraBill.Controls.Add(this.tableLayoutPanel1);
-            this.fraBill.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fraBill.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fraBill.Location = new System.Drawing.Point(10, 334);
             this.fraBill.Name = "fraBill";
             this.fraBill.Size = new System.Drawing.Size(791, 266);
@@ -336,6 +337,7 @@
             this.cmdBillReport.TabIndex = 8;
             this.cmdBillReport.Text = "Bill Report";
             this.cmdBillReport.UseVisualStyleBackColor = true;
+            this.cmdBillReport.Click += new System.EventHandler(this.cmdBillReport_Click);
             // 
             // cmdCancelReceipt
             // 
@@ -368,6 +370,7 @@
             this.cmdPatient.TabIndex = 5;
             this.cmdPatient.Text = "Patient Information";
             this.cmdPatient.UseVisualStyleBackColor = true;
+            this.cmdPatient.Click += new System.EventHandler(this.cmdPatient_Click);
             // 
             // cmdOK
             // 
@@ -386,6 +389,7 @@
             this.groupBox1.Controls.Add(this.cmdSerial);
             this.groupBox1.Controls.Add(this.cmdAdmit);
             this.groupBox1.Controls.Add(this.cmdSave);
+            this.groupBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(569, 30);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 88);
@@ -1187,6 +1191,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataGrid)).EndInit();
             this.fraBill.ResumeLayout(false);

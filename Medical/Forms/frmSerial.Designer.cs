@@ -38,7 +38,7 @@
             // fraDate
             // 
             this.fraDate.Controls.Add(this.dateFrom);
-            this.fraDate.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fraDate.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fraDate.Location = new System.Drawing.Point(47, 9);
             this.fraDate.Name = "fraDate";
             this.fraDate.Size = new System.Drawing.Size(135, 65);
@@ -49,11 +49,11 @@
             // dateFrom
             // 
             this.dateFrom.CustomFormat = "MM/dd/yyyy";
-            this.dateFrom.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFrom.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateFrom.Location = new System.Drawing.Point(24, 27);
             this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Size = new System.Drawing.Size(87, 20);
+            this.dateFrom.Size = new System.Drawing.Size(87, 21);
             this.dateFrom.TabIndex = 5;
             // 
             // cmdReturn
