@@ -426,7 +426,7 @@
             // 
             // cmdLast
             // 
-            this.cmdLast.Location = new System.Drawing.Point(165, 364);
+            this.cmdLast.Location = new System.Drawing.Point(184, 363);
             this.cmdLast.Name = "cmdLast";
             this.cmdLast.Size = new System.Drawing.Size(37, 24);
             this.cmdLast.TabIndex = 14;
@@ -436,7 +436,7 @@
             // 
             // cmdNext
             // 
-            this.cmdNext.Location = new System.Drawing.Point(127, 363);
+            this.cmdNext.Location = new System.Drawing.Point(146, 363);
             this.cmdNext.Name = "cmdNext";
             this.cmdNext.Size = new System.Drawing.Size(32, 25);
             this.cmdNext.TabIndex = 13;

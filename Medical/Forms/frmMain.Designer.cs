@@ -337,6 +337,7 @@
             this.cmdBillReport.TabIndex = 8;
             this.cmdBillReport.Text = "Bill Report";
             this.cmdBillReport.UseVisualStyleBackColor = true;
+            this.cmdBillReport.Click += new System.EventHandler(this.cmdBillReport_Click);
             // 
             // cmdCancelReceipt
             // 
@@ -369,6 +370,7 @@
             this.cmdPatient.TabIndex = 5;
             this.cmdPatient.Text = "Patient Information";
             this.cmdPatient.UseVisualStyleBackColor = true;
+            this.cmdPatient.Click += new System.EventHandler(this.cmdPatient_Click);
             // 
             // cmdOK
             // 
@@ -1189,6 +1191,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataGrid)).EndInit();
             this.fraBill.ResumeLayout(false);

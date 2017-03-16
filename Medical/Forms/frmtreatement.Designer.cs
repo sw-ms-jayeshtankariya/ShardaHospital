@@ -97,6 +97,7 @@
             this.cmbRx = new System.Windows.Forms.ComboBox();
             this.cmdAddRx = new System.Windows.Forms.Button();
             this.lstChiefComplain = new System.Windows.Forms.ListBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -153,6 +154,7 @@
             this.txtPname.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtPname.Location = new System.Drawing.Point(246, 19);
             this.txtPname.Name = "txtPname";
+            this.txtPname.ReadOnly = true;
             this.txtPname.Size = new System.Drawing.Size(176, 20);
             this.txtPname.TabIndex = 2;
             // 
@@ -161,6 +163,7 @@
             this.txtPid.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtPid.Location = new System.Drawing.Point(37, 19);
             this.txtPid.Name = "txtPid";
+            this.txtPid.ReadOnly = true;
             this.txtPid.Size = new System.Drawing.Size(114, 20);
             this.txtPid.TabIndex = 4;
             // 
@@ -364,6 +367,7 @@
             this.cmbEdose.Name = "cmbEdose";
             this.cmbEdose.Size = new System.Drawing.Size(85, 21);
             this.cmbEdose.TabIndex = 18;
+            this.cmbEdose.SelectedIndexChanged += new System.EventHandler(this.cmbEdose_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -627,12 +631,13 @@
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(1, 1);
+            this.cmdEdit.Location = new System.Drawing.Point(0, 0);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(75, 25);
             this.cmdEdit.TabIndex = 17;
             this.cmdEdit.Text = "Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
+            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
             // 
             // cmdCancel
             // 
@@ -642,6 +647,7 @@
             this.cmdCancel.TabIndex = 11;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // cmdPrint
             // 
@@ -651,6 +657,7 @@
             this.cmdPrint.TabIndex = 13;
             this.cmdPrint.Text = "Print";
             this.cmdPrint.UseVisualStyleBackColor = true;
+            this.cmdPrint.Click += new System.EventHandler(this.cmdPrint_Click);
             // 
             // cmddelete
             // 
@@ -660,6 +667,7 @@
             this.cmddelete.TabIndex = 12;
             this.cmddelete.Text = "Delete";
             this.cmddelete.UseVisualStyleBackColor = true;
+            this.cmddelete.Click += new System.EventHandler(this.cmddelete_Click);
             // 
             // cmdclose
             // 
@@ -669,6 +677,7 @@
             this.cmdclose.TabIndex = 13;
             this.cmdclose.Text = "Close";
             this.cmdclose.UseVisualStyleBackColor = true;
+            this.cmdclose.Click += new System.EventHandler(this.cmdclose_Click);
             // 
             // cmdrefresh
             // 
@@ -678,6 +687,7 @@
             this.cmdrefresh.TabIndex = 3;
             this.cmdrefresh.Text = "Refresh";
             this.cmdrefresh.UseVisualStyleBackColor = true;
+            this.cmdrefresh.Click += new System.EventHandler(this.cmdrefresh_Click);
             // 
             // cmdPrintPlain
             // 
@@ -687,6 +697,7 @@
             this.cmdPrintPlain.TabIndex = 14;
             this.cmdPrintPlain.Text = "Print Plain";
             this.cmdPrintPlain.UseVisualStyleBackColor = true;
+            this.cmdPrintPlain.Click += new System.EventHandler(this.cmdPrintPlain_Click);
             // 
             // panel1
             // 
@@ -699,12 +710,13 @@
             // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(0, 1);
+            this.cmdAdd.Location = new System.Drawing.Point(-1, 0);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(75, 25);
             this.cmdAdd.TabIndex = 16;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
             // cmdupdate
             // 
@@ -714,6 +726,7 @@
             this.cmdupdate.TabIndex = 10;
             this.cmdupdate.Text = "Update";
             this.cmdupdate.UseVisualStyleBackColor = true;
+            this.cmdupdate.Click += new System.EventHandler(this.cmdupdate_Click);
             // 
             // dgtreatment
             // 
@@ -731,21 +744,23 @@
             // 
             // cmdLast
             // 
-            this.cmdLast.Location = new System.Drawing.Point(173, 355);
+            this.cmdLast.Location = new System.Drawing.Point(189, 355);
             this.cmdLast.Name = "cmdLast";
             this.cmdLast.Size = new System.Drawing.Size(37, 24);
             this.cmdLast.TabIndex = 46;
             this.cmdLast.Text = ">>";
             this.cmdLast.UseVisualStyleBackColor = true;
+            this.cmdLast.Click += new System.EventHandler(this.cmdLast_Click);
             // 
             // cmdNext
             // 
-            this.cmdNext.Location = new System.Drawing.Point(135, 354);
+            this.cmdNext.Location = new System.Drawing.Point(151, 354);
             this.cmdNext.Name = "cmdNext";
             this.cmdNext.Size = new System.Drawing.Size(32, 25);
             this.cmdNext.TabIndex = 45;
             this.cmdNext.Text = ">";
             this.cmdNext.UseVisualStyleBackColor = true;
+            this.cmdNext.Click += new System.EventHandler(this.cmdNext_Click);
             // 
             // lblStatus
             // 
@@ -764,6 +779,7 @@
             this.cmdPrevious.TabIndex = 43;
             this.cmdPrevious.Text = "<";
             this.cmdPrevious.UseVisualStyleBackColor = true;
+            this.cmdPrevious.Click += new System.EventHandler(this.cmdPrevious_Click);
             // 
             // cmdFirst
             // 
@@ -773,6 +789,7 @@
             this.cmdFirst.TabIndex = 42;
             this.cmdFirst.Text = "<<";
             this.cmdFirst.UseVisualStyleBackColor = true;
+            this.cmdFirst.Click += new System.EventHandler(this.cmdFirst_Click);
             // 
             // cmbRx
             // 
@@ -795,17 +812,28 @@
             // 
             // lstChiefComplain
             // 
+            this.lstChiefComplain.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstChiefComplain.FormattingEnabled = true;
             this.lstChiefComplain.Location = new System.Drawing.Point(566, 99);
             this.lstChiefComplain.Name = "lstChiefComplain";
             this.lstChiefComplain.Size = new System.Drawing.Size(165, 82);
             this.lstChiefComplain.TabIndex = 50;
             // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 655);
+            this.splitter1.TabIndex = 51;
+            this.splitter1.TabStop = false;
+            this.splitter1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter1_SplitterMoved);
+            // 
             // frmtreatement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 655);
+            this.Controls.Add(this.splitter1);
             this.Controls.Add(this.lstChiefComplain);
             this.Controls.Add(this.cmdAddRx);
             this.Controls.Add(this.cmbRx);
@@ -860,6 +888,7 @@
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "frmtreatement";
             this.Text = "treatement";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmtreatement_FormClosing);
             this.Load += new System.EventHandler(this.frmtreatement_Load);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -943,5 +972,6 @@
         private System.Windows.Forms.ComboBox cmbRx;
         private System.Windows.Forms.Button cmdAddRx;
         private System.Windows.Forms.ListBox lstChiefComplain;
+        private System.Windows.Forms.Splitter splitter1;
     }
 }

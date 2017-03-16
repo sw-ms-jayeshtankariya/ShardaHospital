@@ -35,15 +35,14 @@ namespace Medical
             dgPatientMaster.Columns[2].Visible = false;
             dgPatientMaster.Columns[3].Visible = false;
 
-            int nRowIndex = dgPatientMaster.Rows.Count - 1;
-            lblStatus.Text = Convert.ToString(nRowIndex);
+            lblStatus.Text = "";
         }
 
         private void frmPatientMaster_Load(object sender, EventArgs e)
         {
             setdatagrid();
 
-            txtName.Text = patientName;            
+            txtName.Text = patientName;
         }
 
         private void dgPatientMaster_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -174,6 +173,8 @@ namespace Medical
             txtFields4.Text = patientAddress;
             txtFields5.Text = patientSex;
             txtFields6.Text = patientAge;
+
+            lblStatus.Text = "Add record";
         }
 
         private void cmdUpdate_Click(object sender, EventArgs e)
@@ -186,6 +187,7 @@ namespace Medical
         private void cmdEdit_Click(object sender, EventArgs e)
         {
             SetButtons(false);
+            lblStatus.Text = "Edit record";
         }
 
         private void cmdCancel_Click(object sender, EventArgs e)
@@ -314,44 +316,82 @@ namespace Medical
 
         private void cmdFirst_Click(object sender, EventArgs e)
         {
-            dgPatientMaster.Rows[0].Selected = true;
-            dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[0].Index;
+            dgPatientMaster.CurrentCell = dgPatientMaster[0, 0];
+            
+            //dgPatientMaster.Rows[0].Selected = true;
+            //dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[0].Index;
         }
 
         private void cmdPrevious_Click(object sender, EventArgs e)
         {
-            if (!dgPatientMaster.Rows[0].Selected)
+            //if (!dgPatientMaster.Rows[0].Selected)
+            //{
+            //    if (dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1] != null)
+            //    {
+            //        dgPatientMaster.CurrentCell = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1].Cells[1];
+            //        dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1].Index;
+            //    }
+            //}
+            //Get number of records displayed in the data grid view and subtract one to keep in line with index that starts with 0
+            int numOfRows = dgPatientMaster.Rows.Count - 1;
+
+            //Get current row selected
+            int index = dgPatientMaster.SelectedRows[0].Index;
+
+            // Determine if the previous record exists or cycle back to the last record in the set
+            if (index != 0)
             {
-                if (dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1] != null)
-                {
-                    dgPatientMaster.CurrentCell = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1].Cells[1];
-                    dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex - 1].Index;
-                }
+                //Change the selected row to next row down in the data set
+                dgPatientMaster.CurrentCell = dgPatientMaster[0, index - 1];
+            }
+            else
+            {
+                // Select the first record of the data set
+                dgPatientMaster.CurrentCell = dgPatientMaster[0, numOfRows];
             }
         }
 
         private void cmdNext_Click(object sender, EventArgs e)
         {
-            if (dgPatientMaster.CurrentCell.RowIndex + 1 < dgPatientMaster.Rows.Count - 1)
+            //if (dgPatientMaster.CurrentCell.RowIndex + 1 < dgPatientMaster.Rows.Count - 1)
+            //{
+            //    if (dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1] != null)
+            //    {
+            //        dgPatientMaster.CurrentCell = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1].Cells[1];
+            //        dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1].Index;
+            //    }
+            //}
+            //Get number of records displayed in the data grid view and subtract one to keep in line with index that starts with 0
+            int numOfRows = dgPatientMaster.Rows.Count - 1;
+
+            //Get current row selected
+            int index = dgPatientMaster.SelectedRows[0].Index;
+
+            // Determine if the next record exists or cycle back to the first record in the set
+            if (index < numOfRows)
             {
-                if (dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1] != null)
-                {
-                    dgPatientMaster.CurrentCell = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1].Cells[1];
-                    dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex + 1].Index;
-                }
+                //Change the selected row to next row down in the data set
+                dgPatientMaster.CurrentCell = dgPatientMaster[0, index + 1];
+            }
+            else
+            {
+                // Select the first record of the data set
+                dgPatientMaster.CurrentCell = dgPatientMaster[0, 0];
             }
         }
 
         private void cmdLast_Click(object sender, EventArgs e)
         {
-            int nRowIndex = dgPatientMaster.Rows.Count - 1;
-            int nColumnIndex = 3;
+            int numOfRows = dgPatientMaster.Rows.Count - 1;
+            dgPatientMaster.CurrentCell = dgPatientMaster[0, numOfRows];
+            //int nRowIndex = dgPatientMaster.Rows.Count - 1;
+            //int nColumnIndex = 3;
 
-            dgPatientMaster.Rows[nRowIndex].Selected = true;
-            dgPatientMaster.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+            //dgPatientMaster.Rows[nRowIndex].Selected = true;
+            //dgPatientMaster.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
-            //In case if you want to scroll down as well.
-            dgPatientMaster.FirstDisplayedScrollingRowIndex = nRowIndex;
+            ////In case if you want to scroll down as well.
+            //dgPatientMaster.FirstDisplayedScrollingRowIndex = nRowIndex;
         }
 
         private void cmdPrescription_Click(object sender, EventArgs e)
