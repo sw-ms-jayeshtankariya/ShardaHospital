@@ -585,7 +585,18 @@ namespace Medical
 
             if (query != "")
             {
-                grdDataGrid.DataSource = Operation.GetDataTable(query);
+                DataTable dt = new DataTable();
+                dt = Operation.GetDataTable(query);
+
+                if (dt.Rows.Count > 0)
+                {
+                    grdDataGrid.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Record is not found");
+                    objDate.ShowDialog();
+                }
                 HideGridCol();
             }
             //else
@@ -845,7 +856,7 @@ namespace Medical
                 table.WidthPercentage = 100;
                 finalTotal += total;
             }
-            
+
             PdfPCell lastcell = new PdfPCell(new Phrase("Patient Daily Report"));
             lastcell.Colspan = dt.Columns.Count;
             lastcell.HorizontalAlignment = 1;

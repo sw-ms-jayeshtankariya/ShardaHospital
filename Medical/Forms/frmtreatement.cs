@@ -575,13 +575,13 @@ namespace Medical
 
         private void frmtreatement_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (MessageBox.Show("Do you want to close?",
-            //                       "Sharada Hospital",
-            //                        MessageBoxButtons.YesNo,
-            //                        MessageBoxIcon.Information) == DialogResult.No)
-            //{
-            //    e.Cancel = true;
-            //}
+            if (MessageBox.Show("Do you want to close?",
+                                   "Sharada Hospital",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Information) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void cmdPrintPlain_Click(object sender, EventArgs e)
