@@ -809,6 +809,7 @@
             this.cmdAddRx.TabIndex = 49;
             this.cmdAddRx.Text = "Add";
             this.cmdAddRx.UseVisualStyleBackColor = true;
+            this.cmdAddRx.Click += new System.EventHandler(this.cmdAddRx_Click);
             // 
             // lstChiefComplain
             // 
@@ -888,6 +889,7 @@
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "frmtreatement";
             this.Text = "treatement";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmtreatement_FormClosing);
             this.Load += new System.EventHandler(this.frmtreatement_Load);
             this.tableLayoutPanel3.ResumeLayout(false);
