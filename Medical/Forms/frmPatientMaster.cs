@@ -101,7 +101,7 @@ namespace Medical
             if (exists)
             {
                 // "PatientCode Already Taken";
-                if (txtFields0.Text != null)
+                if (txtFields0.Text != null && txtFields0.Text != "")
                 {
                     List<OleDbParameter> param = new List<OleDbParameter>();
                     param.Add(new OleDbParameter("@frstname", Convert.ToString(txtFields1.Text)));
@@ -111,6 +111,7 @@ namespace Medical
                     param.Add(new OleDbParameter("@patientcode", Convert.ToString(txtFields0.Text)));
                     Operation.ExecuteNonQuery("update pmaster set fname=@frstname, Address=@address, Age=@age, Sex=@sex where PatientCode=@patientcode", param);
 
+                    setdatagrid();
                     //oleDbCmd = new OleDbCommand("update pmaster set fname=@frstname, Address=@address, Age=@age, Sex=@sex where PatientCode=@patientcode", con);
                     //con.Open();
                     //oleDbCmd.Parameters.AddWithValue("@frstname", Convert.ToString(txtFields1.Text));
@@ -128,7 +129,7 @@ namespace Medical
             }
             else
             {
-                if (txtFields0.Text != null)
+                if (txtFields0.Text != null && txtFields0.Text != "")
                 {
                     List<OleDbParameter> param = new List<OleDbParameter>();
                     param.Add(new OleDbParameter("@patientcode", Convert.ToString(txtFields0.Text)));
@@ -138,6 +139,7 @@ namespace Medical
                     param.Add(new OleDbParameter("@sex", Convert.ToString(txtFields5.Text)));
                     Operation.ExecuteNonQuery("insert into pmaster(PatientCode,fname,Address,Age,Sex) values(@patientcode,@frstname,@address,@age,@sex)", param);
 
+                    setdatagrid();
                     //oleDbCmd = new OleDbCommand("insert into pmaster(PatientCode,fname,Address,Age,Sex) values(@patientcode,@frstname,@address,@age,@sex)", con);
                     //con.Open();
                     //oleDbCmd.Parameters.AddWithValue("@patientcode", Convert.ToString(txtFields0.Text));
@@ -161,6 +163,7 @@ namespace Medical
             int nRowIndex = dgPatientMaster.Rows.Count - 1;
             int nColumnIndex = 3;
 
+            dgPatientMaster.CurrentCell = dgPatientMaster.Rows[nRowIndex].Cells[1];
             dgPatientMaster.Rows[nRowIndex].Selected = true;
             dgPatientMaster.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
@@ -181,7 +184,7 @@ namespace Medical
         {
             SetButtons(true);
             patientOperations();
-            setdatagrid();
+            //setdatagrid();
         }
 
         private void cmdEdit_Click(object sender, EventArgs e)
@@ -193,6 +196,7 @@ namespace Medical
         private void cmdCancel_Click(object sender, EventArgs e)
         {
             SetButtons(true);
+            setdatagrid();
         }
 
         private void cmdRefresh_Click(object sender, EventArgs e)
