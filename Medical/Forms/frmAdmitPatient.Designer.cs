@@ -48,6 +48,7 @@
             this.txtBlSugar = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmdSave = new System.Windows.Forms.Button();
+            this.cmdAdmitReport = new System.Windows.Forms.Button();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -283,11 +284,22 @@
             this.cmdSave.UseVisualStyleBackColor = true;
             this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
+            // cmdAdmitReport
+            // 
+            this.cmdAdmitReport.Location = new System.Drawing.Point(136, 240);
+            this.cmdAdmitReport.Name = "cmdAdmitReport";
+            this.cmdAdmitReport.Size = new System.Drawing.Size(75, 25);
+            this.cmdAdmitReport.TabIndex = 10;
+            this.cmdAdmitReport.Text = "Report";
+            this.cmdAdmitReport.UseVisualStyleBackColor = true;
+            this.cmdAdmitReport.Click += new System.EventHandler(this.cmdAdmitReport_Click);
+            // 
             // frmAdmitPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 357);
+            this.Controls.Add(this.cmdAdmitReport);
             this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -327,5 +339,6 @@
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.ComboBox cmbPid;
         private System.Windows.Forms.ComboBox cmbTime;
+        private System.Windows.Forms.Button cmdAdmitReport;
     }
 }
