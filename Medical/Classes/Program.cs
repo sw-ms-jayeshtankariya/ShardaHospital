@@ -15,7 +15,7 @@ namespace Medical
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAdmitPatient());
+            Application.Run(new frmMain());
         }
     }
 }

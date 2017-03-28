@@ -288,9 +288,9 @@
             // 
             this.cmdAdmitReport.Location = new System.Drawing.Point(136, 240);
             this.cmdAdmitReport.Name = "cmdAdmitReport";
-            this.cmdAdmitReport.Size = new System.Drawing.Size(75, 25);
+            this.cmdAdmitReport.Size = new System.Drawing.Size(117, 25);
             this.cmdAdmitReport.TabIndex = 10;
-            this.cmdAdmitReport.Text = "Report";
+            this.cmdAdmitReport.Text = "Generate Report";
             this.cmdAdmitReport.UseVisualStyleBackColor = true;
             this.cmdAdmitReport.Click += new System.EventHandler(this.cmdAdmitReport_Click);
             // 
@@ -305,7 +305,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "frmAdmitPatient";
-            this.Text = "frmAdmitPatient";
+            this.Text = "Enter Indoor Patient Dose details";
             this.Load += new System.EventHandler(this.frmAdmitPatient_Load);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
