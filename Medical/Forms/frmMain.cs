@@ -199,7 +199,7 @@ namespace Medical
                 {
                     grdDataGrid.CurrentCell = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Cells[1];
                     if (grdDataGrid.CurrentCell.RowIndex > 0)
-                        grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Index;
+                    grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Index;
                 }
             }
         }
@@ -876,7 +876,7 @@ namespace Medical
                 table.WidthPercentage = 100;
                 finalTotal += total;
             }
-
+            
             PdfPCell lastcell = new PdfPCell(new Phrase("Patient Daily Report"));
             lastcell.Colspan = dt.Columns.Count;
             lastcell.HorizontalAlignment = 1;
@@ -985,6 +985,30 @@ namespace Medical
                 else
                     MessageBox.Show("Source Path not exists");
             }
+        }
+
+        private void cmdWritePresction_Click_1(object sender, EventArgs e)
+        {
+            if (grdDataGrid.CurrentCell != null)
+            {
+                string patientName = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[2].Value);
+                string patientAddress = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[6].Value);
+                string patientAge = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[3].Value);
+                string patientSex = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[4].Value);
+
+                frmPatientMaster objPatientMaster = new frmPatientMaster();
+                objPatientMaster.patientName = patientName;
+                objPatientMaster.patientAddress = patientAddress;
+                objPatientMaster.patientAge = patientAge;
+                objPatientMaster.patientSex = patientSex;
+                objPatientMaster.ShowDialog();
+            }
+        }
+
+        private void cmdIndoorPatients_Click(object sender, EventArgs e)
+        {
+            frmAdmitPatient objAdmitPatient = new frmAdmitPatient();
+            objAdmitPatient.ShowDialog();
         }
     }
 }

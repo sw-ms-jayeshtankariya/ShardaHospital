@@ -61,6 +61,8 @@
             // 
             // cmbFind
             // 
+            this.cmbFind.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbFind.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbFind.FormattingEnabled = true;
             this.cmbFind.Location = new System.Drawing.Point(148, 21);
             this.cmbFind.Name = "cmbFind";

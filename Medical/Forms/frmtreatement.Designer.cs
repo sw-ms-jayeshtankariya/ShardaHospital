@@ -330,6 +330,8 @@
             // 
             this.cmbMdose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbMdose.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbMdose.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbMdose.FormattingEnabled = true;
             this.cmbMdose.Location = new System.Drawing.Point(114, 255);
             this.cmbMdose.Name = "cmbMdose";
@@ -341,6 +343,8 @@
             // 
             this.cmbNdose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbNdose.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbNdose.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbNdose.FormattingEnabled = true;
             this.cmbNdose.Location = new System.Drawing.Point(275, 255);
             this.cmbNdose.Name = "cmbNdose";
@@ -362,6 +366,8 @@
             // 
             this.cmbEdose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbEdose.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEdose.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbEdose.FormattingEnabled = true;
             this.cmbEdose.Location = new System.Drawing.Point(457, 254);
             this.cmbEdose.Name = "cmbEdose";
@@ -422,6 +428,8 @@
             // 
             this.cmbComplain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbComplain.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbComplain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbComplain.FormattingEnabled = true;
             this.cmbComplain.Location = new System.Drawing.Point(291, 159);
             this.cmbComplain.Name = "cmbComplain";
@@ -461,6 +469,8 @@
             // 
             this.cmbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbName.FormattingEnabled = true;
             this.cmbName.Location = new System.Drawing.Point(242, 223);
             this.cmbName.Name = "cmbName";
@@ -795,6 +805,8 @@
             // 
             this.cmbRx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbRx.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbRx.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbRx.FormattingEnabled = true;
             this.cmbRx.Location = new System.Drawing.Point(71, 223);
             this.cmbRx.Name = "cmbRx";
@@ -887,9 +899,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpDod);
             this.Controls.Add(this.tableLayoutPanel3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmtreatement";
             this.Text = "treatement";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmtreatement_FormClosing);
             this.Load += new System.EventHandler(this.frmtreatement_Load);
             this.tableLayoutPanel3.ResumeLayout(false);

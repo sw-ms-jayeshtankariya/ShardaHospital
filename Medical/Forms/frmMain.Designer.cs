@@ -43,7 +43,7 @@
             this.cmdView = new System.Windows.Forms.Button();
             this.cmdBill = new System.Windows.Forms.Button();
             this.cmdFind = new System.Windows.Forms.Button();
-            this.cmdWritePresction = new System.Windows.Forms.Button();
+            this.cmdIndoorPatients = new System.Windows.Forms.Button();
             this.fraBill = new System.Windows.Forms.GroupBox();
             this.fraName = new System.Windows.Forms.GroupBox();
             this.txtDesease = new System.Windows.Forms.TextBox();
@@ -118,6 +118,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cmdWritePresction = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataGrid)).BeginInit();
             this.fraBill.SuspendLayout();
@@ -141,7 +142,7 @@
             this.grdDataGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.grdDataGrid.Location = new System.Drawing.Point(0, 0);
             this.grdDataGrid.Name = "grdDataGrid";
-            this.grdDataGrid.Size = new System.Drawing.Size(914, 232);
+            this.grdDataGrid.Size = new System.Drawing.Size(1219, 232);
             this.grdDataGrid.TabIndex = 0;
             this.grdDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDataGrid_CellEndEdit);
             this.grdDataGrid.SelectionChanged += new System.EventHandler(this.grdDataGrid_SelectionChanged);
@@ -288,15 +289,15 @@
             this.cmdFind.UseVisualStyleBackColor = true;
             this.cmdFind.Click += new System.EventHandler(this.cmdFind_Click);
             // 
-            // cmdWritePresction
+            // cmdIndoorPatients
             // 
-            this.cmdWritePresction.Location = new System.Drawing.Point(783, 3);
-            this.cmdWritePresction.Name = "cmdWritePresction";
-            this.cmdWritePresction.Size = new System.Drawing.Size(109, 25);
-            this.cmdWritePresction.TabIndex = 16;
-            this.cmdWritePresction.Text = "Write Presction";
-            this.cmdWritePresction.UseVisualStyleBackColor = true;
-            this.cmdWritePresction.Click += new System.EventHandler(this.cmdWritePresction_Click);
+            this.cmdIndoorPatients.Location = new System.Drawing.Point(898, 3);
+            this.cmdIndoorPatients.Name = "cmdIndoorPatients";
+            this.cmdIndoorPatients.Size = new System.Drawing.Size(109, 25);
+            this.cmdIndoorPatients.TabIndex = 16;
+            this.cmdIndoorPatients.Text = "Indoor Patients";
+            this.cmdIndoorPatients.UseVisualStyleBackColor = true;
+            this.cmdIndoorPatients.Click += new System.EventHandler(this.cmdIndoorPatients_Click);
             // 
             // fraBill
             // 
@@ -1111,7 +1112,8 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 10;
+            this.tableLayoutPanel3.ColumnCount = 11;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -1126,17 +1128,18 @@
             this.tableLayoutPanel3.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdDelete, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdRefresh, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.cmdWritePresction, 9, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdClose, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdFind, 8, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdGetREceiptNo, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.cmdWritePresction, 9, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdBill, 7, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdView, 6, 0);
+            this.tableLayoutPanel3.Controls.Add(this.cmdIndoorPatients, 10, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 286);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(895, 33);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1105, 33);
             this.tableLayoutPanel3.TabIndex = 20;
             // 
             // panel1
@@ -1156,6 +1159,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(76, 26);
             this.panel2.TabIndex = 21;
+            // 
+            // cmdWritePresction
+            // 
+            this.cmdWritePresction.Location = new System.Drawing.Point(783, 3);
+            this.cmdWritePresction.Name = "cmdWritePresction";
+            this.cmdWritePresction.Size = new System.Drawing.Size(109, 25);
+            this.cmdWritePresction.TabIndex = 22;
+            this.cmdWritePresction.Text = "Write Presction";
+            this.cmdWritePresction.UseVisualStyleBackColor = true;
+            this.cmdWritePresction.Click += new System.EventHandler(this.cmdWritePresction_Click_1);
             // 
             // tableLayoutPanel4
             // 
@@ -1182,7 +1195,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(914, 613);
+            this.ClientSize = new System.Drawing.Size(1219, 613);
             this.Controls.Add(this.gbPrint);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.groupBox1);
@@ -1191,10 +1204,11 @@
             this.Controls.Add(this.grdDataGrid);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataGrid)).EndInit();
@@ -1234,7 +1248,7 @@
         private System.Windows.Forms.Button cmdView;
         private System.Windows.Forms.Button cmdBill;
         private System.Windows.Forms.Button cmdFind;
-        private System.Windows.Forms.Button cmdWritePresction;
+        private System.Windows.Forms.Button cmdIndoorPatients;
         private System.Windows.Forms.GroupBox fraBill;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label label1;
@@ -1310,6 +1324,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button cmdWritePresction;
 
 
     }
