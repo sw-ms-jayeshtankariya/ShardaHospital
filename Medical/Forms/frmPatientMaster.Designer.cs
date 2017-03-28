@@ -44,7 +44,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFields4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtFields5 = new System.Windows.Forms.TextBox();
             this.txtFields6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -66,12 +65,19 @@
             this.cmdPrevious = new System.Windows.Forms.Button();
             this.cmdFirst = new System.Windows.Forms.Button();
             this.dgPatientMaster = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPatientMaster)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -240,7 +246,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 197);
+            this.label2.Location = new System.Drawing.Point(3, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 15);
             this.label2.TabIndex = 3;
@@ -248,27 +254,17 @@
             // 
             // txtFields4
             // 
-            this.txtFields4.Location = new System.Drawing.Point(88, 193);
+            this.txtFields4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtFields4.Location = new System.Drawing.Point(60, 10);
             this.txtFields4.Multiline = true;
             this.txtFields4.Name = "txtFields4";
-            this.txtFields4.Size = new System.Drawing.Size(206, 78);
+            this.txtFields4.Size = new System.Drawing.Size(205, 71);
             this.txtFields4.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(325, 193);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Sex";
             // 
             // txtFields5
             // 
             this.txtFields5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtFields5.Location = new System.Drawing.Point(377, 193);
+            this.txtFields5.Location = new System.Drawing.Point(35, 7);
             this.txtFields5.Name = "txtFields5";
             this.txtFields5.Size = new System.Drawing.Size(45, 22);
             this.txtFields5.TabIndex = 6;
@@ -276,7 +272,7 @@
             // txtFields6
             // 
             this.txtFields6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtFields6.Location = new System.Drawing.Point(377, 233);
+            this.txtFields6.Location = new System.Drawing.Point(37, 7);
             this.txtFields6.Name = "txtFields6";
             this.txtFields6.Size = new System.Drawing.Size(45, 22);
             this.txtFields6.TabIndex = 8;
@@ -286,7 +282,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(323, 233);
+            this.label7.Location = new System.Drawing.Point(3, 11);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 15);
             this.label7.TabIndex = 7;
@@ -488,12 +484,68 @@
             this.dgPatientMaster.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgPatientMaster_RowHeaderMouseClick);
             this.dgPatientMaster.SelectionChanged += new System.EventHandler(this.dgPatientMaster_SelectionChanged);
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.Controls.Add(this.txtFields4, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(30, 183);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(268, 92);
+            this.tableLayoutPanel4.TabIndex = 16;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtFields5, 1, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(304, 183);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(92, 37);
+            this.tableLayoutPanel5.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 15);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Sex";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.txtFields6, 1, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(304, 227);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(91, 37);
+            this.tableLayoutPanel6.TabIndex = 18;
+            // 
             // frmPatientMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(862, 633);
+            this.Controls.Add(this.tableLayoutPanel6);
+            this.Controls.Add(this.tableLayoutPanel5);
+            this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.dgPatientMaster);
             this.Controls.Add(this.cmdLast);
             this.Controls.Add(this.cmdNext);
@@ -501,16 +553,12 @@
             this.Controls.Add(this.cmdPrevious);
             this.Controls.Add(this.cmdFirst);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.txtFields6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtFields5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtFields4);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmPatientMaster";
             this.Text = "Enter Patient Personal Details";
             this.Load += new System.EventHandler(this.frmPatientMaster_Load);
@@ -522,6 +570,12 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgPatientMaster)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,7 +599,6 @@
         private System.Windows.Forms.TextBox txtFields3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFields4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtFields5;
         private System.Windows.Forms.TextBox txtFields6;
         private System.Windows.Forms.Label label7;
@@ -567,5 +620,9 @@
         private System.Windows.Forms.Button cmdEdit;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
     }
 }

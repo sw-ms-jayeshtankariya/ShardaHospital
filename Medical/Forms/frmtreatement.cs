@@ -46,6 +46,7 @@ namespace Medical
         {
             bindDose();
             RefMedicines();
+            BindRx();
             BindComplains();
             setdatagrid();
             lblStatus.Text = "";
@@ -242,6 +243,19 @@ namespace Medical
             }
         }
 
+        private void BindRx()
+        {
+            DataTable dt = new DataTable();
+
+            dt = Operation.GetDataTable("select * from rx");
+            if (dt.Rows.Count > 0)
+            {
+                cmbRx.DataSource = dt;
+                cmbRx.DisplayMember = "RxName";
+                cmbRx.ValueMember = "RxCode";
+            }
+        }
+
         private void cmdComplainAdd_Click(object sender, EventArgs e)
         {
             if (cmbComplain.Text == "")
@@ -355,6 +369,7 @@ namespace Medical
                 int nRowIndex = dgtreatment.Rows.Count - 1;
                 int nColumnIndex = 3;
 
+                dgtreatment.CurrentCell = dgtreatment.Rows[nRowIndex].Cells[1];
                 dgtreatment.Rows[nRowIndex].Selected = true;
                 dgtreatment.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
@@ -494,7 +509,8 @@ namespace Medical
 
         private void cmdFirst_Click(object sender, EventArgs e)
         {
-            dgtreatment.CurrentCell = dgtreatment[0, 0];
+            if (dgtreatment.Rows.Count > 0)
+                dgtreatment.CurrentCell = dgtreatment[0, 0];
 
             //dgtreatment.Rows[0].Selected = true;
             //dgtreatment.FirstDisplayedScrollingRowIndex = dgtreatment.Rows[0].Index;
@@ -511,21 +527,24 @@ namespace Medical
             //    }
             //}
             //Get number of records displayed in the data grid view and subtract one to keep in line with index that starts with 0
-            int numOfRows = dgtreatment.Rows.Count - 1;
-
-            //Get current row selected
-            int index = dgtreatment.SelectedRows[0].Index;
-
-            // Determine if the previous record exists or cycle back to the last record in the set
-            if (index != 0)
+            if (dgtreatment.Rows.Count > 0)
             {
-                //Change the selected row to next row down in the data set
-                dgtreatment.CurrentCell = dgtreatment[0, index - 1];
-            }
-            else
-            {
-                // Select the first record of the data set
-                dgtreatment.CurrentCell = dgtreatment[0, numOfRows];
+                int numOfRows = dgtreatment.Rows.Count - 1;
+
+                //Get current row selected
+                int index = dgtreatment.SelectedRows[0].Index;
+
+                // Determine if the previous record exists or cycle back to the last record in the set
+                if (index != 0)
+                {
+                    //Change the selected row to next row down in the data set
+                    dgtreatment.CurrentCell = dgtreatment[0, index - 1];
+                }
+                else
+                {
+                    // Select the first record of the data set
+                    dgtreatment.CurrentCell = dgtreatment[0, numOfRows];
+                }
             }
         }
 
@@ -539,29 +558,35 @@ namespace Medical
             //        dgtreatment.FirstDisplayedScrollingRowIndex = dgtreatment.Rows[dgtreatment.CurrentCell.RowIndex + 1].Index;
             //    }
             //}
-            //Get number of records displayed in the data grid view and subtract one to keep in line with index that starts with 0
-            int numOfRows = dgtreatment.Rows.Count - 1;
-
-            //Get current row selected
-            int index = dgtreatment.SelectedRows[0].Index;
-
-            // Determine if the next record exists or cycle back to the first record in the set
-            if (index < numOfRows)
+            if (dgtreatment.Rows.Count > 0)
             {
-                //Change the selected row to next row down in the data set
-                dgtreatment.CurrentCell = dgtreatment[0, index + 1];
-            }
-            else
-            {
-                // Select the first record of the data set
-                dgtreatment.CurrentCell = dgtreatment[0, 0];
+                //Get number of records displayed in the data grid view and subtract one to keep in line with index that starts with 0
+                int numOfRows = dgtreatment.Rows.Count - 1;
+
+                //Get current row selected
+                int index = dgtreatment.SelectedRows[0].Index;
+
+                // Determine if the next record exists or cycle back to the first record in the set
+                if (index < numOfRows)
+                {
+                    //Change the selected row to next row down in the data set
+                    dgtreatment.CurrentCell = dgtreatment[0, index + 1];
+                }
+                else
+                {
+                    // Select the first record of the data set
+                    dgtreatment.CurrentCell = dgtreatment[0, 0];
+                }
             }
         }
 
         private void cmdLast_Click(object sender, EventArgs e)
         {
-            int numOfRows = dgtreatment.Rows.Count - 1;
-            dgtreatment.CurrentCell = dgtreatment[0, numOfRows];
+            if (dgtreatment.Rows.Count > 0)
+            {
+                int numOfRows = dgtreatment.Rows.Count - 1;
+                dgtreatment.CurrentCell = dgtreatment[0, numOfRows];
+            }
 
             //int nRowIndex = dgtreatment.Rows.Count - 1;
             //int nColumnIndex = 3;
@@ -575,13 +600,13 @@ namespace Medical
 
         private void frmtreatement_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (MessageBox.Show("Do you want to close?",
-            //                       "Sharada Hospital",
-            //                        MessageBoxButtons.YesNo,
-            //                        MessageBoxIcon.Information) == DialogResult.No)
-            //{
-            //    e.Cancel = true;
-            //}
+            if (MessageBox.Show("Do you want to close?",
+                                   "Sharada Hospital",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Information) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void cmdPrintPlain_Click(object sender, EventArgs e)
@@ -681,7 +706,7 @@ namespace Medical
                 //Here I'm writing them to disk but if you were in ASP.Net you might Response.BinaryWrite() them.
                 //You could also write the bytes to a database in a varbinary() column (but please don't) or you
                 //could pass them to another function for further PDF processing.
-                var pdfFile = Application.StartupPath + "\\" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
+                var pdfFile = Application.StartupPath + "\\" + "PrintPlain_" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
                 File.WriteAllBytes(pdfFile, bytes);
                 System.Diagnostics.Process.Start(pdfFile);
             }
@@ -701,7 +726,7 @@ namespace Medical
             if (dt.Rows.Count > 0)
             {
                 var dateGroup = dt.AsEnumerable().GroupBy(x => Convert.ToString(x["chiefComplainName"])).Select(x => new dateGroupingTreatement() { chiefComplainName = x.Key, rows = x.ToList() });
-                
+
                 //Create a byte array that will eventually hold our final PDF
                 Byte[] bytes;
 
@@ -780,9 +805,29 @@ namespace Medical
                 //Here I'm writing them to disk but if you were in ASP.Net you might Response.BinaryWrite() them.
                 //You could also write the bytes to a database in a varbinary() column (but please don't) or you
                 //could pass them to another function for further PDF processing.
-                var pdfFile = Application.StartupPath + "\\" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
+                var pdfFile = Application.StartupPath + "\\" + "Plain_" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
                 File.WriteAllBytes(pdfFile, bytes);
                 System.Diagnostics.Process.Start(pdfFile);
+            }
+        }
+
+        private void cmdAddRx_Click(object sender, EventArgs e)
+        {
+            if (cmbRx.Text == "")
+            {
+                MessageBox.Show("Write Rx value");
+            }
+            else
+            {
+                DataTable dt = new DataTable();
+
+                dt = Operation.GetDataTable("select * from rx where RxName = '" + cmbRx.Text.Trim() + "'");
+                if (dt.Rows.Count <= 0)
+                {
+                    List<OleDbParameter> param = new List<OleDbParameter>();
+                    param.Add(new OleDbParameter("@rxName", Convert.ToString(cmbRx.Text.Trim())));
+                    Operation.ExecuteNonQuery("insert into rx(RxName) values(@rxName)", param);
+                }
             }
         }
     }

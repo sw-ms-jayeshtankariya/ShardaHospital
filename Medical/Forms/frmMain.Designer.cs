@@ -43,19 +43,8 @@
             this.cmdView = new System.Windows.Forms.Button();
             this.cmdBill = new System.Windows.Forms.Button();
             this.cmdFind = new System.Windows.Forms.Button();
-            this.cmdWritePresction = new System.Windows.Forms.Button();
+            this.cmdIndoorPatients = new System.Windows.Forms.Button();
             this.fraBill = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmdBillReport = new System.Windows.Forms.Button();
-            this.cmdCancelReceipt = new System.Windows.Forms.Button();
-            this.cmdClear = new System.Windows.Forms.Button();
-            this.cmdPatient = new System.Windows.Forms.Button();
-            this.cmdOK = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmdSaveTo = new System.Windows.Forms.Button();
-            this.cmdSerial = new System.Windows.Forms.Button();
-            this.cmdAdmit = new System.Windows.Forms.Button();
-            this.cmdSave = new System.Windows.Forms.Button();
             this.fraName = new System.Windows.Forms.GroupBox();
             this.txtDesease = new System.Windows.Forms.TextBox();
             this.fraDate = new System.Windows.Forms.GroupBox();
@@ -113,20 +102,32 @@
             this.txtCharges2 = new System.Windows.Forms.TextBox();
             this.txtCharges3 = new System.Windows.Forms.TextBox();
             this.txtCharges4 = new System.Windows.Forms.TextBox();
+            this.gbPrint = new System.Windows.Forms.GroupBox();
+            this.cmdBillReport = new System.Windows.Forms.Button();
+            this.cmdCancelReceipt = new System.Windows.Forms.Button();
+            this.cmdClear = new System.Windows.Forms.Button();
+            this.cmdPatient = new System.Windows.Forms.Button();
+            this.cmdOK = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmdSaveTo = new System.Windows.Forms.Button();
+            this.cmdSerial = new System.Windows.Forms.Button();
+            this.cmdAdmit = new System.Windows.Forms.Button();
+            this.cmdSave = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.cmdEdit = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cmdWritePresction = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataGrid)).BeginInit();
             this.fraBill.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.fraName.SuspendLayout();
             this.fraDate.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.gbPrint.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -141,7 +142,7 @@
             this.grdDataGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.grdDataGrid.Location = new System.Drawing.Point(0, 0);
             this.grdDataGrid.Name = "grdDataGrid";
-            this.grdDataGrid.Size = new System.Drawing.Size(914, 232);
+            this.grdDataGrid.Size = new System.Drawing.Size(1219, 232);
             this.grdDataGrid.TabIndex = 0;
             this.grdDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDataGrid_CellEndEdit);
             this.grdDataGrid.SelectionChanged += new System.EventHandler(this.grdDataGrid_SelectionChanged);
@@ -288,156 +289,29 @@
             this.cmdFind.UseVisualStyleBackColor = true;
             this.cmdFind.Click += new System.EventHandler(this.cmdFind_Click);
             // 
-            // cmdWritePresction
+            // cmdIndoorPatients
             // 
-            this.cmdWritePresction.Location = new System.Drawing.Point(783, 3);
-            this.cmdWritePresction.Name = "cmdWritePresction";
-            this.cmdWritePresction.Size = new System.Drawing.Size(109, 25);
-            this.cmdWritePresction.TabIndex = 16;
-            this.cmdWritePresction.Text = "Write Presction";
-            this.cmdWritePresction.UseVisualStyleBackColor = true;
-            this.cmdWritePresction.Click += new System.EventHandler(this.cmdWritePresction_Click);
+            this.cmdIndoorPatients.Location = new System.Drawing.Point(898, 3);
+            this.cmdIndoorPatients.Name = "cmdIndoorPatients";
+            this.cmdIndoorPatients.Size = new System.Drawing.Size(109, 25);
+            this.cmdIndoorPatients.TabIndex = 16;
+            this.cmdIndoorPatients.Text = "Indoor Patients";
+            this.cmdIndoorPatients.UseVisualStyleBackColor = true;
+            this.cmdIndoorPatients.Click += new System.EventHandler(this.cmdIndoorPatients_Click);
             // 
             // fraBill
             // 
-            this.fraBill.Controls.Add(this.groupBox2);
-            this.fraBill.Controls.Add(this.groupBox1);
             this.fraBill.Controls.Add(this.fraName);
             this.fraBill.Controls.Add(this.fraDate);
             this.fraBill.Controls.Add(this.tableLayoutPanel1);
             this.fraBill.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fraBill.Location = new System.Drawing.Point(10, 334);
             this.fraBill.Name = "fraBill";
-            this.fraBill.Size = new System.Drawing.Size(791, 266);
+            this.fraBill.Size = new System.Drawing.Size(550, 266);
             this.fraBill.TabIndex = 17;
             this.fraBill.TabStop = false;
             this.fraBill.Text = "Enter Charges";
             this.fraBill.Visible = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cmdBillReport);
-            this.groupBox2.Controls.Add(this.cmdCancelReceipt);
-            this.groupBox2.Controls.Add(this.cmdClear);
-            this.groupBox2.Controls.Add(this.cmdPatient);
-            this.groupBox2.Controls.Add(this.cmdOK);
-            this.groupBox2.Location = new System.Drawing.Point(569, 134);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 120);
-            this.groupBox2.TabIndex = 15;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Print";
-            // 
-            // cmdBillReport
-            // 
-            this.cmdBillReport.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdBillReport.Location = new System.Drawing.Point(22, 88);
-            this.cmdBillReport.Name = "cmdBillReport";
-            this.cmdBillReport.Size = new System.Drawing.Size(75, 25);
-            this.cmdBillReport.TabIndex = 8;
-            this.cmdBillReport.Text = "Bill Report";
-            this.cmdBillReport.UseVisualStyleBackColor = true;
-            this.cmdBillReport.Click += new System.EventHandler(this.cmdBillReport_Click);
-            // 
-            // cmdCancelReceipt
-            // 
-            this.cmdCancelReceipt.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCancelReceipt.Location = new System.Drawing.Point(103, 89);
-            this.cmdCancelReceipt.Name = "cmdCancelReceipt";
-            this.cmdCancelReceipt.Size = new System.Drawing.Size(75, 25);
-            this.cmdCancelReceipt.TabIndex = 7;
-            this.cmdCancelReceipt.Text = "Return";
-            this.cmdCancelReceipt.UseVisualStyleBackColor = true;
-            this.cmdCancelReceipt.Click += new System.EventHandler(this.cmdCancelReceipt_Click);
-            // 
-            // cmdClear
-            // 
-            this.cmdClear.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdClear.Location = new System.Drawing.Point(22, 60);
-            this.cmdClear.Name = "cmdClear";
-            this.cmdClear.Size = new System.Drawing.Size(75, 25);
-            this.cmdClear.TabIndex = 6;
-            this.cmdClear.Text = "Clear";
-            this.cmdClear.UseVisualStyleBackColor = true;
-            this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
-            // 
-            // cmdPatient
-            // 
-            this.cmdPatient.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdPatient.Location = new System.Drawing.Point(103, 33);
-            this.cmdPatient.Name = "cmdPatient";
-            this.cmdPatient.Size = new System.Drawing.Size(75, 52);
-            this.cmdPatient.TabIndex = 5;
-            this.cmdPatient.Text = "Patient Information";
-            this.cmdPatient.UseVisualStyleBackColor = true;
-            this.cmdPatient.Click += new System.EventHandler(this.cmdPatient_Click);
-            // 
-            // cmdOK
-            // 
-            this.cmdOK.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdOK.Location = new System.Drawing.Point(22, 33);
-            this.cmdOK.Name = "cmdOK";
-            this.cmdOK.Size = new System.Drawing.Size(75, 25);
-            this.cmdOK.TabIndex = 4;
-            this.cmdOK.Text = "Receipt";
-            this.cmdOK.UseVisualStyleBackColor = true;
-            this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cmdSaveTo);
-            this.groupBox1.Controls.Add(this.cmdSerial);
-            this.groupBox1.Controls.Add(this.cmdAdmit);
-            this.groupBox1.Controls.Add(this.cmdSave);
-            this.groupBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(569, 30);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 88);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "See Admit";
-            // 
-            // cmdSaveTo
-            // 
-            this.cmdSaveTo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdSaveTo.Location = new System.Drawing.Point(96, 57);
-            this.cmdSaveTo.Name = "cmdSaveTo";
-            this.cmdSaveTo.Size = new System.Drawing.Size(75, 25);
-            this.cmdSaveTo.TabIndex = 3;
-            this.cmdSaveTo.Text = "Save There";
-            this.cmdSaveTo.UseVisualStyleBackColor = true;
-            // 
-            // cmdSerial
-            // 
-            this.cmdSerial.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdSerial.Location = new System.Drawing.Point(15, 57);
-            this.cmdSerial.Name = "cmdSerial";
-            this.cmdSerial.Size = new System.Drawing.Size(75, 25);
-            this.cmdSerial.TabIndex = 2;
-            this.cmdSerial.Text = "Set Serial";
-            this.cmdSerial.UseVisualStyleBackColor = true;
-            this.cmdSerial.Click += new System.EventHandler(this.cmdSerial_Click);
-            // 
-            // cmdAdmit
-            // 
-            this.cmdAdmit.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAdmit.Location = new System.Drawing.Point(96, 30);
-            this.cmdAdmit.Name = "cmdAdmit";
-            this.cmdAdmit.Size = new System.Drawing.Size(75, 25);
-            this.cmdAdmit.TabIndex = 1;
-            this.cmdAdmit.Text = "Admit";
-            this.cmdAdmit.UseVisualStyleBackColor = true;
-            this.cmdAdmit.Click += new System.EventHandler(this.cmdAdmit_Click);
-            // 
-            // cmdSave
-            // 
-            this.cmdSave.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdSave.Location = new System.Drawing.Point(15, 30);
-            this.cmdSave.Name = "cmdSave";
-            this.cmdSave.Size = new System.Drawing.Size(75, 25);
-            this.cmdSave.TabIndex = 0;
-            this.cmdSave.Text = "Save Here";
-            this.cmdSave.UseVisualStyleBackColor = true;
             // 
             // fraName
             // 
@@ -1087,6 +961,135 @@
             this.txtCharges4.Size = new System.Drawing.Size(30, 20);
             this.txtCharges4.TabIndex = 39;
             // 
+            // gbPrint
+            // 
+            this.gbPrint.Controls.Add(this.cmdBillReport);
+            this.gbPrint.Controls.Add(this.cmdCancelReceipt);
+            this.gbPrint.Controls.Add(this.cmdClear);
+            this.gbPrint.Controls.Add(this.cmdPatient);
+            this.gbPrint.Controls.Add(this.cmdOK);
+            this.gbPrint.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbPrint.Location = new System.Drawing.Point(587, 468);
+            this.gbPrint.Name = "gbPrint";
+            this.gbPrint.Size = new System.Drawing.Size(200, 120);
+            this.gbPrint.TabIndex = 15;
+            this.gbPrint.TabStop = false;
+            this.gbPrint.Text = "Print";
+            this.gbPrint.Visible = false;
+            // 
+            // cmdBillReport
+            // 
+            this.cmdBillReport.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdBillReport.Location = new System.Drawing.Point(22, 88);
+            this.cmdBillReport.Name = "cmdBillReport";
+            this.cmdBillReport.Size = new System.Drawing.Size(75, 25);
+            this.cmdBillReport.TabIndex = 8;
+            this.cmdBillReport.Text = "Bill Report";
+            this.cmdBillReport.UseVisualStyleBackColor = true;
+            this.cmdBillReport.Click += new System.EventHandler(this.cmdBillReport_Click);
+            // 
+            // cmdCancelReceipt
+            // 
+            this.cmdCancelReceipt.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelReceipt.Location = new System.Drawing.Point(103, 89);
+            this.cmdCancelReceipt.Name = "cmdCancelReceipt";
+            this.cmdCancelReceipt.Size = new System.Drawing.Size(75, 25);
+            this.cmdCancelReceipt.TabIndex = 7;
+            this.cmdCancelReceipt.Text = "Return";
+            this.cmdCancelReceipt.UseVisualStyleBackColor = true;
+            this.cmdCancelReceipt.Click += new System.EventHandler(this.cmdCancelReceipt_Click);
+            // 
+            // cmdClear
+            // 
+            this.cmdClear.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdClear.Location = new System.Drawing.Point(22, 60);
+            this.cmdClear.Name = "cmdClear";
+            this.cmdClear.Size = new System.Drawing.Size(75, 25);
+            this.cmdClear.TabIndex = 6;
+            this.cmdClear.Text = "Clear";
+            this.cmdClear.UseVisualStyleBackColor = true;
+            this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
+            // 
+            // cmdPatient
+            // 
+            this.cmdPatient.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdPatient.Location = new System.Drawing.Point(103, 33);
+            this.cmdPatient.Name = "cmdPatient";
+            this.cmdPatient.Size = new System.Drawing.Size(75, 52);
+            this.cmdPatient.TabIndex = 5;
+            this.cmdPatient.Text = "Patient Information";
+            this.cmdPatient.UseVisualStyleBackColor = true;
+            this.cmdPatient.Click += new System.EventHandler(this.cmdPatient_Click);
+            // 
+            // cmdOK
+            // 
+            this.cmdOK.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdOK.Location = new System.Drawing.Point(22, 33);
+            this.cmdOK.Name = "cmdOK";
+            this.cmdOK.Size = new System.Drawing.Size(75, 25);
+            this.cmdOK.TabIndex = 4;
+            this.cmdOK.Text = "Receipt";
+            this.cmdOK.UseVisualStyleBackColor = true;
+            this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmdSaveTo);
+            this.groupBox1.Controls.Add(this.cmdSerial);
+            this.groupBox1.Controls.Add(this.cmdAdmit);
+            this.groupBox1.Controls.Add(this.cmdSave);
+            this.groupBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(587, 364);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 88);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "See Admit";
+            // 
+            // cmdSaveTo
+            // 
+            this.cmdSaveTo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdSaveTo.Location = new System.Drawing.Point(96, 57);
+            this.cmdSaveTo.Name = "cmdSaveTo";
+            this.cmdSaveTo.Size = new System.Drawing.Size(75, 25);
+            this.cmdSaveTo.TabIndex = 3;
+            this.cmdSaveTo.Text = "Save There";
+            this.cmdSaveTo.UseVisualStyleBackColor = true;
+            this.cmdSaveTo.Click += new System.EventHandler(this.cmdSaveTo_Click);
+            // 
+            // cmdSerial
+            // 
+            this.cmdSerial.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdSerial.Location = new System.Drawing.Point(15, 57);
+            this.cmdSerial.Name = "cmdSerial";
+            this.cmdSerial.Size = new System.Drawing.Size(75, 25);
+            this.cmdSerial.TabIndex = 2;
+            this.cmdSerial.Text = "Set Serial";
+            this.cmdSerial.UseVisualStyleBackColor = true;
+            this.cmdSerial.Click += new System.EventHandler(this.cmdSerial_Click);
+            // 
+            // cmdAdmit
+            // 
+            this.cmdAdmit.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdAdmit.Location = new System.Drawing.Point(96, 30);
+            this.cmdAdmit.Name = "cmdAdmit";
+            this.cmdAdmit.Size = new System.Drawing.Size(75, 25);
+            this.cmdAdmit.TabIndex = 1;
+            this.cmdAdmit.Text = "Admit";
+            this.cmdAdmit.UseVisualStyleBackColor = true;
+            this.cmdAdmit.Click += new System.EventHandler(this.cmdAdmit_Click);
+            // 
+            // cmdSave
+            // 
+            this.cmdSave.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdSave.Location = new System.Drawing.Point(15, 30);
+            this.cmdSave.Name = "cmdSave";
+            this.cmdSave.Size = new System.Drawing.Size(75, 25);
+            this.cmdSave.TabIndex = 0;
+            this.cmdSave.Text = "Save Here";
+            this.cmdSave.UseVisualStyleBackColor = true;
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
+            // 
             // cmdAdd
             // 
             this.cmdAdd.Location = new System.Drawing.Point(0, -1);
@@ -1109,7 +1112,8 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 10;
+            this.tableLayoutPanel3.ColumnCount = 11;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -1124,17 +1128,18 @@
             this.tableLayoutPanel3.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdDelete, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdRefresh, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.cmdWritePresction, 9, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdClose, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdFind, 8, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdGetREceiptNo, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.cmdWritePresction, 9, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdBill, 7, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmdView, 6, 0);
+            this.tableLayoutPanel3.Controls.Add(this.cmdIndoorPatients, 10, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 286);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(895, 33);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1105, 33);
             this.tableLayoutPanel3.TabIndex = 20;
             // 
             // panel1
@@ -1154,6 +1159,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(76, 26);
             this.panel2.TabIndex = 21;
+            // 
+            // cmdWritePresction
+            // 
+            this.cmdWritePresction.Location = new System.Drawing.Point(783, 3);
+            this.cmdWritePresction.Name = "cmdWritePresction";
+            this.cmdWritePresction.Size = new System.Drawing.Size(109, 25);
+            this.cmdWritePresction.TabIndex = 22;
+            this.cmdWritePresction.Text = "Write Presction";
+            this.cmdWritePresction.UseVisualStyleBackColor = true;
+            this.cmdWritePresction.Click += new System.EventHandler(this.cmdWritePresction_Click_1);
             // 
             // tableLayoutPanel4
             // 
@@ -1180,23 +1195,24 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(914, 613);
+            this.ClientSize = new System.Drawing.Size(1219, 613);
+            this.Controls.Add(this.gbPrint);
             this.Controls.Add(this.tableLayoutPanel4);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.fraBill);
             this.Controls.Add(this.grdDataGrid);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataGrid)).EndInit();
             this.fraBill.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.fraName.ResumeLayout(false);
             this.fraName.PerformLayout();
             this.fraDate.ResumeLayout(false);
@@ -1204,6 +1220,8 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.gbPrint.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1230,7 +1248,7 @@
         private System.Windows.Forms.Button cmdView;
         private System.Windows.Forms.Button cmdBill;
         private System.Windows.Forms.Button cmdFind;
-        private System.Windows.Forms.Button cmdWritePresction;
+        private System.Windows.Forms.Button cmdIndoorPatients;
         private System.Windows.Forms.GroupBox fraBill;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label label1;
@@ -1286,7 +1304,7 @@
         private System.Windows.Forms.GroupBox fraName;
         private System.Windows.Forms.TextBox txtDesease;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbPrint;
         private System.Windows.Forms.Button cmdSaveTo;
         private System.Windows.Forms.Button cmdSerial;
         private System.Windows.Forms.Button cmdAdmit;
@@ -1306,6 +1324,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button cmdWritePresction;
 
 
     }

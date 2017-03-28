@@ -79,6 +79,8 @@ namespace Medical
         {
             SetButtons(true);
             setdatagrid();
+            if (grdDataGrid.Rows.Count > 0)
+                grdDataGrid.CurrentCell = grdDataGrid.Rows[grdDataGrid.Rows.Count - 2].Cells[1];
             patientId.Clear();
         }
 
@@ -164,7 +166,7 @@ namespace Medical
         private void cmdEdit_Click(object sender, EventArgs e)
         {
             SetButtons(false);
-            setdatagrid();
+            //setdatagrid();
         }
 
         private void cmdClose_Click(object sender, EventArgs e)
@@ -184,6 +186,7 @@ namespace Medical
 
         private void cmdFirst_Click(object sender, EventArgs e)
         {
+            grdDataGrid.CurrentCell = grdDataGrid.Rows[0].Cells[1];
             grdDataGrid.Rows[0].Selected = true;
             grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[0].Index;
         }
@@ -192,9 +195,10 @@ namespace Medical
         {
             if (!grdDataGrid.Rows[0].Selected)
             {
-                if (grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1] != null)
+                if (grdDataGrid.CurrentCell.RowIndex > 0 && grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1] != null)
                 {
                     grdDataGrid.CurrentCell = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Cells[1];
+                    if (grdDataGrid.CurrentCell.RowIndex > 0)
                     grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Index;
                 }
             }
@@ -207,16 +211,18 @@ namespace Medical
                 if (grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex + 1] != null)
                 {
                     grdDataGrid.CurrentCell = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex + 1].Cells[1];
-                    grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex + 1].Index;
+                    if (grdDataGrid.CurrentCell.RowIndex > 0)
+                        grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Index;
                 }
             }
         }
 
         private void cmdLast_Click(object sender, EventArgs e)
         {
-            int nRowIndex = grdDataGrid.Rows.Count - 1;
+            int nRowIndex = grdDataGrid.Rows.Count - 2;
             int nColumnIndex = 3;
 
+            grdDataGrid.CurrentCell = grdDataGrid.Rows[nRowIndex].Cells[1];
             grdDataGrid.Rows[nRowIndex].Selected = true;
             grdDataGrid.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
@@ -236,6 +242,7 @@ namespace Medical
         private void cmdBill_Click(object sender, EventArgs e)
         {
             fraBill.Visible = true;
+            gbPrint.Visible = true;
 
             lblName.Text = Convert.ToString(this.grdDataGrid.CurrentRow.Cells[2].Value);
             lblReceiptNo.Text = Convert.ToString(this.grdDataGrid.CurrentRow.Cells[8].Value);
@@ -265,15 +272,17 @@ namespace Medical
         private void cmdCancelReceipt_Click(object sender, EventArgs e)
         {
             fraBill.Visible = false;
+            gbPrint.Visible = false;
         }
 
         private void cmdOK_Click(object sender, EventArgs e)
         {
-            chargecalc();
-            generateReceipt();
+            double total = chargecalc();
+            generateReceipt(total);
+            setdatagrid();
         }
 
-        private void generateReceipt()
+        private void generateReceipt(double total)
         {
             //Create a byte array that will eventually hold our final PDF
             Byte[] bytes;
@@ -294,7 +303,7 @@ namespace Medical
                         var receiptHtml = File.ReadAllText(Application.StartupPath + "\\Receipt.html");
 
                         receiptHtml = receiptHtml.Replace("{{Name}}", Convert.ToString(lblName.Text));
-                        receiptHtml = receiptHtml.Replace("{{Total}}", Convert.ToString(txtCharges14.Text));
+                        receiptHtml = receiptHtml.Replace("{{Total}}", Convert.ToString(total));
                         receiptHtml = receiptHtml.Replace("{{FromDate}}", Convert.ToString(dateFrom1.Text));
                         receiptHtml = receiptHtml.Replace("{{ToDate}}", Convert.ToString(dateTo1.Text));
                         if (txtDesease.Text != null)
@@ -343,13 +352,14 @@ namespace Medical
             //Here I'm writing them to disk but if you were in ASP.Net you might Response.BinaryWrite() them.
             //You could also write the bytes to a database in a varbinary() column (but please don't) or you
             //could pass them to another function for further PDF processing.
-            var pdfFile = Application.StartupPath + "\\" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
+            var pdfFile = Application.StartupPath + "\\" + "Receipt_" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
             File.WriteAllBytes(pdfFile, bytes);
             System.Diagnostics.Process.Start(pdfFile);
         }
 
-        private void chargecalc()
+        private double chargecalc()
         {
+            int number;
             double total = 0;
             //int i = 0;
             //string strRupeeInWord = null;
@@ -358,20 +368,20 @@ namespace Medical
             //string strNum = null;
             //int l = 0;
 
-            double box_total = Convert.ToDouble(txtCharges0.Text) +
-                Convert.ToDouble(txtCharges1.Text) +
-                Convert.ToDouble(txtCharges2.Text) +
-                Convert.ToDouble(txtCharges3.Text) +
-                Convert.ToDouble(txtCharges4.Text) +
-                Convert.ToDouble(txtCharges5.Text) +
-                Convert.ToDouble(txtCharges6.Text) +
-                Convert.ToDouble(txtCharges7.Text) +
-                Convert.ToDouble(txtCharges8.Text) +
-                Convert.ToDouble(txtCharges9.Text) +
-                Convert.ToDouble(txtCharges10.Text) +
-                Convert.ToDouble(txtCharges11.Text) +
-                Convert.ToDouble(txtCharges12.Text) +
-                Convert.ToDouble(txtCharges13.Text);
+            double box_total = (int.TryParse(txtCharges0.Text, out number) ? Convert.ToDouble(txtCharges0.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges1.Text, out number) ? Convert.ToDouble(txtCharges1.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges2.Text, out number) ? Convert.ToDouble(txtCharges2.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges3.Text, out number) ? Convert.ToDouble(txtCharges3.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges4.Text, out number) ? Convert.ToDouble(txtCharges4.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges5.Text, out number) ? Convert.ToDouble(txtCharges5.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges6.Text, out number) ? Convert.ToDouble(txtCharges6.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges7.Text, out number) ? Convert.ToDouble(txtCharges7.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges8.Text, out number) ? Convert.ToDouble(txtCharges8.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges9.Text, out number) ? Convert.ToDouble(txtCharges9.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges10.Text, out number) ? Convert.ToDouble(txtCharges10.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges11.Text, out number) ? Convert.ToDouble(txtCharges11.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges12.Text, out number) ? Convert.ToDouble(txtCharges12.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges13.Text, out number) ? Convert.ToDouble(txtCharges13.Text) : Convert.ToDouble(0));
 
             total = total + box_total;
 
@@ -385,20 +395,20 @@ namespace Medical
                         if (Convert.ToInt32(row.Cells[0].Value) != 0)
                         {
                             List<OleDbParameter> param = new List<OleDbParameter>();
-                            param.Add(new OleDbParameter("@badcharge", txtCharges0.Text));
-                            param.Add(new OleDbParameter("@ivdripcharge", txtCharges1.Text));
-                            param.Add(new OleDbParameter("@pint", txtCharges2.Text));
-                            param.Add(new OleDbParameter("@ivset", txtCharges3.Text));
-                            param.Add(new OleDbParameter("@scalpvein", txtCharges4.Text));
-                            param.Add(new OleDbParameter("@o2charge", txtCharges5.Text));
-                            param.Add(new OleDbParameter("@counsultationfee", txtCharges6.Text));
-                            param.Add(new OleDbParameter("@reCounsultationfee", txtCharges7.Text));
-                            param.Add(new OleDbParameter("@dailyexaminationfee", txtCharges8.Text));
-                            param.Add(new OleDbParameter("@injectioncharge", txtCharges9.Text));
-                            param.Add(new OleDbParameter("@ecgcharge", txtCharges10.Text));
-                            param.Add(new OleDbParameter("@xraycharge", txtCharges11.Text));
-                            param.Add(new OleDbParameter("@cardiacmonitorcharge", txtCharges12.Text));
-                            param.Add(new OleDbParameter("@other", txtCharges13.Text));
+                            param.Add(new OleDbParameter("@badcharge", int.TryParse(txtCharges0.Text, out number) ? Convert.ToDouble(txtCharges0.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@ivdripcharge", int.TryParse(txtCharges1.Text, out number) ? Convert.ToDouble(txtCharges1.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@pint", int.TryParse(txtCharges2.Text, out number) ? Convert.ToDouble(txtCharges2.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@ivset", int.TryParse(txtCharges3.Text, out number) ? Convert.ToDouble(txtCharges3.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@scalpvein", int.TryParse(txtCharges4.Text, out number) ? Convert.ToDouble(txtCharges4.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@o2charge", int.TryParse(txtCharges5.Text, out number) ? Convert.ToDouble(txtCharges5.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@counsultationfee", int.TryParse(txtCharges6.Text, out number) ? Convert.ToDouble(txtCharges6.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@reCounsultationfee", int.TryParse(txtCharges7.Text, out number) ? Convert.ToDouble(txtCharges7.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@dailyexaminationfee", int.TryParse(txtCharges8.Text, out number) ? Convert.ToDouble(txtCharges8.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@injectioncharge", int.TryParse(txtCharges9.Text, out number) ? Convert.ToDouble(txtCharges9.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@ecgcharge", int.TryParse(txtCharges10.Text, out number) ? Convert.ToDouble(txtCharges10.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@xraycharge", int.TryParse(txtCharges11.Text, out number) ? Convert.ToDouble(txtCharges11.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@cardiacmonitorcharge", int.TryParse(txtCharges12.Text, out number) ? Convert.ToDouble(txtCharges12.Text) : Convert.ToDouble(0)));
+                            param.Add(new OleDbParameter("@other", int.TryParse(txtCharges13.Text, out number) ? Convert.ToDouble(txtCharges13.Text) : Convert.ToDouble(0)));
                             param.Add(new OleDbParameter("@total", Convert.ToInt32(total)));
                             param.Add(new OleDbParameter("@enddate", Convert.ToDateTime(dateTo1.Text).ToShortDateString()));
                             param.Add(new OleDbParameter("@desease", Convert.ToString(txtDesease.Text)));
@@ -408,7 +418,8 @@ namespace Medical
                     }
                 }
             }
-            setdatagrid();
+
+            return total;
         }
 
         private void cmdClear_Click(object sender, EventArgs e)
@@ -479,6 +490,7 @@ namespace Medical
             int nRowIndex = grdDataGrid.Rows.Count - 1;
             int nColumnIndex = 3;
 
+            grdDataGrid.CurrentCell = grdDataGrid.Rows[nRowIndex].Cells[1];
             grdDataGrid.Rows[nRowIndex].Selected = true;
             grdDataGrid.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
@@ -570,6 +582,10 @@ namespace Medical
             {
                 query = "select * from patient where ReceiptNo like '" + recNo.Trim() + "%' and [Date] between #" + fromDate + "# and #" + toDate + "#";
             }
+            else if (!string.IsNullOrEmpty(ptName) && fromDate != "1/1/0001" && toDate != "1/1/0001")
+            {
+                query = "select * from patient where Name like '" + ptName.Trim() + "%' and [Date] between #" + fromDate + "# and #" + toDate + "#";
+            }
             else if (fromDate != "1/1/0001" && toDate != "1/1/0001")
             {
                 query = "select * from patient where [Date] between #" + fromDate + "# and #" + toDate + "#";
@@ -585,7 +601,18 @@ namespace Medical
 
             if (query != "")
             {
-                grdDataGrid.DataSource = Operation.GetDataTable(query);
+                //grdDataGrid.DataSource = Operation.GetDataTable(query);
+                DataTable dt = new DataTable();
+                dt = Operation.GetDataTable(query);
+
+                if (dt.Rows.Count > 0)
+                {
+                    grdDataGrid.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Record is not found");
+                }
                 HideGridCol();
             }
             //else
@@ -659,6 +686,10 @@ namespace Medical
             {
                 query = "select SrNo,Name,Address,Total,ReceiptNo,Remark,EndDate from patient where ReceiptNo like '" + recNo.Trim() + "%' and [Date] between #" + fromDate + "# and #" + toDate + "#";
             }
+            else if (!string.IsNullOrEmpty(ptName) && fromDate != "1/1/0001" && toDate != "1/1/0001")
+            {
+                query = "select SrNo,Name,Address,Total,ReceiptNo,Remark,EndDate from patient where Name like '" + ptName.Trim() + "%' and [Date] between #" + fromDate + "# and #" + toDate + "#";
+            }
             else if (fromDate != "1/1/0001" && toDate != "1/1/0001")
             {
                 query = "select SrNo,Name,Address,Total,ReceiptNo,Remark,EndDate from patient where [Date] between #" + fromDate + "# and #" + toDate + "#";
@@ -682,7 +713,7 @@ namespace Medical
 
         public void ExportPatientInfoToPdf(DataTable dt)
         {
-            var pdfFile = Application.StartupPath + "\\" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
+            var pdfFile = Application.StartupPath + "\\" + "PatientInfo_" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
 
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(pdfFile, FileMode.Create));
@@ -770,7 +801,7 @@ namespace Medical
 
         public void ExportPatientDailyReportToPdf(DataTable dt)
         {
-            var pdfFile = Application.StartupPath + "\\" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
+            var pdfFile = Application.StartupPath + "\\" + "BillReport_" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + ".pdf";
 
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(pdfFile, FileMode.Create));
@@ -895,6 +926,89 @@ namespace Medical
 
             document.Close();
             ShowPdf(pdfFile);
+        }
+
+        private void cmdSave_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure ?", "prjMedical", MessageBoxButtons.YesNo);
+            if (Convert.ToString(result) == "Yes")
+            {
+                string fileName = "eyemedical.mdb";
+                string targetPath = @"C:\eye_doctor";
+                string sourcePath = @"D:\";
+
+                // Use Path class to manipulate file and directory paths.
+                string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+                string destFile = System.IO.Path.Combine(targetPath, fileName);
+
+                // To copy a folder's contents to a new location:
+                // Create a new target folder, if necessary.
+                if (!System.IO.Directory.Exists(targetPath))
+                    System.IO.Directory.CreateDirectory(targetPath);
+
+                // To copy a file to another location and 
+                // overwrite the destination file if it already exists.
+                if (System.IO.Directory.Exists(sourcePath))
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                else
+                    MessageBox.Show("Source Path not exists");
+            }
+        }
+
+        private void cmdSaveTo_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure ?", "prjMedical", MessageBoxButtons.YesNo);
+            if (Convert.ToString(result) == "Yes")
+            {
+                string fileName = "eyemedical.mdb";
+                string fileName1 = "eyemedical1.mdb";
+                string sourcePath = @"C:\doctor";
+                string targetPath = @"D:\";              
+
+                // Use Path class to manipulate file and directory paths.
+                string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+                string destFile = System.IO.Path.Combine(targetPath, fileName);
+                string destFile1 = System.IO.Path.Combine(targetPath, fileName1);
+
+                // To copy a folder's contents to a new location:
+                // Create a new target folder, if necessary.
+                if (!System.IO.Directory.Exists(targetPath))
+                    System.IO.Directory.CreateDirectory(targetPath);
+
+                // To copy a file to another location and 
+                // overwrite the destination file if it already exists.
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    System.IO.File.Copy(sourceFile, destFile1, true);
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                }
+                else
+                    MessageBox.Show("Source Path not exists");
+            }
+        }
+
+        private void cmdWritePresction_Click_1(object sender, EventArgs e)
+        {
+            if (grdDataGrid.CurrentCell != null)
+            {
+                string patientName = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[2].Value);
+                string patientAddress = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[6].Value);
+                string patientAge = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[3].Value);
+                string patientSex = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[4].Value);
+
+                frmPatientMaster objPatientMaster = new frmPatientMaster();
+                objPatientMaster.patientName = patientName;
+                objPatientMaster.patientAddress = patientAddress;
+                objPatientMaster.patientAge = patientAge;
+                objPatientMaster.patientSex = patientSex;
+                objPatientMaster.ShowDialog();
+            }
+        }
+
+        private void cmdIndoorPatients_Click(object sender, EventArgs e)
+        {
+            frmAdmitPatient objAdmitPatient = new frmAdmitPatient();
+            objAdmitPatient.ShowDialog();
         }
     }
 }
