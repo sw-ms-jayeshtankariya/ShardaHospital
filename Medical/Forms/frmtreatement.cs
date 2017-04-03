@@ -165,25 +165,25 @@ namespace Medical
             foreach (DataGridViewRow row in dgtreatment.SelectedRows)
             {
                 // PID,DateOfConsultancy,pname,fname,mname,lname,Sex,Age,Rx,Name,MorningDose,NoonDose,EveningDose,NoOfDay,Qty,AS1,Bp,ChipComplain,CNS,CVS,Doa,Dod,RS,pulse,Temp,FollowupDate,chiefComplainName
-                txtAs.Text = Convert.ToString(row.Cells[15].Value);
-                txtBp.Text = Convert.ToString(row.Cells[16].Value);
-                cmbComplain.Text = Convert.ToString(row.Cells[17].Value);
-                txtCns.Text = Convert.ToString(row.Cells[18].Value);
-                txtCvs.Text = Convert.ToString(row.Cells[19].Value);
+                txtAs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[15].Value)) ? Convert.ToString(row.Cells[15].Value) : txtAs.Text;
+                txtBp.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[16].Value)) ? Convert.ToString(row.Cells[16].Value) : txtBp.Text;
+                cmbComplain.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[17].Value)) ? Convert.ToString(row.Cells[17].Value) : cmbComplain.Text;
+                txtCns.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[18].Value)) ? Convert.ToString(row.Cells[18].Value) : txtCns.Text;
+                txtCvs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[19].Value)) ? Convert.ToString(row.Cells[19].Value) : txtCvs.Text;
                 dtpDateOfConsult.Text = Convert.ToString(row.Cells[1].Value) != "" ? Convert.ToDateTime(row.Cells[1].Value).ToShortDateString() : DateTime.Now.ToShortDateString();
-                dtpDoa.Text = Convert.ToString(row.Cells[20].Value);
-                dtpDod.Text = Convert.ToString(row.Cells[21].Value);
-                cmbEdose.Text = Convert.ToString(row.Cells[12].Value);
+                dtpDoa.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[20].Value)) ? Convert.ToString(row.Cells[20].Value) : dtpDoa.Text;
+                dtpDod.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[21].Value)) ? Convert.ToString(row.Cells[21].Value) : dtpDod.Text;
+                cmbEdose.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[12].Value)) ? Convert.ToString(row.Cells[12].Value) : cmbEdose.Text;
                 dtpFollowupDate.Text = Convert.ToString(row.Cells[25].Value) != "" ? Convert.ToDateTime(row.Cells[25].Value).ToShortDateString() : DateTime.Now.ToShortDateString();
-                cmbMdose.SelectedValue = Convert.ToString(row.Cells[10].Value);
-                txtNoOfDay.Text = Convert.ToString(row.Cells[13].Value);
-                cmbNdose.SelectedValue = Convert.ToString(row.Cells[11].Value);
-                txtpulse.Text = Convert.ToString(row.Cells[23].Value);
-                txtQty.Text = Convert.ToString(row.Cells[14].Value);
-                txtRs.Text = Convert.ToString(row.Cells[22].Value);
-                cmbRx.Text = Convert.ToString(row.Cells[8].Value);
-                txtTemp.Text = Convert.ToString(row.Cells[24].Value);
-                cmbName.Text = Convert.ToString(row.Cells[9].Value);
+                cmbMdose.SelectedValue = !string.IsNullOrEmpty(Convert.ToString(row.Cells[10].Value)) ? Convert.ToString(row.Cells[10].Value) : cmbMdose.SelectedValue;
+                txtNoOfDay.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[13].Value)) ? Convert.ToString(row.Cells[13].Value) : txtNoOfDay.Text;
+                cmbNdose.SelectedValue = !string.IsNullOrEmpty(Convert.ToString(row.Cells[11].Value)) ? Convert.ToString(row.Cells[11].Value) : cmbNdose.SelectedValue;
+                txtpulse.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[23].Value)) ? Convert.ToString(row.Cells[23].Value) : txtpulse.Text;
+                txtQty.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[14].Value)) ? Convert.ToString(row.Cells[14].Value) : txtQty.Text;
+                txtRs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[22].Value)) ? Convert.ToString(row.Cells[22].Value) : txtRs.Text;
+                cmbRx.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[8].Value)) ? Convert.ToString(row.Cells[8].Value) : cmbRx.Text;
+                txtTemp.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[24].Value)) ? Convert.ToString(row.Cells[24].Value) : txtTemp.Text;
+                cmbName.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[9].Value)) ? Convert.ToString(row.Cells[9].Value) : cmbName.Text;
 
                 lstChiefComplain.Items.Clear();
                 if (Convert.ToString(row.Cells[26].Value) != null)

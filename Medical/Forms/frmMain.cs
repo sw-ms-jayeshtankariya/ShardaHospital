@@ -131,7 +131,7 @@ namespace Medical
                     }
                 }
             }
-            setdatagrid();
+            //setdatagrid();
             patientId.Clear();
             SetButtons(true);
         }
@@ -199,7 +199,7 @@ namespace Medical
                 {
                     grdDataGrid.CurrentCell = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Cells[1];
                     if (grdDataGrid.CurrentCell.RowIndex > 0)
-                    grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Index;
+                        grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Index;
                 }
             }
         }
@@ -629,25 +629,37 @@ namespace Medical
 
             if (dt.Rows.Count > 0)
             {
-                foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
+                if (grdDataGrid.CurrentCell != null)
                 {
-                    if (!row.IsNewRow)
+                    if (!String.IsNullOrEmpty(Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[0].Value)))
                     {
-                        if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
-                        {
-                            if (Convert.ToInt32(row.Cells[0].Value) != 0)
-                            {
-                                row.Cells[8].Value = Convert.ToInt32(dt.Rows[0].ItemArray[0]) + 1;
+                        grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[8].Value = Convert.ToInt32(dt.Rows[0].ItemArray[0]) + 1;
 
-                                int Id = Convert.ToInt32(row.Cells[0].Value);
-                                if (!patientId.Contains(Id))
-                                    patientId.Add(Id);
-                            }
-                        }
+                        int Id = Convert.ToInt32(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[0].Value);
+                        if (!patientId.Contains(Id))
+                            patientId.Add(Id);
                     }
-                    break;
                 }
                 SetButtons(false);
+                //foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
+                //{
+                //    if (!row.IsNewRow)
+                //    {
+                //        if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
+                //        {
+                //            if (Convert.ToInt32(row.Cells[0].Value) != 0)
+                //            {
+                //                row.Cells[8].Value = Convert.ToInt32(dt.Rows[0].ItemArray[0]) + 1;
+
+                //                int Id = Convert.ToInt32(row.Cells[0].Value);
+                //                if (!patientId.Contains(Id))
+                //                    patientId.Add(Id);
+                //            }
+                //        }
+                //    }
+                //    break;
+                //}
+                //SetButtons(false);
             }
         }
 
@@ -876,7 +888,7 @@ namespace Medical
                 table.WidthPercentage = 100;
                 finalTotal += total;
             }
-            
+
             PdfPCell lastcell = new PdfPCell(new Phrase("Patient Daily Report"));
             lastcell.Colspan = dt.Columns.Count;
             lastcell.HorizontalAlignment = 1;
@@ -963,7 +975,7 @@ namespace Medical
                 string fileName = "eyemedical.mdb";
                 string fileName1 = "eyemedical1.mdb";
                 string sourcePath = @"C:\doctor";
-                string targetPath = @"D:\";              
+                string targetPath = @"D:\";
 
                 // Use Path class to manipulate file and directory paths.
                 string sourceFile = System.IO.Path.Combine(sourcePath, fileName);

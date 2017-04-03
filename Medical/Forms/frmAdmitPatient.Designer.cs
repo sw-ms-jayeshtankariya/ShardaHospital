@@ -304,6 +304,8 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAdmitPatient";
             this.Text = "Enter Indoor Patient Dose details";
             this.Load += new System.EventHandler(this.frmAdmitPatient_Load);
