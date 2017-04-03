@@ -22,6 +22,7 @@ namespace Medical
         public string patientAge { get; set; }
         public string patientSex { get; set; }
         public string patientAddress { get; set; }
+        bool IsGetPtCode = false;
 
         public frmPatientMaster()
         {
@@ -111,7 +112,26 @@ namespace Medical
                     param.Add(new OleDbParameter("@patientcode", Convert.ToString(txtFields0.Text)));
                     Operation.ExecuteNonQuery("update pmaster set fname=@frstname, Address=@address, Age=@age, Sex=@sex where PatientCode=@patientcode", param);
 
-                    setdatagrid();
+                    int currentRow = dgPatientMaster.CurrentCell.RowIndex;
+                    if (currentRow != 0 && dgPatientMaster.Rows.Count > 1)
+                        setdatagrid();
+                    else
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Rows.Clear();
+                        dt.Columns.Add("PatientCode");
+                        dt.Columns.Add("fname");
+                        dt.Columns.Add("mname");
+                        dt.Columns.Add("lname");
+                        dt.Columns.Add("Address");
+                        dt.Columns.Add("Sex");
+                        dt.Columns.Add("Age", typeof(int));
+
+                        dt.Rows.Add(txtFields0.Text, txtFields1.Text, "", "", txtFields4.Text, txtFields5.Text, Convert.ToInt32(txtFields6.Text));
+                        dgPatientMaster.DataSource = dt;
+                    }
+                    dgPatientMaster.CurrentCell = dgPatientMaster[0, currentRow];
+
                     //oleDbCmd = new OleDbCommand("update pmaster set fname=@frstname, Address=@address, Age=@age, Sex=@sex where PatientCode=@patientcode", con);
                     //con.Open();
                     //oleDbCmd.Parameters.AddWithValue("@frstname", Convert.ToString(txtFields1.Text));
@@ -139,7 +159,41 @@ namespace Medical
                     param.Add(new OleDbParameter("@sex", Convert.ToString(txtFields5.Text)));
                     Operation.ExecuteNonQuery("insert into pmaster(PatientCode,fname,Address,Age,Sex) values(@patientcode,@frstname,@address,@age,@sex)", param);
 
-                    setdatagrid();
+                    if (!IsGetPtCode)
+                    {
+                        setdatagrid();
+
+                        int numOfRows = dgPatientMaster.Rows.Count - 2;
+                        dgPatientMaster.CurrentCell = dgPatientMaster[0, numOfRows];
+                    }
+                    else
+                    {
+                        //dgPatientMaster.Columns[0].Name = "Product ID";
+                        //dgPatientMaster.Columns[1].Name = "Product Name";
+                        //dgPatientMaster.Columns[2].Name = "Product Price";
+                        //this.dgPatientMaster.Columns.Add("PatientCode", "fname", "Address", "Age", "Sex");
+                        //this.dgPatientMaster.Columns.Add("PatientCode", "PatientCode");
+                        //this.dgPatientMaster.Columns.Add("fname", "fname");
+                        //this.dgPatientMaster.Columns.Add("mname", "mname");
+                        //this.dgPatientMaster.Columns.Add("lname", "lname");
+                        //this.dgPatientMaster.Columns.Add("Address", "Address");
+                        //this.dgPatientMaster.Columns.Add("Age", "Age");
+                        //this.dgPatientMaster.Columns.Add("Sex", "Sex");   
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("PatientCode");
+                        dt.Columns.Add("fname");
+                        dt.Columns.Add("mname");
+                        dt.Columns.Add("lname");
+                        dt.Columns.Add("Address");
+                        dt.Columns.Add("Sex");
+                        dt.Columns.Add("Age", typeof(int));
+
+                        dt.Rows.Add(txtFields0.Text, txtFields1.Text, "", "", txtFields4.Text, txtFields5.Text, Convert.ToInt32(txtFields6.Text));
+                        dgPatientMaster.DataSource = dt;
+                        dgPatientMaster.Columns[2].Visible = false;
+                        dgPatientMaster.Columns[3].Visible = false;
+                    }
+
                     //oleDbCmd = new OleDbCommand("insert into pmaster(PatientCode,fname,Address,Age,Sex) values(@patientcode,@frstname,@address,@age,@sex)", con);
                     //con.Open();
                     //oleDbCmd.Parameters.AddWithValue("@patientcode", Convert.ToString(txtFields0.Text));
@@ -158,6 +212,7 @@ namespace Medical
         }
         private void cmdAdd_Click(object sender, EventArgs e)
         {
+            IsGetPtCode = false;
             SetButtons(false);
 
             int nRowIndex = dgPatientMaster.Rows.Count - 1;
@@ -283,7 +338,11 @@ namespace Medical
                     txtFields5.Text = patientSex;
                     txtFields6.Text = patientAge;
 
+                    dt.Rows.Clear();
+                    dgPatientMaster.DataSource = dt;
                     SetButtons(false);
+
+                    IsGetPtCode = true;
                 }
                 else
                 {
@@ -321,7 +380,7 @@ namespace Medical
         private void cmdFirst_Click(object sender, EventArgs e)
         {
             dgPatientMaster.CurrentCell = dgPatientMaster[0, 0];
-            
+
             //dgPatientMaster.Rows[0].Selected = true;
             //dgPatientMaster.FirstDisplayedScrollingRowIndex = dgPatientMaster.Rows[0].Index;
         }
