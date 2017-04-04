@@ -108,7 +108,7 @@
             this.txtFields0.Location = new System.Drawing.Point(37, 18);
             this.txtFields0.Name = "txtFields0";
             this.txtFields0.Size = new System.Drawing.Size(125, 22);
-            this.txtFields0.TabIndex = 4;
+            this.txtFields0.TabIndex = 0;
             // 
             // label1
             // 
@@ -137,7 +137,7 @@
             this.txtCode.Location = new System.Drawing.Point(168, 18);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(100, 22);
-            this.txtCode.TabIndex = 2;
+            this.txtCode.TabIndex = 1;
             // 
             // txtName
             // 
@@ -145,7 +145,7 @@
             this.txtName.Location = new System.Drawing.Point(355, 18);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(247, 22);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 2;
             // 
             // cmdPfind
             // 
@@ -153,7 +153,7 @@
             this.cmdPfind.Location = new System.Drawing.Point(608, 17);
             this.cmdPfind.Name = "cmdPfind";
             this.cmdPfind.Size = new System.Drawing.Size(75, 25);
-            this.cmdPfind.TabIndex = 5;
+            this.cmdPfind.TabIndex = 4;
             this.cmdPfind.Text = "Find";
             this.cmdPfind.UseVisualStyleBackColor = true;
             this.cmdPfind.Click += new System.EventHandler(this.cmdPfind_Click);
@@ -178,7 +178,7 @@
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.Size = new System.Drawing.Size(707, 59);
-            this.tableLayoutPanel3.TabIndex = 2;
+            this.tableLayoutPanel3.TabIndex = 1;
             // 
             // txtFields3
             // 
@@ -186,7 +186,7 @@
             this.txtFields3.Location = new System.Drawing.Point(540, 18);
             this.txtFields3.Name = "txtFields3";
             this.txtFields3.Size = new System.Drawing.Size(104, 22);
-            this.txtFields3.TabIndex = 3;
+            this.txtFields3.TabIndex = 2;
             this.txtFields3.Visible = false;
             // 
             // label6
@@ -219,7 +219,7 @@
             this.txtFields2.Location = new System.Drawing.Point(358, 18);
             this.txtFields2.Name = "txtFields2";
             this.txtFields2.Size = new System.Drawing.Size(105, 22);
-            this.txtFields2.TabIndex = 2;
+            this.txtFields2.TabIndex = 1;
             this.txtFields2.Visible = false;
             // 
             // txtFields1
@@ -228,7 +228,7 @@
             this.txtFields1.Location = new System.Drawing.Point(49, 18);
             this.txtFields1.Name = "txtFields1";
             this.txtFields1.Size = new System.Drawing.Size(216, 22);
-            this.txtFields1.TabIndex = 4;
+            this.txtFields1.TabIndex = 0;
             // 
             // label4
             // 
@@ -259,7 +259,7 @@
             this.txtFields4.Multiline = true;
             this.txtFields4.Name = "txtFields4";
             this.txtFields4.Size = new System.Drawing.Size(205, 71);
-            this.txtFields4.TabIndex = 4;
+            this.txtFields4.TabIndex = 0;
             // 
             // txtFields5
             // 
@@ -267,7 +267,7 @@
             this.txtFields5.Location = new System.Drawing.Point(35, 7);
             this.txtFields5.Name = "txtFields5";
             this.txtFields5.Size = new System.Drawing.Size(45, 22);
-            this.txtFields5.TabIndex = 6;
+            this.txtFields5.TabIndex = 0;
             // 
             // txtFields6
             // 
@@ -275,7 +275,7 @@
             this.txtFields6.Location = new System.Drawing.Point(37, 7);
             this.txtFields6.Name = "txtFields6";
             this.txtFields6.Size = new System.Drawing.Size(45, 22);
-            this.txtFields6.TabIndex = 8;
+            this.txtFields6.TabIndex = 0;
             // 
             // label7
             // 
@@ -310,7 +310,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(603, 34);
-            this.tableLayoutPanel2.TabIndex = 9;
+            this.tableLayoutPanel2.TabIndex = 5;
             // 
             // panel2
             // 
@@ -326,7 +326,7 @@
             this.cmdEdit.Location = new System.Drawing.Point(1, 1);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(75, 25);
-            this.cmdEdit.TabIndex = 17;
+            this.cmdEdit.TabIndex = 1;
             this.cmdEdit.Text = "Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
@@ -336,7 +336,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(0, 0);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(75, 25);
-            this.cmdCancel.TabIndex = 11;
+            this.cmdCancel.TabIndex = 0;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
@@ -346,7 +346,7 @@
             this.cmdFind.Location = new System.Drawing.Point(525, 3);
             this.cmdFind.Name = "cmdFind";
             this.cmdFind.Size = new System.Drawing.Size(75, 25);
-            this.cmdFind.TabIndex = 13;
+            this.cmdFind.TabIndex = 6;
             this.cmdFind.Text = "Find";
             this.cmdFind.UseVisualStyleBackColor = true;
             this.cmdFind.Click += new System.EventHandler(this.cmdFind_Click);
@@ -356,7 +356,7 @@
             this.cmdDelete.Location = new System.Drawing.Point(167, 3);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(75, 25);
-            this.cmdDelete.TabIndex = 12;
+            this.cmdDelete.TabIndex = 2;
             this.cmdDelete.Text = "Delete";
             this.cmdDelete.UseVisualStyleBackColor = true;
             this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
@@ -366,7 +366,7 @@
             this.cmdClose.Location = new System.Drawing.Point(329, 3);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(75, 25);
-            this.cmdClose.TabIndex = 13;
+            this.cmdClose.TabIndex = 4;
             this.cmdClose.Text = "Close";
             this.cmdClose.UseVisualStyleBackColor = true;
             this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
@@ -386,7 +386,7 @@
             this.cmdPrescription.Location = new System.Drawing.Point(410, 3);
             this.cmdPrescription.Name = "cmdPrescription";
             this.cmdPrescription.Size = new System.Drawing.Size(109, 25);
-            this.cmdPrescription.TabIndex = 14;
+            this.cmdPrescription.TabIndex = 5;
             this.cmdPrescription.Text = "WritePrescription";
             this.cmdPrescription.UseVisualStyleBackColor = true;
             this.cmdPrescription.Click += new System.EventHandler(this.cmdPrescription_Click);
@@ -405,7 +405,7 @@
             this.cmdAdd.Location = new System.Drawing.Point(1, 1);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(75, 25);
-            this.cmdAdd.TabIndex = 16;
+            this.cmdAdd.TabIndex = 0;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
@@ -415,7 +415,7 @@
             this.cmdUpdate.Location = new System.Drawing.Point(0, 0);
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(75, 25);
-            this.cmdUpdate.TabIndex = 10;
+            this.cmdUpdate.TabIndex = 1;
             this.cmdUpdate.Text = "Update";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
@@ -425,7 +425,7 @@
             this.cmdLast.Location = new System.Drawing.Point(184, 363);
             this.cmdLast.Name = "cmdLast";
             this.cmdLast.Size = new System.Drawing.Size(37, 24);
-            this.cmdLast.TabIndex = 14;
+            this.cmdLast.TabIndex = 9;
             this.cmdLast.Text = ">>";
             this.cmdLast.UseVisualStyleBackColor = true;
             this.cmdLast.Click += new System.EventHandler(this.cmdLast_Click);
@@ -435,7 +435,7 @@
             this.cmdNext.Location = new System.Drawing.Point(146, 363);
             this.cmdNext.Name = "cmdNext";
             this.cmdNext.Size = new System.Drawing.Size(32, 25);
-            this.cmdNext.TabIndex = 13;
+            this.cmdNext.TabIndex = 8;
             this.cmdNext.Text = ">";
             this.cmdNext.UseVisualStyleBackColor = true;
             this.cmdNext.Click += new System.EventHandler(this.cmdNext_Click);
@@ -454,7 +454,7 @@
             this.cmdPrevious.Location = new System.Drawing.Point(51, 363);
             this.cmdPrevious.Name = "cmdPrevious";
             this.cmdPrevious.Size = new System.Drawing.Size(28, 25);
-            this.cmdPrevious.TabIndex = 11;
+            this.cmdPrevious.TabIndex = 7;
             this.cmdPrevious.Text = "<";
             this.cmdPrevious.UseVisualStyleBackColor = true;
             this.cmdPrevious.Click += new System.EventHandler(this.cmdPrevious_Click);
@@ -464,7 +464,7 @@
             this.cmdFirst.Location = new System.Drawing.Point(16, 363);
             this.cmdFirst.Name = "cmdFirst";
             this.cmdFirst.Size = new System.Drawing.Size(29, 25);
-            this.cmdFirst.TabIndex = 10;
+            this.cmdFirst.TabIndex = 6;
             this.cmdFirst.Text = "<<";
             this.cmdFirst.UseVisualStyleBackColor = true;
             this.cmdFirst.Click += new System.EventHandler(this.cmdFirst_Click);
@@ -480,7 +480,7 @@
             this.dgPatientMaster.ReadOnly = true;
             this.dgPatientMaster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPatientMaster.Size = new System.Drawing.Size(743, 219);
-            this.dgPatientMaster.TabIndex = 15;
+            this.dgPatientMaster.TabIndex = 10;
             this.dgPatientMaster.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgPatientMaster_RowHeaderMouseClick);
             this.dgPatientMaster.SelectionChanged += new System.EventHandler(this.dgPatientMaster_SelectionChanged);
             // 
@@ -496,7 +496,7 @@
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.Size = new System.Drawing.Size(268, 92);
-            this.tableLayoutPanel4.TabIndex = 16;
+            this.tableLayoutPanel4.TabIndex = 2;
             // 
             // tableLayoutPanel5
             // 
@@ -510,7 +510,7 @@
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.Size = new System.Drawing.Size(92, 37);
-            this.tableLayoutPanel5.TabIndex = 17;
+            this.tableLayoutPanel5.TabIndex = 3;
             // 
             // label3
             // 
@@ -535,7 +535,7 @@
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.Size = new System.Drawing.Size(91, 37);
-            this.tableLayoutPanel6.TabIndex = 18;
+            this.tableLayoutPanel6.TabIndex = 4;
             // 
             // frmPatientMaster
             // 

@@ -125,7 +125,7 @@
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.Size = new System.Drawing.Size(707, 59);
-            this.tableLayoutPanel3.TabIndex = 3;
+            this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label6
             // 
@@ -165,7 +165,7 @@
             this.txtPid.Name = "txtPid";
             this.txtPid.ReadOnly = true;
             this.txtPid.Size = new System.Drawing.Size(114, 20);
-            this.txtPid.TabIndex = 4;
+            this.txtPid.TabIndex = 1;
             // 
             // label4
             // 
@@ -186,7 +186,7 @@
             this.dtpDateOfConsult.Location = new System.Drawing.Point(555, 19);
             this.dtpDateOfConsult.Name = "dtpDateOfConsult";
             this.dtpDateOfConsult.Size = new System.Drawing.Size(81, 20);
-            this.dtpDateOfConsult.TabIndex = 5;
+            this.dtpDateOfConsult.TabIndex = 3;
             // 
             // label7
             // 
@@ -205,7 +205,7 @@
             this.txtpulse.Location = new System.Drawing.Point(71, 127);
             this.txtpulse.Name = "txtpulse";
             this.txtpulse.Size = new System.Drawing.Size(121, 20);
-            this.txtpulse.TabIndex = 4;
+            this.txtpulse.TabIndex = 6;
             // 
             // label1
             // 
@@ -226,7 +226,7 @@
             this.dtpDod.Location = new System.Drawing.Point(236, 124);
             this.dtpDod.Name = "dtpDod";
             this.dtpDod.Size = new System.Drawing.Size(81, 20);
-            this.dtpDod.TabIndex = 6;
+            this.dtpDod.TabIndex = 7;
             // 
             // label3
             // 
@@ -266,7 +266,7 @@
             this.dtpDoa.Location = new System.Drawing.Point(236, 98);
             this.dtpDoa.Name = "dtpDoa";
             this.dtpDoa.Size = new System.Drawing.Size(81, 20);
-            this.dtpDoa.TabIndex = 6;
+            this.dtpDoa.TabIndex = 5;
             // 
             // label8
             // 
@@ -285,7 +285,7 @@
             this.txtTemp.Location = new System.Drawing.Point(71, 158);
             this.txtTemp.Name = "txtTemp";
             this.txtTemp.Size = new System.Drawing.Size(121, 20);
-            this.txtTemp.TabIndex = 9;
+            this.txtTemp.TabIndex = 8;
             // 
             // label9
             // 
@@ -304,7 +304,7 @@
             this.txtRs.Location = new System.Drawing.Point(71, 192);
             this.txtRs.Name = "txtRs";
             this.txtRs.Size = new System.Drawing.Size(121, 20);
-            this.txtRs.TabIndex = 10;
+            this.txtRs.TabIndex = 14;
             // 
             // label10
             // 
@@ -336,7 +336,7 @@
             this.cmbMdose.Location = new System.Drawing.Point(114, 255);
             this.cmbMdose.Name = "cmbMdose";
             this.cmbMdose.Size = new System.Drawing.Size(78, 21);
-            this.cmbMdose.TabIndex = 14;
+            this.cmbMdose.TabIndex = 23;
             this.cmbMdose.SelectedIndexChanged += new System.EventHandler(this.cmbMdose_SelectedIndexChanged);
             // 
             // cmbNdose
@@ -349,7 +349,7 @@
             this.cmbNdose.Location = new System.Drawing.Point(275, 255);
             this.cmbNdose.Name = "cmbNdose";
             this.cmbNdose.Size = new System.Drawing.Size(88, 21);
-            this.cmbNdose.TabIndex = 16;
+            this.cmbNdose.TabIndex = 24;
             this.cmbNdose.SelectedIndexChanged += new System.EventHandler(this.cmbNdose_SelectedIndexChanged);
             // 
             // label12
@@ -372,7 +372,7 @@
             this.cmbEdose.Location = new System.Drawing.Point(457, 254);
             this.cmbEdose.Name = "cmbEdose";
             this.cmbEdose.Size = new System.Drawing.Size(85, 21);
-            this.cmbEdose.TabIndex = 18;
+            this.cmbEdose.TabIndex = 25;
             this.cmbEdose.SelectedIndexChanged += new System.EventHandler(this.cmbEdose_SelectedIndexChanged);
             // 
             // label13
@@ -402,7 +402,7 @@
             this.txtNoOfDay.Location = new System.Drawing.Point(617, 253);
             this.txtNoOfDay.Name = "txtNoOfDay";
             this.txtNoOfDay.Size = new System.Drawing.Size(37, 20);
-            this.txtNoOfDay.TabIndex = 20;
+            this.txtNoOfDay.TabIndex = 26;
             this.txtNoOfDay.Leave += new System.EventHandler(this.txtNoOfDay_Leave);
             // 
             // txtQty
@@ -412,7 +412,7 @@
             this.txtQty.Location = new System.Drawing.Point(697, 254);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(37, 20);
-            this.txtQty.TabIndex = 22;
+            this.txtQty.TabIndex = 27;
             // 
             // label15
             // 
@@ -434,7 +434,7 @@
             this.cmbComplain.Location = new System.Drawing.Point(291, 159);
             this.cmbComplain.Name = "cmbComplain";
             this.cmbComplain.Size = new System.Drawing.Size(103, 21);
-            this.cmbComplain.TabIndex = 24;
+            this.cmbComplain.TabIndex = 9;
             // 
             // label16
             // 
@@ -463,7 +463,7 @@
             this.txtCvs.Location = new System.Drawing.Point(242, 192);
             this.txtCvs.Name = "txtCvs";
             this.txtCvs.Size = new System.Drawing.Size(121, 20);
-            this.txtCvs.TabIndex = 26;
+            this.txtCvs.TabIndex = 15;
             // 
             // cmbName
             // 
@@ -475,7 +475,7 @@
             this.cmbName.Location = new System.Drawing.Point(242, 223);
             this.cmbName.Name = "cmbName";
             this.cmbName.Size = new System.Drawing.Size(121, 21);
-            this.cmbName.TabIndex = 28;
+            this.cmbName.TabIndex = 20;
             // 
             // label18
             // 
@@ -504,7 +504,7 @@
             this.txtAs.Location = new System.Drawing.Point(400, 192);
             this.txtAs.Name = "txtAs";
             this.txtAs.Size = new System.Drawing.Size(121, 20);
-            this.txtAs.TabIndex = 30;
+            this.txtAs.TabIndex = 16;
             // 
             // label20
             // 
@@ -523,14 +523,14 @@
             this.txtCns.Location = new System.Drawing.Point(566, 190);
             this.txtCns.Name = "txtCns";
             this.txtCns.Size = new System.Drawing.Size(121, 20);
-            this.txtCns.TabIndex = 32;
+            this.txtCns.TabIndex = 17;
             // 
             // cmdAddName
             // 
             this.cmdAddName.Location = new System.Drawing.Point(372, 217);
             this.cmdAddName.Name = "cmdAddName";
             this.cmdAddName.Size = new System.Drawing.Size(51, 25);
-            this.cmdAddName.TabIndex = 33;
+            this.cmdAddName.TabIndex = 21;
             this.cmdAddName.Text = "Add";
             this.cmdAddName.UseVisualStyleBackColor = true;
             this.cmdAddName.Click += new System.EventHandler(this.cmdAddName_Click);
@@ -540,7 +540,7 @@
             this.cmdRefre.Location = new System.Drawing.Point(429, 217);
             this.cmdRefre.Name = "cmdRefre";
             this.cmdRefre.Size = new System.Drawing.Size(63, 25);
-            this.cmdRefre.TabIndex = 34;
+            this.cmdRefre.TabIndex = 22;
             this.cmdRefre.Text = "Refresh";
             this.cmdRefre.UseVisualStyleBackColor = true;
             this.cmdRefre.Click += new System.EventHandler(this.cmdRefre_Click);
@@ -550,7 +550,7 @@
             this.cmdComplainAdd.Location = new System.Drawing.Point(400, 158);
             this.cmdComplainAdd.Name = "cmdComplainAdd";
             this.cmdComplainAdd.Size = new System.Drawing.Size(51, 25);
-            this.cmdComplainAdd.TabIndex = 35;
+            this.cmdComplainAdd.TabIndex = 10;
             this.cmdComplainAdd.Text = "Add";
             this.cmdComplainAdd.UseVisualStyleBackColor = true;
             this.cmdComplainAdd.Click += new System.EventHandler(this.cmdComplainAdd_Click);
@@ -560,7 +560,7 @@
             this.cmbLstClear.Location = new System.Drawing.Point(457, 158);
             this.cmbLstClear.Name = "cmbLstClear";
             this.cmbLstClear.Size = new System.Drawing.Size(63, 25);
-            this.cmbLstClear.TabIndex = 36;
+            this.cmbLstClear.TabIndex = 13;
             this.cmbLstClear.Text = "Clear";
             this.cmbLstClear.UseVisualStyleBackColor = true;
             this.cmbLstClear.Click += new System.EventHandler(this.cmbLstClear_Click);
@@ -570,7 +570,7 @@
             this.cmbListRemove.Location = new System.Drawing.Point(457, 129);
             this.cmbListRemove.Name = "cmbListRemove";
             this.cmbListRemove.Size = new System.Drawing.Size(63, 25);
-            this.cmbListRemove.TabIndex = 37;
+            this.cmbListRemove.TabIndex = 12;
             this.cmbListRemove.Text = "Remove";
             this.cmbListRemove.UseVisualStyleBackColor = true;
             this.cmbListRemove.Click += new System.EventHandler(this.cmbListRemove_Click);
@@ -580,7 +580,7 @@
             this.cmbListAdd.Location = new System.Drawing.Point(458, 98);
             this.cmbListAdd.Name = "cmbListAdd";
             this.cmbListAdd.Size = new System.Drawing.Size(63, 25);
-            this.cmbListAdd.TabIndex = 38;
+            this.cmbListAdd.TabIndex = 11;
             this.cmbListAdd.Text = "Add";
             this.cmbListAdd.UseVisualStyleBackColor = true;
             this.cmbListAdd.Click += new System.EventHandler(this.cmbListAdd_Click);
@@ -604,7 +604,7 @@
             this.dtpFollowupDate.Location = new System.Drawing.Point(836, 251);
             this.dtpFollowupDate.Name = "dtpFollowupDate";
             this.dtpFollowupDate.Size = new System.Drawing.Size(81, 20);
-            this.dtpFollowupDate.TabIndex = 40;
+            this.dtpFollowupDate.TabIndex = 28;
             // 
             // tableLayoutPanel2
             // 
@@ -628,7 +628,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(603, 34);
-            this.tableLayoutPanel2.TabIndex = 41;
+            this.tableLayoutPanel2.TabIndex = 29;
             // 
             // panel2
             // 
@@ -644,7 +644,7 @@
             this.cmdEdit.Location = new System.Drawing.Point(0, 0);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(75, 25);
-            this.cmdEdit.TabIndex = 17;
+            this.cmdEdit.TabIndex = 30;
             this.cmdEdit.Text = "Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
@@ -664,7 +664,7 @@
             this.cmdPrint.Location = new System.Drawing.Point(525, 3);
             this.cmdPrint.Name = "cmdPrint";
             this.cmdPrint.Size = new System.Drawing.Size(75, 25);
-            this.cmdPrint.TabIndex = 13;
+            this.cmdPrint.TabIndex = 35;
             this.cmdPrint.Text = "Print";
             this.cmdPrint.UseVisualStyleBackColor = true;
             this.cmdPrint.Click += new System.EventHandler(this.cmdPrint_Click);
@@ -674,7 +674,7 @@
             this.cmddelete.Location = new System.Drawing.Point(167, 3);
             this.cmddelete.Name = "cmddelete";
             this.cmddelete.Size = new System.Drawing.Size(75, 25);
-            this.cmddelete.TabIndex = 12;
+            this.cmddelete.TabIndex = 31;
             this.cmddelete.Text = "Delete";
             this.cmddelete.UseVisualStyleBackColor = true;
             this.cmddelete.Click += new System.EventHandler(this.cmddelete_Click);
@@ -684,7 +684,7 @@
             this.cmdclose.Location = new System.Drawing.Point(329, 3);
             this.cmdclose.Name = "cmdclose";
             this.cmdclose.Size = new System.Drawing.Size(75, 25);
-            this.cmdclose.TabIndex = 13;
+            this.cmdclose.TabIndex = 33;
             this.cmdclose.Text = "Close";
             this.cmdclose.UseVisualStyleBackColor = true;
             this.cmdclose.Click += new System.EventHandler(this.cmdclose_Click);
@@ -694,7 +694,7 @@
             this.cmdrefresh.Location = new System.Drawing.Point(248, 3);
             this.cmdrefresh.Name = "cmdrefresh";
             this.cmdrefresh.Size = new System.Drawing.Size(75, 25);
-            this.cmdrefresh.TabIndex = 3;
+            this.cmdrefresh.TabIndex = 32;
             this.cmdrefresh.Text = "Refresh";
             this.cmdrefresh.UseVisualStyleBackColor = true;
             this.cmdrefresh.Click += new System.EventHandler(this.cmdrefresh_Click);
@@ -704,7 +704,7 @@
             this.cmdPrintPlain.Location = new System.Drawing.Point(410, 3);
             this.cmdPrintPlain.Name = "cmdPrintPlain";
             this.cmdPrintPlain.Size = new System.Drawing.Size(109, 25);
-            this.cmdPrintPlain.TabIndex = 14;
+            this.cmdPrintPlain.TabIndex = 34;
             this.cmdPrintPlain.Text = "Print Plain";
             this.cmdPrintPlain.UseVisualStyleBackColor = true;
             this.cmdPrintPlain.Click += new System.EventHandler(this.cmdPrintPlain_Click);
@@ -723,7 +723,7 @@
             this.cmdAdd.Location = new System.Drawing.Point(-1, 0);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(75, 25);
-            this.cmdAdd.TabIndex = 16;
+            this.cmdAdd.TabIndex = 29;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
@@ -757,7 +757,7 @@
             this.cmdLast.Location = new System.Drawing.Point(189, 355);
             this.cmdLast.Name = "cmdLast";
             this.cmdLast.Size = new System.Drawing.Size(37, 24);
-            this.cmdLast.TabIndex = 46;
+            this.cmdLast.TabIndex = 39;
             this.cmdLast.Text = ">>";
             this.cmdLast.UseVisualStyleBackColor = true;
             this.cmdLast.Click += new System.EventHandler(this.cmdLast_Click);
@@ -767,7 +767,7 @@
             this.cmdNext.Location = new System.Drawing.Point(151, 354);
             this.cmdNext.Name = "cmdNext";
             this.cmdNext.Size = new System.Drawing.Size(32, 25);
-            this.cmdNext.TabIndex = 45;
+            this.cmdNext.TabIndex = 38;
             this.cmdNext.Text = ">";
             this.cmdNext.UseVisualStyleBackColor = true;
             this.cmdNext.Click += new System.EventHandler(this.cmdNext_Click);
@@ -786,7 +786,7 @@
             this.cmdPrevious.Location = new System.Drawing.Point(59, 354);
             this.cmdPrevious.Name = "cmdPrevious";
             this.cmdPrevious.Size = new System.Drawing.Size(28, 25);
-            this.cmdPrevious.TabIndex = 43;
+            this.cmdPrevious.TabIndex = 37;
             this.cmdPrevious.Text = "<";
             this.cmdPrevious.UseVisualStyleBackColor = true;
             this.cmdPrevious.Click += new System.EventHandler(this.cmdPrevious_Click);
@@ -796,7 +796,7 @@
             this.cmdFirst.Location = new System.Drawing.Point(24, 354);
             this.cmdFirst.Name = "cmdFirst";
             this.cmdFirst.Size = new System.Drawing.Size(29, 25);
-            this.cmdFirst.TabIndex = 42;
+            this.cmdFirst.TabIndex = 36;
             this.cmdFirst.Text = "<<";
             this.cmdFirst.UseVisualStyleBackColor = true;
             this.cmdFirst.Click += new System.EventHandler(this.cmdFirst_Click);
@@ -811,14 +811,14 @@
             this.cmbRx.Location = new System.Drawing.Point(71, 223);
             this.cmbRx.Name = "cmbRx";
             this.cmbRx.Size = new System.Drawing.Size(61, 21);
-            this.cmbRx.TabIndex = 48;
+            this.cmbRx.TabIndex = 18;
             // 
             // cmdAddRx
             // 
             this.cmdAddRx.Location = new System.Drawing.Point(141, 220);
             this.cmdAddRx.Name = "cmdAddRx";
             this.cmdAddRx.Size = new System.Drawing.Size(51, 25);
-            this.cmdAddRx.TabIndex = 49;
+            this.cmdAddRx.TabIndex = 19;
             this.cmdAddRx.Text = "Add";
             this.cmdAddRx.UseVisualStyleBackColor = true;
             this.cmdAddRx.Click += new System.EventHandler(this.cmdAddRx_Click);
