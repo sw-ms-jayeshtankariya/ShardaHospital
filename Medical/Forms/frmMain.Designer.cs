@@ -291,7 +291,7 @@
             // 
             // cmdIndoorPatients
             // 
-            this.cmdIndoorPatients.Location = new System.Drawing.Point(898, 3);
+            this.cmdIndoorPatients.Location = new System.Drawing.Point(907, 3);
             this.cmdIndoorPatients.Name = "cmdIndoorPatients";
             this.cmdIndoorPatients.Size = new System.Drawing.Size(109, 25);
             this.cmdIndoorPatients.TabIndex = 16;
@@ -1164,9 +1164,9 @@
             // 
             this.cmdWritePresction.Location = new System.Drawing.Point(783, 3);
             this.cmdWritePresction.Name = "cmdWritePresction";
-            this.cmdWritePresction.Size = new System.Drawing.Size(109, 25);
+            this.cmdWritePresction.Size = new System.Drawing.Size(118, 25);
             this.cmdWritePresction.TabIndex = 22;
-            this.cmdWritePresction.Text = "Write Presction";
+            this.cmdWritePresction.Text = "Write Prescription";
             this.cmdWritePresction.UseVisualStyleBackColor = true;
             this.cmdWritePresction.Click += new System.EventHandler(this.cmdWritePresction_Click_1);
             // 

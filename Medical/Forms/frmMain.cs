@@ -138,21 +138,28 @@ namespace Medical
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
+            //foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
+            //{
+            //    if (!row.IsNewRow)
+            //    {
+            //        if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
+            //        {
+            //            if (Convert.ToInt32(row.Cells[0].Value) != 0)
+            //            {
+            if (grdDataGrid.CurrentCell != null)
             {
-                if (!row.IsNewRow)
+                int ptId = Convert.ToInt32(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[0].Value);
+                if (!String.IsNullOrEmpty(Convert.ToString(ptId)))
                 {
-                    if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
+                    if (Convert.ToInt32(ptId) != 0)
                     {
-                        if (Convert.ToInt32(row.Cells[0].Value) != 0)
-                        {
-                            List<OleDbParameter> param = new List<OleDbParameter>();
-                            param.Add(new OleDbParameter("@id", Convert.ToInt32(row.Cells[0].Value)));
-                            Operation.ExecuteNonQuery("delete from patient where PatientId=@id", param);
-                        }
+                        List<OleDbParameter> param = new List<OleDbParameter>();
+                        param.Add(new OleDbParameter("@id", ptId));
+                        Operation.ExecuteNonQuery("delete from patient where PatientId=@id", param);
                     }
                 }
             }
+            //}
             setdatagrid();
             patientId.Clear();
         }
@@ -184,11 +191,18 @@ namespace Medical
             setdatagrid();
         }
 
+        private void ShowRowCount()
+        {
+            if (grdDataGrid.CurrentCell != null)
+                lblStatus.Text = Convert.ToString(grdDataGrid.CurrentCell.RowIndex + 1);
+        }
+
         private void cmdFirst_Click(object sender, EventArgs e)
         {
             grdDataGrid.CurrentCell = grdDataGrid.Rows[0].Cells[1];
             grdDataGrid.Rows[0].Selected = true;
             grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[0].Index;
+            ShowRowCount();
         }
 
         private void cmdPrevious_Click(object sender, EventArgs e)
@@ -200,6 +214,7 @@ namespace Medical
                     grdDataGrid.CurrentCell = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Cells[1];
                     if (grdDataGrid.CurrentCell.RowIndex > 0)
                         grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Index;
+                    ShowRowCount();
                 }
             }
         }
@@ -213,6 +228,7 @@ namespace Medical
                     grdDataGrid.CurrentCell = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex + 1].Cells[1];
                     if (grdDataGrid.CurrentCell.RowIndex > 0)
                         grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex - 1].Index;
+                    ShowRowCount();
                 }
             }
         }
@@ -228,6 +244,7 @@ namespace Medical
 
             //In case if you want to scroll down as well.
             grdDataGrid.FirstDisplayedScrollingRowIndex = nRowIndex;
+            ShowRowCount();
         }
 
         private void grdDataGrid_SelectionChanged(object sender, EventArgs e)
@@ -235,8 +252,9 @@ namespace Medical
             //if (grdDataGrid.SelectedRows.Count > 0)
             //lblStatus.Text = Convert.ToString(grdDataGrid.SelectedRows[0].Index + 1);
 
-            if (grdDataGrid.CurrentCell != null)
-                lblStatus.Text = Convert.ToString(grdDataGrid.CurrentCell.RowIndex + 1);
+            //if (grdDataGrid.CurrentCell != null)
+            //    lblStatus.Text = Convert.ToString(grdDataGrid.CurrentCell.RowIndex);
+            ShowRowCount();
         }
 
         private void cmdBill_Click(object sender, EventArgs e)
@@ -385,39 +403,42 @@ namespace Medical
 
             total = total + box_total;
 
-            foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
+            //foreach (DataGridViewRow row in grdDataGrid.SelectedRows)
+            //{
+            //    if (!row.IsNewRow)
+            //    {
+            //grdDataGrid.Rows.Remove(row);
+            if (grdDataGrid.CurrentCell != null)
             {
-                if (!row.IsNewRow)
+                string patientId = Convert.ToString(grdDataGrid.Rows[grdDataGrid.CurrentCell.RowIndex].Cells[0].Value);
+                if (!String.IsNullOrEmpty(patientId))
                 {
-                    //grdDataGrid.Rows.Remove(row);
-                    if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
+                    if (Convert.ToInt32(patientId) != 0)
                     {
-                        if (Convert.ToInt32(row.Cells[0].Value) != 0)
-                        {
-                            List<OleDbParameter> param = new List<OleDbParameter>();
-                            param.Add(new OleDbParameter("@badcharge", int.TryParse(txtCharges0.Text, out number) ? Convert.ToDouble(txtCharges0.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@ivdripcharge", int.TryParse(txtCharges1.Text, out number) ? Convert.ToDouble(txtCharges1.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@pint", int.TryParse(txtCharges2.Text, out number) ? Convert.ToDouble(txtCharges2.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@ivset", int.TryParse(txtCharges3.Text, out number) ? Convert.ToDouble(txtCharges3.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@scalpvein", int.TryParse(txtCharges4.Text, out number) ? Convert.ToDouble(txtCharges4.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@o2charge", int.TryParse(txtCharges5.Text, out number) ? Convert.ToDouble(txtCharges5.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@counsultationfee", int.TryParse(txtCharges6.Text, out number) ? Convert.ToDouble(txtCharges6.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@reCounsultationfee", int.TryParse(txtCharges7.Text, out number) ? Convert.ToDouble(txtCharges7.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@dailyexaminationfee", int.TryParse(txtCharges8.Text, out number) ? Convert.ToDouble(txtCharges8.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@injectioncharge", int.TryParse(txtCharges9.Text, out number) ? Convert.ToDouble(txtCharges9.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@ecgcharge", int.TryParse(txtCharges10.Text, out number) ? Convert.ToDouble(txtCharges10.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@xraycharge", int.TryParse(txtCharges11.Text, out number) ? Convert.ToDouble(txtCharges11.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@cardiacmonitorcharge", int.TryParse(txtCharges12.Text, out number) ? Convert.ToDouble(txtCharges12.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@other", int.TryParse(txtCharges13.Text, out number) ? Convert.ToDouble(txtCharges13.Text) : Convert.ToDouble(0)));
-                            param.Add(new OleDbParameter("@total", Convert.ToInt32(total)));
-                            param.Add(new OleDbParameter("@enddate", Convert.ToDateTime(dateTo1.Text).ToShortDateString()));
-                            param.Add(new OleDbParameter("@desease", Convert.ToString(txtDesease.Text)));
-                            param.Add(new OleDbParameter("@id", Convert.ToInt32(row.Cells[0].Value)));
-                            Operation.ExecuteNonQuery("update patient set BadCharge=@badcharge, IvDripCharge=@ivdripcharge, Pint=@pint, IvSet=@ivset, ScalpVein=@scalpvein, O2Charge=@o2charge, CounsultationFee=@counsultationfee, ReCounsultationFee=@reCounsultationfee, DailyExaminationFee=@dailyexaminationfee, InjectionCharge=@injectioncharge, EcgCharge=@ecgcharge, XRayCharge=@xraycharge, CardiacMonitorCharge=@cardiacmonitorcharge, Other=@other, Total=@total, EndDate=@enddate, Desease=@desease where PatientId=@id", param);
-                        }
+                        List<OleDbParameter> param = new List<OleDbParameter>();
+                        param.Add(new OleDbParameter("@badcharge", int.TryParse(txtCharges0.Text, out number) ? Convert.ToDouble(txtCharges0.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@ivdripcharge", int.TryParse(txtCharges1.Text, out number) ? Convert.ToDouble(txtCharges1.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@pint", int.TryParse(txtCharges2.Text, out number) ? Convert.ToDouble(txtCharges2.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@ivset", int.TryParse(txtCharges3.Text, out number) ? Convert.ToDouble(txtCharges3.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@scalpvein", int.TryParse(txtCharges4.Text, out number) ? Convert.ToDouble(txtCharges4.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@o2charge", int.TryParse(txtCharges5.Text, out number) ? Convert.ToDouble(txtCharges5.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@counsultationfee", int.TryParse(txtCharges6.Text, out number) ? Convert.ToDouble(txtCharges6.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@reCounsultationfee", int.TryParse(txtCharges7.Text, out number) ? Convert.ToDouble(txtCharges7.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@dailyexaminationfee", int.TryParse(txtCharges8.Text, out number) ? Convert.ToDouble(txtCharges8.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@injectioncharge", int.TryParse(txtCharges9.Text, out number) ? Convert.ToDouble(txtCharges9.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@ecgcharge", int.TryParse(txtCharges10.Text, out number) ? Convert.ToDouble(txtCharges10.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@xraycharge", int.TryParse(txtCharges11.Text, out number) ? Convert.ToDouble(txtCharges11.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@cardiacmonitorcharge", int.TryParse(txtCharges12.Text, out number) ? Convert.ToDouble(txtCharges12.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@other", int.TryParse(txtCharges13.Text, out number) ? Convert.ToDouble(txtCharges13.Text) : Convert.ToDouble(0)));
+                        param.Add(new OleDbParameter("@total", Convert.ToInt32(total)));
+                        param.Add(new OleDbParameter("@enddate", Convert.ToDateTime(dateTo1.Text).ToShortDateString()));
+                        param.Add(new OleDbParameter("@desease", Convert.ToString(txtDesease.Text)));
+                        param.Add(new OleDbParameter("@id", Convert.ToInt32(patientId)));
+                        Operation.ExecuteNonQuery("update patient set BadCharge=@badcharge, IvDripCharge=@ivdripcharge, Pint=@pint, IvSet=@ivset, ScalpVein=@scalpvein, O2Charge=@o2charge, CounsultationFee=@counsultationfee, ReCounsultationFee=@reCounsultationfee, DailyExaminationFee=@dailyexaminationfee, InjectionCharge=@injectioncharge, EcgCharge=@ecgcharge, XRayCharge=@xraycharge, CardiacMonitorCharge=@cardiacmonitorcharge, Other=@other, Total=@total, EndDate=@enddate, Desease=@desease where PatientId=@id", param);
                     }
                 }
             }
+            //}
 
             return total;
         }
@@ -490,13 +511,15 @@ namespace Medical
             int nRowIndex = grdDataGrid.Rows.Count - 1;
             int nColumnIndex = 3;
 
-            grdDataGrid.CurrentCell = grdDataGrid.Rows[nRowIndex].Cells[1];
-            grdDataGrid.Rows[nRowIndex].Selected = true;
-            grdDataGrid.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+            grdDataGrid.CurrentCell = grdDataGrid.Rows[nRowIndex - 1].Cells[1];
+            grdDataGrid.Rows[nRowIndex - 1].Selected = true;
+            grdDataGrid.Rows[nRowIndex - 1].Cells[nColumnIndex].Selected = true;
 
             //In case if you want to scroll down as well.
             grdDataGrid.FirstDisplayedScrollingRowIndex = nRowIndex;
             //grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.RowCount - 1;
+
+            DataTable dt = Operation.GetDataTable("select count(*) from patient");
 
             lblStatus.Text = Convert.ToString(nRowIndex);
         }
@@ -947,7 +970,7 @@ namespace Medical
             {
                 string fileName = "eyemedical.mdb";
                 string targetPath = @"C:\eye_doctor";
-                string sourcePath = @"D:\";
+                string sourcePath = @"N:\";
 
                 // Use Path class to manipulate file and directory paths.
                 string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
@@ -975,7 +998,7 @@ namespace Medical
                 string fileName = "eyemedical.mdb";
                 string fileName1 = "eyemedical1.mdb";
                 string sourcePath = @"C:\doctor";
-                string targetPath = @"D:\";
+                string targetPath = @"N:\";
 
                 // Use Path class to manipulate file and directory paths.
                 string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
