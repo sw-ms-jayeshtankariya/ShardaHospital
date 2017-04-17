@@ -47,7 +47,7 @@
             // 
             // cmdAdmitReport
             // 
-            this.cmdAdmitReport.Location = new System.Drawing.Point(30, 309);
+            this.cmdAdmitReport.Location = new System.Drawing.Point(30, 239);
             this.cmdAdmitReport.Name = "cmdAdmitReport";
             this.cmdAdmitReport.Size = new System.Drawing.Size(75, 25);
             this.cmdAdmitReport.TabIndex = 15;
@@ -142,13 +142,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbPatient, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 110);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 286);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(291, 50);
             this.tableLayoutPanel1.TabIndex = 16;
+            this.tableLayoutPanel1.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -157,7 +158,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.lstDeases, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(30, 178);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(30, 114);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -199,6 +200,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAdmitReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAdmitReport";
             this.Load += new System.EventHandler(this.frmAdmitReport_Load);
             this.tableLayoutPanel3.ResumeLayout(false);

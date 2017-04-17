@@ -48,6 +48,7 @@ namespace Medical
             RefMedicines();
             BindRx();
             BindComplains();
+            BindCompany();
             setdatagrid();
             lblStatus.Text = "";
         }
@@ -55,7 +56,7 @@ namespace Medical
         private void setdatagrid()
         {
             DataTable dt = new DataTable();
-            dt = Operation.GetDataTable("select PID,DateOfConsultancy,pname,fname,mname,lname,Sex,Age,Rx,Name,MorningDose,NoonDose,EveningDose,NoOfDay,Qty,AS1,Bp,ChipComplain,CNS,CVS,Doa,Dod,RS,pulse,Temp,FollowupDate,chiefComplainName from treatement where pid='" + patientCode + "'");
+            dt = Operation.GetDataTable("select t1.PID,t1.DateOfConsultancy,t1.pname,t1.fname,t1.mname,t1.lname,t1.Sex,t1.Age,t1.Rx,t2.CompanyName,t1.Name,t1.MorningDose,t1.NoonDose,t1.EveningDose,t1.NoOfDay,t1.Qty,t1.AS1,t1.Bp,t1.ChipComplain,t1.CNS,t1.CVS,t1.Doa,t1.Dod,t1.RS,t1.pulse,t1.Temp,t1.FollowupDate,t1.chiefComplainName from treatement t1 LEFT JOIN Company t2 ON t1.Company = t2.CompanyId where pid='" + patientCode + "'");
 
             if (dt.Rows.Count > 0)
             {
@@ -139,6 +140,7 @@ namespace Medical
             txtRs.Text = Convert.ToString(dt.Rows[0]["RS"]);
             cmbRx.Text = Convert.ToString(dt.Rows[0]["Rx"]);
             txtTemp.Text = Convert.ToString(dt.Rows[0]["Temp"]);
+            cmbCompanyName.Text = Convert.ToString(dt.Rows[0]["CompanyName"]);
 
             lstChiefComplain.Items.Clear();
             if (dt.Rows[0]["chiefComplainName"] != null)
@@ -165,30 +167,31 @@ namespace Medical
             foreach (DataGridViewRow row in dgtreatment.SelectedRows)
             {
                 // PID,DateOfConsultancy,pname,fname,mname,lname,Sex,Age,Rx,Name,MorningDose,NoonDose,EveningDose,NoOfDay,Qty,AS1,Bp,ChipComplain,CNS,CVS,Doa,Dod,RS,pulse,Temp,FollowupDate,chiefComplainName
-                txtAs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[15].Value)) ? Convert.ToString(row.Cells[15].Value) : txtAs.Text;
-                txtBp.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[16].Value)) ? Convert.ToString(row.Cells[16].Value) : txtBp.Text;
-                cmbComplain.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[17].Value)) ? Convert.ToString(row.Cells[17].Value) : cmbComplain.Text;
-                txtCns.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[18].Value)) ? Convert.ToString(row.Cells[18].Value) : txtCns.Text;
-                txtCvs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[19].Value)) ? Convert.ToString(row.Cells[19].Value) : txtCvs.Text;
-                dtpDateOfConsult.Text = Convert.ToString(row.Cells[1].Value) != "" ? Convert.ToDateTime(row.Cells[1].Value).ToShortDateString() : DateTime.Now.ToShortDateString();
-                dtpDoa.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[20].Value)) ? Convert.ToString(row.Cells[20].Value) : dtpDoa.Text;
-                dtpDod.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[21].Value)) ? Convert.ToString(row.Cells[21].Value) : dtpDod.Text;
-                cmbEdose.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[12].Value)) ? Convert.ToString(row.Cells[12].Value) : cmbEdose.Text;
-                dtpFollowupDate.Text = Convert.ToString(row.Cells[25].Value) != "" ? Convert.ToDateTime(row.Cells[25].Value).ToShortDateString() : DateTime.Now.ToShortDateString();
-                cmbMdose.SelectedValue = !string.IsNullOrEmpty(Convert.ToString(row.Cells[10].Value)) ? Convert.ToString(row.Cells[10].Value) : cmbMdose.SelectedValue;
-                txtNoOfDay.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[13].Value)) ? Convert.ToString(row.Cells[13].Value) : txtNoOfDay.Text;
-                cmbNdose.SelectedValue = !string.IsNullOrEmpty(Convert.ToString(row.Cells[11].Value)) ? Convert.ToString(row.Cells[11].Value) : cmbNdose.SelectedValue;
-                txtpulse.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[23].Value)) ? Convert.ToString(row.Cells[23].Value) : txtpulse.Text;
-                txtQty.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[14].Value)) ? Convert.ToString(row.Cells[14].Value) : txtQty.Text;
-                txtRs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[22].Value)) ? Convert.ToString(row.Cells[22].Value) : txtRs.Text;
-                cmbRx.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[8].Value)) ? Convert.ToString(row.Cells[8].Value) : cmbRx.Text;
-                txtTemp.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[24].Value)) ? Convert.ToString(row.Cells[24].Value) : txtTemp.Text;
-                cmbName.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells[9].Value)) ? Convert.ToString(row.Cells[9].Value) : cmbName.Text;
+                txtAs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["AS1"].Value)) ? Convert.ToString(row.Cells["AS1"].Value) : txtAs.Text;
+                txtBp.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["Bp"].Value)) ? Convert.ToString(row.Cells["Bp"].Value) : txtBp.Text;
+                cmbComplain.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["ChipComplain"].Value)) ? Convert.ToString(row.Cells["ChipComplain"].Value) : cmbComplain.Text;
+                txtCns.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["CNS"].Value)) ? Convert.ToString(row.Cells["CNS"].Value) : txtCns.Text;
+                txtCvs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["CVS"].Value)) ? Convert.ToString(row.Cells["CVS"].Value) : txtCvs.Text;
+                dtpDateOfConsult.Text = Convert.ToString(row.Cells["DateOfConsultancy"].Value) != "" ? Convert.ToDateTime(row.Cells["DateOfConsultancy"].Value).ToShortDateString() : DateTime.Now.ToShortDateString();
+                dtpDoa.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["Doa"].Value)) ? Convert.ToString(row.Cells["Doa"].Value) : dtpDoa.Text;
+                dtpDod.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["Dod"].Value)) ? Convert.ToString(row.Cells["Dod"].Value) : dtpDod.Text;
+                cmbEdose.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["EveningDose"].Value)) ? Convert.ToString(row.Cells["EveningDose"].Value) : cmbEdose.Text;
+                dtpFollowupDate.Text = Convert.ToString(row.Cells["FollowupDate"].Value) != "" ? Convert.ToDateTime(row.Cells["FollowupDate"].Value).ToShortDateString() : DateTime.Now.ToShortDateString();
+                cmbMdose.SelectedValue = !string.IsNullOrEmpty(Convert.ToString(row.Cells["MorningDose"].Value)) ? Convert.ToString(row.Cells["MorningDose"].Value) : cmbMdose.SelectedValue;
+                txtNoOfDay.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["NoOfDay"].Value)) ? Convert.ToString(row.Cells["NoOfDay"].Value) : txtNoOfDay.Text;
+                cmbNdose.SelectedValue = !string.IsNullOrEmpty(Convert.ToString(row.Cells["NoonDose"].Value)) ? Convert.ToString(row.Cells["NoonDose"].Value) : cmbNdose.SelectedValue;
+                txtpulse.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["Pulse"].Value)) ? Convert.ToString(row.Cells["Pulse"].Value) : txtpulse.Text;
+                txtQty.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["Qty"].Value)) ? Convert.ToString(row.Cells["Qty"].Value) : txtQty.Text;
+                txtRs.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["RS"].Value)) ? Convert.ToString(row.Cells["RS"].Value) : txtRs.Text;
+                cmbRx.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["Rx"].Value)) ? Convert.ToString(row.Cells["Rx"].Value) : cmbRx.Text;
+                txtTemp.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["Temp"].Value)) ? Convert.ToString(row.Cells["Temp"].Value) : txtTemp.Text;
+                cmbName.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["Name"].Value)) ? Convert.ToString(row.Cells["Name"].Value) : cmbName.Text;
+                cmbCompanyName.Text = !string.IsNullOrEmpty(Convert.ToString(row.Cells["CompanyName"].Value)) ? Convert.ToString(row.Cells["CompanyName"].Value) : cmbCompanyName.Text;
 
                 lstChiefComplain.Items.Clear();
-                if (Convert.ToString(row.Cells[26].Value) != null)
+                if (Convert.ToString(row.Cells["chiefComplainName"].Value) != null)
                 {
-                    string chiefComplainName = Convert.ToString(row.Cells[26].Value);
+                    string chiefComplainName = Convert.ToString(row.Cells["chiefComplainName"].Value);
                     if (chiefComplainName.Contains(','))
                     {
                         string[] lstchiefComp = chiefComplainName.Split(',');
@@ -240,6 +243,19 @@ namespace Medical
                 cmbName.DataSource = dt;
                 cmbName.DisplayMember = "MedicineName";
                 cmbName.ValueMember = "MedicineCode";
+            }
+        }
+
+        private void BindCompany()
+        {
+            DataTable dt = new DataTable();
+
+            dt = Operation.GetDataTable("select * from Company order by CompanyName");
+            if (dt.Rows.Count > 0)
+            {
+                cmbCompanyName.DataSource = dt;
+                cmbCompanyName.DisplayMember = "CompanyName";
+                cmbCompanyName.ValueMember = "CompanyId";
             }
         }
 
@@ -397,11 +413,11 @@ namespace Medical
             {
                 if (!row.IsNewRow)
                 {
-                    if (!String.IsNullOrEmpty(Convert.ToString(row.Cells[0].Value)))
+                    if (!String.IsNullOrEmpty(Convert.ToString(row.Cells["Pid"].Value)))
                     {
                         List<OleDbParameter> param = new List<OleDbParameter>();
-                        param.Add(new OleDbParameter("@Pid", row.Cells[0].Value));
-                        param.Add(new OleDbParameter("@DateOfConsultancy", Convert.ToDateTime(row.Cells[1].Value).ToShortDateString()));
+                        param.Add(new OleDbParameter("@Pid", row.Cells["Pid"].Value));
+                        param.Add(new OleDbParameter("@DateOfConsultancy", Convert.ToDateTime(row.Cells["DateOfConsultancy"].Value).ToShortDateString()));
                         Operation.ExecuteNonQuery("delete from treatement where Pid=@Pid and DateOfConsultancy=@DateOfConsultancy", param);
                     }
                 }
@@ -426,8 +442,35 @@ namespace Medical
             setdatagrid();
         }
 
+        private string GetCompanyId(string companyName)
+        {
+            string companyId = "";
+
+            DataTable dt = Operation.GetDataTable("select CompanyId from Company where CompanyName='" + companyName + "'");
+            if (dt.Rows.Count > 0)
+                companyId = Convert.ToString(dt.Rows[0][0]);
+
+            return companyId;
+        }
+
+        private void InsertCompanyName()
+        {
+            List<OleDbParameter> param = new List<OleDbParameter>();
+            param.Add(new OleDbParameter("@companyname", Convert.ToString(cmbCompanyName.Text.Trim())));
+            Operation.ExecuteNonQuery("insert into Company (CompanyName) values (@companyname)", param);
+        }
+
         private void cmdupdate_Click(object sender, EventArgs e)
         {
+            string companyId = "";
+            if (!string.IsNullOrEmpty(cmbCompanyName.Text.Trim()))
+                companyId = GetCompanyId(cmbCompanyName.Text.Trim());
+            if (string.IsNullOrEmpty(companyId))
+            {
+                InsertCompanyName();
+                companyId = GetCompanyId(cmbCompanyName.Text.Trim());
+            }
+
             if (exists)
             {
                 // "PatientCode Already Taken";
@@ -453,10 +496,11 @@ namespace Medical
                     param.Add(new OleDbParameter("@qty", Convert.ToString(txtQty.Text)));
                     param.Add(new OleDbParameter("@followupDate", Convert.ToString(dtpFollowupDate.Text)));
                     param.Add(new OleDbParameter("@chiefcomplainname", lstChiefComplain.Items.Count > 0 ? Convert.ToString(lstChiefComplain.Items[0]) : ""));
+                    param.Add(new OleDbParameter("@company", Convert.ToInt32(companyId)));
                     param.Add(new OleDbParameter("@Pid", Convert.ToString(txtPid.Text)));
                     param.Add(new OleDbParameter("@dateOfConsultancy", Convert.ToString(dtpDateOfConsult.Text)));
                     //Operation.ExecuteNonQuery("update treatement set Bp=@bp, Pulse=@pulse, Temp=@temp, Doa=@doa, Dod=@dod, ChipComplain-@chipComplain, RS=@rs, CVS=@cvs, AS1=@as1, CNS=@cns, Rx=@rx, Name=@name, MorningDose=@morningDose, NoonDose=@noonDose, EveningDose=@eveningDose, NoOfDay=@noOfDay, Qty=@qty, FollowupDate=@followupDate where Pid=@Pid and DateOfConsultancy=@dateOfConsultancy", param);
-                    Operation.ExecuteNonQuery("update treatement set Bp=@bp, Pulse=@pulse, Temp=@temp, Doa=@doa, Dod=@dod, RS=@rs, CVS=@cvs, AS1=@as1, CNS=@cns, Rx=@rx, Name=@name, MorningDose=@morningDose, NoonDose=@noonDose, EveningDose=@eveningDose, NoOfDay=@noOfDay, Qty=@qty, FollowupDate=@followupDate, chiefComplainName=@chiefcomplainname where Pid=@Pid and DateOfConsultancy=@dateOfConsultancy", param);
+                    Operation.ExecuteNonQuery("update treatement set Bp=@bp, Pulse=@pulse, Temp=@temp, Doa=@doa, Dod=@dod, RS=@rs, CVS=@cvs, AS1=@as1, CNS=@cns, Rx=@rx, Name=@name, MorningDose=@morningDose, NoonDose=@noonDose, EveningDose=@eveningDose, NoOfDay=@noOfDay, Qty=@qty, FollowupDate=@followupDate, chiefComplainName=@chiefcomplainname, Company=@company where Pid=@Pid and DateOfConsultancy=@dateOfConsultancy", param);
                 }
                 else
                 {
@@ -487,10 +531,11 @@ namespace Medical
                     param.Add(new OleDbParameter("@qty", Convert.ToString(txtQty.Text)));
                     param.Add(new OleDbParameter("@followupDate", Convert.ToString(dtpFollowupDate.Text)));
                     param.Add(new OleDbParameter("@chiefcomplainname", lstChiefComplain.Items.Count > 0 ? Convert.ToString(lstChiefComplain.Items[0]) : ""));
+                    param.Add(new OleDbParameter("@Company", Convert.ToInt32(companyId)));
                     param.Add(new OleDbParameter("@Pid", Convert.ToString(txtPid.Text)));
                     param.Add(new OleDbParameter("@dateOfConsultancy", Convert.ToString(dtpDateOfConsult.Text)));
                     //Operation.ExecuteNonQuery("update treatement set Bp=@bp, Pulse=@pulse, Temp=@temp, Doa=@doa, Dod=@dod, ChipComplain-@chipComplain, RS=@rs, CVS=@cvs, AS1=@as1, CNS=@cns, Rx=@rx, Name=@name, MorningDose=@morningDose, NoonDose=@noonDose, EveningDose=@eveningDose, NoOfDay=@noOfDay, Qty=@qty, FollowupDate=@followupDate where Pid=@Pid and DateOfConsultancy=@dateOfConsultancy", param);
-                    Operation.ExecuteNonQuery("insert into treatement (Bp,Pulse,Temp,Doa,Dod,RS,CVS,AS1,CNS,Rx,Name,MorningDose,NoonDose,EveningDose,NoOfDay,Qty,FollowupDate,chiefComplainName,Pid,DateOfConsultancy) values(@bp,@pulse,@temp,@doa,@dod,@rs,@cvs,@as1,@cns,@rx,@name,@morningDose,@noonDose,@eveningDose,@noOfDay,@qty,@followupDate,@chiefcomplainname,@Pid,@dateOfConsultancy)", param);
+                    Operation.ExecuteNonQuery("insert into treatement (Bp,Pulse,Temp,Doa,Dod,RS,CVS,AS1,CNS,Rx,Name,MorningDose,NoonDose,EveningDose,NoOfDay,Qty,FollowupDate,chiefComplainName,Company,Pid,DateOfConsultancy) values(@bp,@pulse,@temp,@doa,@dod,@rs,@cvs,@as1,@cns,@rx,@name,@morningDose,@noonDose,@eveningDose,@noOfDay,@qty,@followupDate,@chiefcomplainname,@company,@Pid,@dateOfConsultancy)", param);
                 }
                 else
                 {
@@ -618,7 +663,8 @@ namespace Medical
         {
             DataTable dt = new DataTable();
             //select * from treatement where pid=@pid and Dateofconsultancy=@dt
-            dt = Operation.GetDataTable("select * from treatement where Pid ='" + patientCode + "' and DateOfConsultancy = #" + dtpDateOfConsult.Value + "#");
+            //dt = Operation.GetDataTable("select * from treatement where Pid ='" + patientCode + "' and DateOfConsultancy = #" + dtpDateOfConsult.Value + "#");
+            dt = Operation.GetDataTable("select t1.PID,t1.DateOfConsultancy,t1.pname,t1.fname,t1.mname,t1.lname,t1.Sex,t1.Age,t1.Rx,t2.CompanyName,t1.Name,t1.MorningDose,t1.NoonDose,t1.EveningDose,t1.NoOfDay,t1.Qty,t1.AS1,t1.Bp,t1.ChipComplain,t1.CNS,t1.CVS,t1.Doa,t1.Dod,t1.RS,t1.pulse,t1.Temp,t1.FollowupDate,t1.chiefComplainName from treatement t1 LEFT JOIN Company t2 ON t1.Company = t2.CompanyId where pid='" + patientCode + "' and DateOfConsultancy = #" + dtpDateOfConsult.Value + "#");
 
             if (dt.Rows.Count > 0)
             {
@@ -673,8 +719,9 @@ namespace Medical
                                     string morning = Convert.ToString(record["MorningDose"]);
                                     string noon = Convert.ToString(record["NoonDose"]);
                                     string evening = Convert.ToString(record["EveningDose"]);
+                                    string companyName = Convert.ToString(record["CompanyName"]);
 
-                                    tablestringCart = tablestringCart + "<tr>" + "<td align='center' width='25%'>" + rx + " :</td>" + "<td align='left' width='30%'>" + medicineName + "</td><td align='center' width='45%'>( " + qty + " )</td>" + "</tr>"
+                                    tablestringCart = tablestringCart + "<tr>" + "<td align='center' width='25%'>" + rx + " :</td>" + "<td align='left' width='30%'>" + companyName + "-" + medicineName + "</td><td align='center' width='45%'>( " + qty + " )</td>" + "</tr>"
                                         + "<tr><td align='center' width='25%'></td><td align='left' width='50%'>" + morning + "    -------    " + noon + "    -------    " + evening + "</td><td align='center' width='25%'></td></tr>";
                                     //}
                                 }
@@ -721,7 +768,8 @@ namespace Medical
         {
             DataTable dt = new DataTable();
             //select * from treatement where pid=@pid and Dateofconsultancy=@dt
-            dt = Operation.GetDataTable("select * from treatement where Pid ='" + patientCode + "' and DateOfConsultancy = #" + dtpDateOfConsult.Value + "#");
+            //dt = Operation.GetDataTable("select * from treatement where Pid ='" + patientCode + "' and DateOfConsultancy = #" + dtpDateOfConsult.Value + "#");
+            dt = Operation.GetDataTable("select t1.PID,t1.DateOfConsultancy,t1.pname,t1.fname,t1.mname,t1.lname,t1.Sex,t1.Age,t1.Rx,t2.CompanyName,t1.Name,t1.MorningDose,t1.NoonDose,t1.EveningDose,t1.NoOfDay,t1.Qty,t1.AS1,t1.Bp,t1.ChipComplain,t1.CNS,t1.CVS,t1.Doa,t1.Dod,t1.RS,t1.pulse,t1.Temp,t1.FollowupDate,t1.chiefComplainName from treatement t1 LEFT JOIN Company t2 ON t1.Company = t2.CompanyId where pid='" + patientCode + "' and DateOfConsultancy = #" + dtpDateOfConsult.Value + "#");
 
             if (dt.Rows.Count > 0)
             {
@@ -774,8 +822,9 @@ namespace Medical
                                     string morning = Convert.ToString(record["MorningDose"]);
                                     string noon = Convert.ToString(record["NoonDose"]);
                                     string evening = Convert.ToString(record["EveningDose"]);
+                                    string companyName = Convert.ToString(record["CompanyName"]);
 
-                                    tablestringCart = tablestringCart + "<tr>" + "<td align='center' width='25%'>" + rx + " :</td>" + "<td align='left' width='30%'>" + medicineName + "</td><td align='center' width='45%'>( " + qty + " )</td>" + "</tr>"
+                                    tablestringCart = tablestringCart + "<tr>" + "<td align='center' width='25%'>" + rx + " :</td>" + "<td align='left' width='30%'>" + companyName + "-" + medicineName + "</td><td align='center' width='45%'>( " + qty + " )</td>" + "</tr>"
                                         + "<tr><td align='center' width='25%'></td><td align='left' width='50%'>" + morning + "    -------    " + noon + "    -------    " + evening + "</td><td align='center' width='25%'></td></tr>";
                                 }
                                 tablestringCart = tablestringCart + "</table>";
@@ -829,6 +878,11 @@ namespace Medical
                     Operation.ExecuteNonQuery("insert into rx(RxName) values(@rxName)", param);
                 }
             }
+        }
+
+        private void cmbCompanyName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
     }
 }

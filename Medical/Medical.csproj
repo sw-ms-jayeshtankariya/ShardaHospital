@@ -163,11 +163,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\true.png" />
     <Content Include="bin\Debug\Receipt.html" />
     <Content Include="bin\Debug\Treament.html" />
     <Content Include="bin\Debug\TreamentPlain.html" />
     <Content Include="ExtReferences\itextsharp.dll" />
     <Content Include="Receipt.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
