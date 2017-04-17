@@ -470,5 +470,22 @@ namespace Medical
                 objtreatement.ShowDialog();
             }
         }
+
+        private void cmdIndoorPatients_Click(object sender, EventArgs e)
+        {
+            if (dgPatientMaster.CurrentCell != null)
+            {
+                string patientCode = Convert.ToString(dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex].Cells[0].Value);
+                string patientName = Convert.ToString(dgPatientMaster.Rows[dgPatientMaster.CurrentCell.RowIndex].Cells[1].Value);
+
+                frmAdmitPatient objAdmitPatient = new frmAdmitPatient();
+                objAdmitPatient.patientCode = patientCode;
+                objAdmitPatient.patientName = patientName;
+                objAdmitPatient.ShowDialog();
+            }
+
+            
+            
+        }
     }
 }

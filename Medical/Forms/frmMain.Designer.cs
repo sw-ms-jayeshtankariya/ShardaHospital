@@ -297,6 +297,7 @@
             this.cmdIndoorPatients.TabIndex = 16;
             this.cmdIndoorPatients.Text = "Indoor Patients";
             this.cmdIndoorPatients.UseVisualStyleBackColor = true;
+            this.cmdIndoorPatients.Visible = false;
             this.cmdIndoorPatients.Click += new System.EventHandler(this.cmdIndoorPatients_Click);
             // 
             // fraBill
@@ -603,6 +604,7 @@
             this.txtCharges10.Name = "txtCharges10";
             this.txtCharges10.Size = new System.Drawing.Size(30, 20);
             this.txtCharges10.TabIndex = 13;
+            this.txtCharges10.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtLbl10
             // 
@@ -645,6 +647,7 @@
             this.txtCharges5.Name = "txtCharges5";
             this.txtCharges5.Size = new System.Drawing.Size(30, 20);
             this.txtCharges5.TabIndex = 10;
+            this.txtCharges5.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtLbl0
             // 
@@ -672,6 +675,7 @@
             this.txtCharges0.Name = "txtCharges0";
             this.txtCharges0.Size = new System.Drawing.Size(30, 20);
             this.txtCharges0.TabIndex = 7;
+            this.txtCharges0.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // label6
             // 
@@ -833,6 +837,7 @@
             this.txtCharges6.Name = "txtCharges6";
             this.txtCharges6.Size = new System.Drawing.Size(30, 20);
             this.txtCharges6.TabIndex = 25;
+            this.txtCharges6.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges7
             // 
@@ -842,6 +847,7 @@
             this.txtCharges7.Name = "txtCharges7";
             this.txtCharges7.Size = new System.Drawing.Size(30, 20);
             this.txtCharges7.TabIndex = 26;
+            this.txtCharges7.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges8
             // 
@@ -851,6 +857,7 @@
             this.txtCharges8.Name = "txtCharges8";
             this.txtCharges8.Size = new System.Drawing.Size(30, 20);
             this.txtCharges8.TabIndex = 27;
+            this.txtCharges8.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges9
             // 
@@ -860,6 +867,7 @@
             this.txtCharges9.Name = "txtCharges9";
             this.txtCharges9.Size = new System.Drawing.Size(30, 20);
             this.txtCharges9.TabIndex = 28;
+            this.txtCharges9.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtLbl11
             // 
@@ -897,6 +905,7 @@
             this.txtCharges14.Name = "txtCharges14";
             this.txtCharges14.Size = new System.Drawing.Size(66, 20);
             this.txtCharges14.TabIndex = 32;
+            this.txtCharges14.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges11
             // 
@@ -906,6 +915,7 @@
             this.txtCharges11.Name = "txtCharges11";
             this.txtCharges11.Size = new System.Drawing.Size(30, 20);
             this.txtCharges11.TabIndex = 33;
+            this.txtCharges11.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges12
             // 
@@ -915,6 +925,7 @@
             this.txtCharges12.Name = "txtCharges12";
             this.txtCharges12.Size = new System.Drawing.Size(30, 20);
             this.txtCharges12.TabIndex = 34;
+            this.txtCharges12.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges13
             // 
@@ -924,6 +935,7 @@
             this.txtCharges13.Name = "txtCharges13";
             this.txtCharges13.Size = new System.Drawing.Size(30, 20);
             this.txtCharges13.TabIndex = 35;
+            this.txtCharges13.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges1
             // 
@@ -933,6 +945,7 @@
             this.txtCharges1.Name = "txtCharges1";
             this.txtCharges1.Size = new System.Drawing.Size(30, 20);
             this.txtCharges1.TabIndex = 15;
+            this.txtCharges1.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges2
             // 
@@ -942,6 +955,7 @@
             this.txtCharges2.Name = "txtCharges2";
             this.txtCharges2.Size = new System.Drawing.Size(30, 20);
             this.txtCharges2.TabIndex = 37;
+            this.txtCharges2.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges3
             // 
@@ -951,6 +965,7 @@
             this.txtCharges3.Name = "txtCharges3";
             this.txtCharges3.Size = new System.Drawing.Size(30, 20);
             this.txtCharges3.TabIndex = 38;
+            this.txtCharges3.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // txtCharges4
             // 
@@ -960,6 +975,7 @@
             this.txtCharges4.Name = "txtCharges4";
             this.txtCharges4.Size = new System.Drawing.Size(30, 20);
             this.txtCharges4.TabIndex = 39;
+            this.txtCharges4.Leave += new System.EventHandler(this.txtDispayCalc_Leave);
             // 
             // gbPrint
             // 

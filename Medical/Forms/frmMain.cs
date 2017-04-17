@@ -249,12 +249,10 @@ namespace Medical
 
         private void grdDataGrid_SelectionChanged(object sender, EventArgs e)
         {
-            //if (grdDataGrid.SelectedRows.Count > 0)
-            //lblStatus.Text = Convert.ToString(grdDataGrid.SelectedRows[0].Index + 1);
-
-            //if (grdDataGrid.CurrentCell != null)
-            //    lblStatus.Text = Convert.ToString(grdDataGrid.CurrentCell.RowIndex);
             ShowRowCount();
+
+            if (fraBill.Visible && gbPrint.Visible)
+                ShowBillValues();
         }
 
         private void cmdBill_Click(object sender, EventArgs e)
@@ -262,6 +260,11 @@ namespace Medical
             fraBill.Visible = true;
             gbPrint.Visible = true;
 
+            ShowBillValues();
+        }
+
+        private void ShowBillValues()
+        {
             lblName.Text = Convert.ToString(this.grdDataGrid.CurrentRow.Cells[2].Value);
             lblReceiptNo.Text = Convert.ToString(this.grdDataGrid.CurrentRow.Cells[8].Value);
             txtCharges14.Text = Convert.ToString(this.grdDataGrid.CurrentRow.Cells[9].Value);
@@ -379,12 +382,6 @@ namespace Medical
         {
             int number;
             double total = 0;
-            //int i = 0;
-            //string strRupeeInWord = null;
-            //string strCrorer = null;
-            //string strRem = null;
-            //string strNum = null;
-            //int l = 0;
 
             double box_total = (int.TryParse(txtCharges0.Text, out number) ? Convert.ToDouble(txtCharges0.Text) : Convert.ToDouble(0)) +
                 (int.TryParse(txtCharges1.Text, out number) ? Convert.ToDouble(txtCharges1.Text) : Convert.ToDouble(0)) +
@@ -518,8 +515,6 @@ namespace Medical
             //In case if you want to scroll down as well.
             grdDataGrid.FirstDisplayedScrollingRowIndex = nRowIndex;
             //grdDataGrid.FirstDisplayedScrollingRowIndex = grdDataGrid.RowCount - 1;
-
-            DataTable dt = Operation.GetDataTable("select count(*) from patient");
 
             lblStatus.Text = Convert.ToString(nRowIndex);
         }
@@ -820,8 +815,6 @@ namespace Medical
             if (objBillReport.toDate != null)
                 toDate = Convert.ToDateTime(objBillReport.toDate).ToShortDateString();
 
-            //select *  from patient where date between @d1 and @d2   order by date,srno
-
             if (fromDate != "1/1/0001" && toDate != "1/1/0001")
             {
                 query = "select SrNo,Name,Address,Total,ReceiptNo,Remark,Date from patient where [Date] between #" + fromDate + "# and #" + toDate + "# order by Date,SrNo";
@@ -1044,6 +1037,36 @@ namespace Medical
         {
             frmAdmitPatient objAdmitPatient = new frmAdmitPatient();
             objAdmitPatient.ShowDialog();
+        }
+
+        private void txtDispayCalc_Leave(object sender, EventArgs e)
+        {
+            DisplayCalc();
+        }
+
+        private void DisplayCalc()
+        {
+            int number;
+            double total = 0;
+
+            double box_total = (int.TryParse(txtCharges0.Text, out number) ? Convert.ToDouble(txtCharges0.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges1.Text, out number) ? Convert.ToDouble(txtCharges1.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges2.Text, out number) ? Convert.ToDouble(txtCharges2.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges3.Text, out number) ? Convert.ToDouble(txtCharges3.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges4.Text, out number) ? Convert.ToDouble(txtCharges4.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges5.Text, out number) ? Convert.ToDouble(txtCharges5.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges6.Text, out number) ? Convert.ToDouble(txtCharges6.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges7.Text, out number) ? Convert.ToDouble(txtCharges7.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges8.Text, out number) ? Convert.ToDouble(txtCharges8.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges9.Text, out number) ? Convert.ToDouble(txtCharges9.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges10.Text, out number) ? Convert.ToDouble(txtCharges10.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges11.Text, out number) ? Convert.ToDouble(txtCharges11.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges12.Text, out number) ? Convert.ToDouble(txtCharges12.Text) : Convert.ToDouble(0)) +
+                (int.TryParse(txtCharges13.Text, out number) ? Convert.ToDouble(txtCharges13.Text) : Convert.ToDouble(0));
+
+            total = total + box_total;
+
+            txtCharges14.Text = Convert.ToString(total);
         }
     }
 }
